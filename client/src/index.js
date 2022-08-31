@@ -1,8 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ApolloProvider } from "@apollo/react-hooks";
 import { BrowserRouter } from "react-router-dom";
-import ApolloClient from "apollo-boost";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+  ApolloLink,
+} from "@apollo/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
