@@ -40,10 +40,10 @@ npm test
 
 ## Creators
 This project was originally brought to life by these four geniuses:
-> Mark U, big monie man - don't need no sleep!
-> Logan S, emmaculate baller - knows more than just coding languages!
-> Justyn H, swaggy cool guy - will literally dominate his code in a day to flex!
-> Gunnar J, current human - genuinely not sure about this dude.
+* Mark U, big monie man - don't need no sleep!
+* Logan S, emmaculate baller - knows more than just coding languages!
+* Justyn H, swaggy cool guy - will literally dominate his code in a day to flex!
+* Gunnar J, current human - genuinely not sure about this dude.
 
 ## Questions?
 Good for you! Glad your pattern recognizing brain is able to come up with some curiosities! You can resolve some of those questions by pinging our main email for this project:
