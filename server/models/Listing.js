@@ -2,7 +2,7 @@ const { Schema, model, SchemaTypes } = require('mongoose');
 
 
 const listingSchema = new Schema({
-  item_name: {
+  title: {
     type: String,
     required: true,
   },
