@@ -1,4 +1,4 @@
-const { Schema, model, SchemaTypes } = require("mongoose");
+const { Schema, model, SchemaTypes } = require('mongoose');
 
 const listingSchema = new Schema({
   item_name: {
@@ -23,16 +23,16 @@ const listingSchema = new Schema({
   },
   listing_author: {
     type: SchemaTypes.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
   reviews: [
     {
       type: SchemaTypes.ObjectId,
-      ref: "Review",
+      ref: 'Review',
     },
   ],
 });
 
-const Listing = model("Listing", listingSchema);
+const Listing = model('Listing', listingSchema);
 
 module.exports = Listing;

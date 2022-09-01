@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 function StarWars() {
   const [swData, setSWData] = useState([]);
 
   const grabData = () => {
-    fetch("https://swapi.dev/api/people")
+    fetch('https://swapi.dev/api/people')
       .then((res) => res.json())
       .then((data) => {
         setSWData(data.results);
