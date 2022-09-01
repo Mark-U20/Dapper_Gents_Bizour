@@ -146,15 +146,14 @@ export default function Header() {
                 <Icon name="shopping cart"></Icon>
             </Menu.Item>
 
-            {/* COMMENT IN BEFORE PUSHING */}
-            {/* <Menu.Item>
+            <Menu.Item>
               <Dropdown
                 trigger={trigger}
                 options={options}
                 pointing="top left"
                 icon={null}
               />
-            </Menu.Item> */}
+            </Menu.Item>
 
             <Menu.Item
               name=""
