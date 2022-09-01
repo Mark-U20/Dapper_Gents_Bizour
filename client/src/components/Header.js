@@ -17,13 +17,7 @@ function Header() {
   );
   const options = [
     { key: 'user', text: 'Account', icon: 'user', as: Link, to: '/profile' },
-    {
-      key: 'cart',
-      text: 'cart',
-      icon: 'shopping cart',
-      as: Link,
-      to: '/cart',
-    },
+
     {
       key: 'wishlist',
       text: 'wishlist',
@@ -86,6 +80,15 @@ function Header() {
             </Menu.Item>
 
             <Menu.Item
+              name=""
+              active={activeItem === 'shopping cart'}
+              onClick={handleItemClick}
+              as={Link}
+              to="/cart"
+              icon="shopping cart"
+            ></Menu.Item>
+
+            <Menu.Item
               name="sign-in"
               active={activeItem === 'sign-in'}
               onClick={handleItemClick}
@@ -97,8 +100,6 @@ function Header() {
           </Menu.Menu>
         </Menu>
       </div>
-      {/* ShoppingCart link*/}
-      {/* Wishlist */}
 
       {/* IDEA: Currency conversion */}
     </>
