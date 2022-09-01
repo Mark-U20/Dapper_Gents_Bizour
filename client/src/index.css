@@ -25,6 +25,7 @@ header {
   padding: 7px 3%;
   margin-bottom: 30px;
   background: #555;
+  height: 10vh;
 }
 
 header * {
@@ -41,9 +42,62 @@ header nav a.active {
   text-decoration: underline;
 }
 
+footer {
+  height: 10vh;
+}
+
 .todos {
   padding: 0 3% 25px;
 }
+
+
+main {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.store-front {
+  width: 80vw;
+  height: 30vh;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+
+}
+
+.store_card {
+  height: 100%;
+  margin: 20px;
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+  
+}
+
+
+
+@media screen and (min-width: 480px) {
+  
+  /* main {
+    flex-direction: row;
+  } */
+
+  .store-front {
+    width: 20vw;
+    height: 20vh;
+  }
+}
+
 
 .listings {
   display: flex;
