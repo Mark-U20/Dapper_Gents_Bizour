@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const { ApolloError } = require('apollo-server-express');
+const jwt = require("jsonwebtoken");
+const { ApolloError } = require("apollo-server-express");
 
 const secret = process.env.TOKEN_SECRET;
 
@@ -12,17 +12,17 @@ module.exports = {
     if (!token) return req;
 
     // if token exists, but doesn't include validation string, throw error
-    if (!token.includes('Verify')) {
-      throw new ApolloError('invalid token');
+    if (!token.includes("Verify")) {
+      throw new ApolloError("invalid token");
     }
-    
+
     // actually grabbing token string
-    token = token.split(' ').pop().trim();
+    token = token.split(" ").pop().trim();
 
     // try decoding token with max age of 14 days
     try {
       const { data } = jwt.decode(token, secret, {
-        maxAge: '14d'
+        maxAge: "14d",
       });
 
       // pushing token data to req.user and returning
@@ -31,14 +31,14 @@ module.exports = {
 
       // if it can't decode it with our secret, then the token is invalid
     } catch (err) {
-      throw new ApolloError('invalid');
+      throw new ApolloError("invalid");
     }
   },
 
   // method for creating a token on user login / signup
   signToken(user_data) {
     return jwt.sign({ data: user_data }, secret, {
-      expiresIn: '14d'
+      expiresIn: "14d",
     });
-  }
-}
+  },
+};

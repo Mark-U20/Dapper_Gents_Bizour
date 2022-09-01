@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { gql, useMutation } from '@apollo/client';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { gql, useMutation } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 
 const ADD_USER = gql`
   mutation addUser($email: String!, $password: String!) {
@@ -15,11 +15,11 @@ const ADD_USER = gql`
 
 function TodoForm(props) {
   const [formInput, setFormInput] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
   const [addUser, { loading, error, data }] = useMutation(ADD_USER, {
-    variables: formInput
+    variables: formInput,
   });
 
   const navigate = useNavigate();
@@ -27,22 +27,24 @@ function TodoForm(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { data: { addUser: response } } = await addUser();
+    const {
+      data: { addUser: response },
+    } = await addUser();
 
     console.log(data);
 
-    localStorage.setItem('token', response.token);
+    localStorage.setItem("token", response.token);
 
     props.setUser(response.user);
-    navigate('/');
+    navigate("/");
   };
 
   const handleInputChange = (e) => {
     setFormInput({
       ...formInput,
-      [e.target.name]: e.target.value//this is use
-    })
-  }
+      [e.target.name]: e.target.value, //this is use
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -51,16 +53,18 @@ function TodoForm(props) {
         value={formInput.email}
         onChange={handleInputChange}
         type="email"
-        placeholder="Enter your email address" />
+        placeholder="Enter your email address"
+      />
       <input
         name="password"
         value={formInput.password}
         onChange={handleInputChange}
         type="password"
-        placeholder="Enter your password" />
+        placeholder="Enter your password"
+      />
       <button>Submit</button>
     </form>
-  )
+  );
 }
 
 export default TodoForm;

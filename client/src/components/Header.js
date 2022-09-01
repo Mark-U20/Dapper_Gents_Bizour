@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 function Header(props) {
   console.log(props);
@@ -16,7 +16,7 @@ function Header(props) {
         <NavLink to="/user-form">Create User</NavLink>
       </nav>
     </header>
-  )
+  );
 }
 
 export default Header;

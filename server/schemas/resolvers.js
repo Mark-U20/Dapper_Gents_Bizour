@@ -1,4 +1,4 @@
-const { Cart, Listing, Review, User } = require('../models');
+const { Cart, Listing, Review, User } = require("../models");
 
 const resolvers = {
   Query: {
@@ -22,21 +22,15 @@ const resolvers = {
     // async loginUser(_, { email, password }){
 
     // },
-    async addListing(_, {
-      item_name,
-      description,
-      category,
-      quantity,
-      price,
-    }) {
+    async addListing(_, { item_name, description, category, quantity, price }) {
       return Listing.create({
         item_name,
         description,
         category,
         quantity,
         price,
-      })
-    }
+      });
+    },
   },
 };
 
