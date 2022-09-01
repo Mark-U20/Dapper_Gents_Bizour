@@ -1,4 +1,4 @@
-const { Cart, Listing, Review, User } = require("../models");
+const { Cart, Listing, Review, User } = require('../models');
 
 const resolvers = {
   Query: {

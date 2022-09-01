@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { gql, useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { gql, useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 
 const ADD_USER = gql`
   mutation addUser($email: String!, $password: String!) {
@@ -15,8 +15,8 @@ const ADD_USER = gql`
 
 function TodoForm(props) {
   const [formInput, setFormInput] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const [addUser, { loading, error, data }] = useMutation(ADD_USER, {
     variables: formInput,
@@ -33,10 +33,10 @@ function TodoForm(props) {
 
     console.log(data);
 
-    localStorage.setItem("token", response.token);
+    localStorage.setItem('token', response.token);
 
     props.setUser(response.user);
-    navigate("/");
+    navigate('/');
   };
 
   const handleInputChange = (e) => {
