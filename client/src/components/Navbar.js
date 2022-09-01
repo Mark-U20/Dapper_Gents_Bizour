@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
-import SignUpForm from "./SignupForm";
-import LoginForm from "./LoginForm";
-import Auth from "../utils/auth";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
+import SignUpForm from './SignupForm';
+import LoginForm from './LoginForm';
+import Auth from '../utils/auth';
 
 const AppNavbar = () => {
   // set modal display state
@@ -20,7 +20,7 @@ const AppNavbar = () => {
 
       <Menu.Item
         name="features"
-        active={activeItem === "features"}
+        active={activeItem === 'features'}
         onClick={this.handleItemClick}
       >
         Features
@@ -28,7 +28,7 @@ const AppNavbar = () => {
 
       <Menu.Item
         name="testimonials"
-        active={activeItem === "testimonials"}
+        active={activeItem === 'testimonials'}
         onClick={this.handleItemClick}
       >
         Testimonials
@@ -36,7 +36,7 @@ const AppNavbar = () => {
 
       <Menu.Item
         name="sign-in"
-        active={activeItem === "sign-in"}
+        active={activeItem === 'sign-in'}
         onClick={this.handleItemClick}
       >
         Sign-in

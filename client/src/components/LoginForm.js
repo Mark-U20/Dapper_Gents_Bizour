@@ -1,12 +1,12 @@
 // see SignupForm.js for comments
-import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
 
-import { loginUser } from "../utils/API";
-import Auth from "../utils/auth";
+import { loginUser } from '../utils/API';
+import Auth from '../utils/auth';
 
 const LoginForm = () => {
-  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
+  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -29,7 +29,7 @@ const LoginForm = () => {
       const response = await loginUser(userFormData);
 
       if (!response.ok) {
-        throw new Error("something went wrong!");
+        throw new Error('something went wrong!');
       }
 
       const { token, user } = await response.json();
@@ -41,9 +41,9 @@ const LoginForm = () => {
     }
 
     setUserFormData({
-      username: "",
-      email: "",
-      password: "",
+      username: '',
+      email: '',
+      password: '',
     });
   };
 

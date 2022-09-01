@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
 
-import { createUser } from "../utils/API";
-import Auth from "../utils/auth";
+import { createUser } from '../utils/API';
+import Auth from '../utils/auth';
 
 const SignupForm = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
+    username: '',
+    email: '',
+    password: '',
   });
   // set state for form validation
   const [validated] = useState(false);
@@ -35,7 +35,7 @@ const SignupForm = () => {
       const response = await createUser(userFormData);
 
       if (!response.ok) {
-        throw new Error("something went wrong!");
+        throw new Error('something went wrong!');
       }
 
       const { token, user } = await response.json();
@@ -47,9 +47,9 @@ const SignupForm = () => {
     }
 
     setUserFormData({
-      username: "",
-      email: "",
-      password: "",
+      username: '',
+      email: '',
+      password: '',
     });
   };
 

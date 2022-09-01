@@ -1,24 +1,26 @@
-import { useState, useEffect } from "react";
-import StarWars from "./pages/StarWars";
-import Landing from "./pages/Landing";
-import Header from "./components/Header";
-import TodosDisplay from "./pages/TodosDisplay";
-import TodoForm from "./pages/TodoForm";
-import UserForm from "./pages/UserForm";
-import { Routes, Route } from "react-router-dom";
-import decode from "jwt-decode";
+import { useState, useEffect } from 'react';
+import StarWars from './pages/StarWars';
+import Landing from './pages/Landing';
+import Header from './components/Header';
+import TodosDisplay from './pages/TodosDisplay';
+import TodoForm from './pages/TodoForm';
+import UserForm from './pages/UserForm';
+import { Routes, Route } from 'react-router-dom';
+import decode from 'jwt-decode';
 
 function App() {
-  const [logo, setTitle] = useState("React Overview");
+  const [logo, setTitle] = useState('React Overview');
   const [user, setUser] = useState(null);
 
-  // useEffect(() => {
-  //   const decoded = decode(localStorage.getItem("token"));
+  useEffect(() => {
+    const token = localStorage.getItem('token');
 
-  //   if (decoded.exp > Date.now() / 1000) {
-  //     setUser(decoded.data);
-  //   }
-  // }, []);
+    if (!token) {
+      return;
+    }
+
+    const decoded = decode(token);
+  }, []);
 
   return (
     <div>
