@@ -15,7 +15,7 @@ const resolvers = {
       return await Listing.findOne({ _id: listingId });
     },
     async getListings() {
-      return await Listing.find();
+      return await Listing.find().populate('listing_author').populate('reviews');
     },
   },
   Mutation: {

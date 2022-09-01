@@ -14,10 +14,10 @@ function ShowListings() {
                 {data.getListings.map((listing) => (
                 <div className="ui card" key={listing._id}>
                     <div className="image">
-                        <img src={listing.image_url}></img>
+                        <img src={listing.image_url} alt={listing.item_name}></img>
                     </div>
                     <div className="content">
-                        <a className="header">{listing.item_name}</a>
+                        <p className="header">{listing.item_name}</p>
                         <div className="meta">
                             <span className="date">{listing.category}</span>
                         </div>
