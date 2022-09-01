@@ -18,6 +18,11 @@ code {
     monospace;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -57,6 +62,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: green;
   
 }
 
@@ -80,6 +86,9 @@ main {
 
 
 @media screen and (min-width: 768px) {
+  main {
+   flex-direction: row;
+  } 
 
   
 }
@@ -88,9 +97,6 @@ main {
 
 @media screen and (min-width: 480px) {
   
-   main {
-    flex-direction: row;
-  } 
 
    .store-front {
     width: 20vw;

@@ -1,6 +1,7 @@
+
 import { faker } from '@faker-js/faker';
 import { Dropdown, Icon, Menu, Segment, Image } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
 function Header() {
@@ -77,6 +78,20 @@ function Header() {
 
           <Menu.Menu position="right" stackable="true" simple dropdown="true">
             {/* semantic ui augmentation for ref */}
+
+            <Menu.Item as={NavLink} to="/cart">
+                <Icon name="shopping cart"></Icon>
+
+
+            </Menu.Item>
+
+            <Menu.Item as={Link} to="/profile">
+              {/* user profile image */}
+              <img
+                className="ui avatar image"
+                alt="logo"
+                src="https://cdn2.thecatapi.com/images/ebv.jpg"
+
             <Menu.Item>
               <Dropdown
                 trigger={trigger}
@@ -103,6 +118,7 @@ function Header() {
 
       {/* IDEA: Currency conversion */}
     </>
+    
   );
 }
 
