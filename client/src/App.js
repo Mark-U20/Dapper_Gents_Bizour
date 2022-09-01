@@ -25,8 +25,6 @@ function App() {
       ...user,
       token: decoded,
     });
-    console.log('this is the user: ');
-    console.log(user);
   }, []);
 
   return (
