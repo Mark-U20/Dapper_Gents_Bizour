@@ -3,9 +3,9 @@ const { gql } = require("apollo-server-express");
 /* FIXME:
  * do we need to add something to the user
  * for the cart items? do we need a model?
- * 
- * we'll need to add queries for the 
- * 
+ *
+ * we'll need to add queries for the
+ *
  * -fixedOtter
  */
 
@@ -40,17 +40,23 @@ const typeDefs = gql`
     token: ID
   }
 
-  type Query{
+  type Query {
     getUser: User
     getUsers: [User]
     getListing: Listing
     getListings: [Listing]
   }
 
-  type Mutation{
+  type Mutation {
     addUser(email: String!, password: String!): Auth
     loginUser(email: String!, password: String!): Auth
-    addListing(item_name: String!, description: String!, category: String!, quantity: Int!, price: Int!): Listing
+    addListing(
+      item_name: String!
+      description: String!
+      category: String!
+      quantity: Int!
+      price: Int!
+    ): Listing
   }
 `;
 
