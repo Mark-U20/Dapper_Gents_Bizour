@@ -81,16 +81,7 @@ function Header() {
 
             <Menu.Item as={NavLink} to="/cart">
                 <Icon name="shopping cart"></Icon>
-
-
             </Menu.Item>
-
-            <Menu.Item as={Link} to="/profile">
-              {/* user profile image */}
-              <img
-                className="ui avatar image"
-                alt="logo"
-                src="https://cdn2.thecatapi.com/images/ebv.jpg"
 
             <Menu.Item>
               <Dropdown
