@@ -5,12 +5,14 @@ import Header from './components/Header';
 import TodosDisplay from './pages/TodosDisplay';
 import TodoForm from './pages/TodoForm';
 import UserForm from './pages/UserForm';
+import Navbar from './components/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import decode from 'jwt-decode';
 
 function App() {
   const [logo, setTitle] = useState('React Overview');
   const [user, setUser] = useState(null);
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -24,8 +26,7 @@ function App() {
 
   return (
     <div>
-      <Header logo={logo} user={user} />
-
+      <Navbar />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route path="/starwars" element={<StarWars />} />

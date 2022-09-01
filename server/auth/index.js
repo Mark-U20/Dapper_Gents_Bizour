@@ -13,6 +13,7 @@ module.exports = {
     if (!token) return req;
 
     // if token exists, but doesn't include validation string, throw error
+
     if (!token.includes('Validate')) {
       throw new ApolloError('invalid token');
     }

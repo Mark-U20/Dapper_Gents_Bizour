@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { ADD_USER, LOGIN_USER } from '../utils/mutations';
@@ -8,6 +9,7 @@ function UserForm(props) {
   const [formInput, setFormInput] = useState({
     email: '',
     password: '',
+
     type: 'register'
   });
   const [addUser] = useMutation(ADD_USER, {
@@ -40,6 +42,7 @@ function UserForm(props) {
     token = data[type].token;
 
     console.log('HEY IM LOOKN FOR TOOKINS HERE' + token);
+
 
     // setting user prop to user
     props.setUser(user);

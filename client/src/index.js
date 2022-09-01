@@ -26,6 +26,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const httpLink = createHttpLink({
+
   uri: 'http://localhost:3111/graphql',
 });
 
@@ -35,6 +36,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
+
       auth: token ? `Validate ${token}` : '',
     },
   };
