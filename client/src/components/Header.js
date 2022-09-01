@@ -1,11 +1,81 @@
-
 import { faker } from '@faker-js/faker';
-import { Dropdown, Icon, Menu, Segment, Image } from 'semantic-ui-react';
+import { useQuery } from '@apollo/client';
+import { GET_LISTINGS } from '../utils/queries';
+import { Search, Dropdown, Icon, Menu, Image } from 'semantic-ui-react';
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { useReducer, useEffect, useState, useRef, useCallback } from 'react';
+import _ from 'lodash';
+import exampleSearchData from './DISCARD/testingSearch.json';
 
-function Header() {
+// defining what the search should be on init
+const searchInit = {
+  loading: false,
+  results: [],
+  value: '',
+}
+
+// this is a little function for handling the search dispatches
+function searchReducer(currState, searchAction) {
+  switch (searchAction.type) {
+    case 'CLEAN':
+      return searchInit
+    case 'START':
+      return { ...currState, loading: true, value: searchAction.query }
+    case 'FINISH':
+      return { ...currState, loading: false, results: searchAction.results }
+    case 'UPDATE': 
+      return { ...currState, value: searchAction.selection }
+
+    default:
+      throw new Error()
+  }
+}
+
+export default function Header() {
   const [activeItem, setActiveItem] = useState('');
+  // reducer and search states for search bar
+  const [searchState, searchDispatch] = useReducer(searchReducer, searchInit);
+  const { loading, results, value } = searchState;
+
+  /* Nice To Have:
+   * should we be setting the listings query to a global state?
+   * i remember JD talking about having states that can be accessed from any page
+   * i thin ideally, we would implement that for the listing and just re-set the listings?
+   * -fixedOtter
+   */
+  const { qData } = useQuery(GET_LISTINGS);
+  const searchData = exampleSearchData.data.getListings;
+
+  const timeoutRef = useRef();
+
+  // semantics search handler
+  const searchChangeHandler = useCallback((datBoi, data) => {
+    clearTimeout(timeoutRef.current);
+    searchDispatch({ type: 'START', query: data.value });
+    console.log('this oyr log:')
+
+    timeoutRef.current = setTimeout(() => {
+      if (data.value.length === 0) {
+        searchDispatch({ type: 'CLEAN' });
+        return
+      }
+
+      const regularExpression = new RegExp(_.escapeRegExp(data.value), 'i');
+      const doItMatch = (query) => regularExpression.test(query.title);
+
+      searchDispatch({
+        type: 'FINISH',
+        results: _.filter(searchData, doItMatch)
+      });
+    }, 300)
+  }, []);
+
+  // some timeout clearing
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeoutRef.current);
+    }
+  }, []);
 
   const handleItemClick = (e, { name }) => {
     console.log(name);
@@ -14,7 +84,7 @@ function Header() {
   // changes profile image and name randomly on load
   const trigger = (
     <span>
-      <Image avatar src={faker.internet.avatar()} /> {faker.name.findName()}
+      <Image avatar src={faker.internet.avatar()} /> {faker.name.fullName()}
     </span>
   );
   const options = [
@@ -57,17 +127,16 @@ function Header() {
           </Dropdown>
 
           <Menu.Menu position="right">
-            <div className="ui right aligned category search item">
-              <div className="ui transparent icon input">
-                <input
-                  className="prompt"
-                  type="text"
-                  placeholder="Search items..."
-                />
-                <i className="search link icon" />
-              </div>
-              <div className="results" />
-            </div>
+            <Search
+              loading={loading}
+              placeholder='Search for an item...'
+              onResultSelect={(datBoi, data) =>
+                searchDispatch({ type: 'UPDATE', selection: data.result.title })
+              }
+              onSearchChange={searchChangeHandler}
+              results={results}
+              value={value}
+            />
           </Menu.Menu>
 
           <Menu.Menu position="right" stackable="true" simple dropdown="true">
@@ -113,5 +182,3 @@ function Header() {
     
   );
 }
-
-export default Header;
