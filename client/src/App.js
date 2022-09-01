@@ -1,21 +1,37 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SearchBooks from './pages/SearchBooks';
-import SavedBooks from './pages/SavedBooks';
-import Navbar from './components/Navbar';
+import { useState, useEffect } from 'react';
+import StarWars from './pages/StarWars';
+import Landing from './pages/Landing';
+import Header from './components/Header';
+import TodosDisplay from './pages/TodosDisplay';
+import TodoForm from './pages/TodoForm';
+import UserForm from './pages/UserForm';
+import { Routes, Route } from 'react-router-dom';
+import decode from 'jwt-decode';
 
 function App() {
+  const [logo, setTitle] = useState('React Overview');
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const decoded = decode(localStorage.getItem('token'))
+
+    if (decoded.exp > Date.now() / 1000) {
+      setUser(decoded.data);
+    }
+  }, []);
+
   return (
-    <Router>
-      <>
-        <Navbar />
-        <Switch>
-          <Route exact path='/' component={SearchBooks} />
-          <Route exact path='/saved' component={SavedBooks} />
-          <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-        </Switch>
-      </>
-    </Router>
+    <div>
+      <Header logo={logo} user={user} />
+
+      <Routes>
+        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/starwars" element={<StarWars />} />
+        <Route path="/todos" element={<TodosDisplay />} />
+        <Route path="/todo-form" element={<TodoForm />} />
+        <Route path="/user-form" element={<UserForm setUser={setUser} />} />
+      </Routes>
+    </div>
   );
 }
 
