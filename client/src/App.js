@@ -20,10 +20,6 @@ function App() {
     }
 
     const decoded = decode(token);
-
-    if (decoded.exp > Date.now() / 1000) {
-      setUser(decoded.data);
-    }
   }, []);
 
   return (

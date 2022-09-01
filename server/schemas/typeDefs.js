@@ -57,6 +57,14 @@ const typeDefs = gql`
       quantity: Int!
       price: Int!
     ): Listing
+    updateListing(
+      id: ID!,
+      item_name: String!
+      description: String!
+      category: String!
+      quantity: Int!
+      price: Int!
+    ): Listing
   }
 `;
 
