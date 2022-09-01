@@ -50,6 +50,7 @@ footer {
   padding: 0 3% 25px;
 }
 
+
 main {
   height: 80vh;
   display: flex;
@@ -95,4 +96,11 @@ main {
     width: 20vw;
     height: 20vh;
   }
+}
+
+
+.listings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

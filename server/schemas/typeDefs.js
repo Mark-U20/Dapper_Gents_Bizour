@@ -22,6 +22,7 @@ const typeDefs = gql`
     description: String!
     category: String!
     quantity: Int!
+    image_url: String!
     price: Int!
     listing_author: User
     reviews: [Review]
@@ -36,8 +37,8 @@ const typeDefs = gql`
   }
 
   type Auth {
-    user: User
-    token: ID
+    userData: User
+    tokenData: ID
   }
 
   type Query {
@@ -55,6 +56,7 @@ const typeDefs = gql`
       description: String!
       category: String!
       quantity: Int!
+      image_url: String!
       price: Int!
     ): Listing
     updateListing(
@@ -63,6 +65,7 @@ const typeDefs = gql`
       description: String!
       category: String!
       quantity: Int!
+      image_url: String!
       price: Int!
     ): Listing
   }
