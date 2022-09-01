@@ -1,40 +1,35 @@
 import { useState, useEffect } from 'react';
-import StarWars from './pages/StarWars';
-import Landing from './pages/Landing';
-import Header from './components/Header';
-import TodosDisplay from './pages/TodosDisplay';
-import TodoForm from './pages/TodoForm';
-import UserForm from './pages/UserForm';
-import Navbar from './components/Navbar';
+import {Header, Footer} from './components';
+import {Landing, Pokemon, Random, ComputerParts} from './pages'
 import { Routes, Route } from 'react-router-dom';
 import decode from 'jwt-decode';
 
 function App() {
-  const [logo, setTitle] = useState('React Overview');
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
 
-    if (!token) {
-      return;
-    }
+  //   if (!token) {
+  //     return;
+  //   }
 
-    const decoded = decode(token);
-  }, []);
+  //   const decoded = decode(token);
+  // }, []);
 
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Landing user={user} />} />
-        <Route path="/starwars" element={<StarWars />} />
-        <Route path="/todos" element={<TodosDisplay />} />
-        <Route path="/todo-form" element={<TodoForm />} />
-        <Route path="/user-form" element={<UserForm setUser={setUser} />} />
-      </Routes>
-    </div>
+    <>
+      <Header />
+        <Routes>
+              <Route exact path='/' element={<Landing />} />
+              <Route exact path='/pokemon' element={<Pokemon />} />
+              <Route exact path='/computer' element={<ComputerParts />} />
+              <Route exact path='/random' element={<Random />} />
+              {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
+        </Routes>
+      <Footer />
+    </>
   );
 }
 
