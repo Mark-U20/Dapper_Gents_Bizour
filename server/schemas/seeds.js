@@ -89,8 +89,8 @@ db.once('open', async () => {
   // set each cart item to a listing id and push to some user
   for (newCartItem of cartItems) {
     // first grab an item
-    const item = listings[Math.floor(Math.random() * users.length)];
-    newCartItem.item_name = item._id;
+    const listingItem = listings[Math.floor(Math.random() * listings.length)];
+    newCartItem.item_name = listingItem._id;
     await newCartItem.save();
 
     // push this cart item to a user
