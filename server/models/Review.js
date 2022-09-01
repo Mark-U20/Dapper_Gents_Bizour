@@ -7,7 +7,7 @@ const reviewSchema = new Schema(
             required: [true, 'You must give a score between 0 and 10'],
             min: 0,
             max: 10,
-            
+
         },
         review_title: {
             type: String,
