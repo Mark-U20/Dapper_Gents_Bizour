@@ -41,14 +41,20 @@ const resolvers = {
         price,
       });
     },
-    async updateListing(_, { id, item_name, description, category, quantity, price }) {
-      return Listing.findOneAndUpdate({ _id: id }, {
-        item_name,
-        description,
-        category,
-        quantity,
-        price,
-      });
+    async updateListing(
+      _,
+      { id, item_name, description, category, quantity, price }
+    ) {
+      return Listing.findOneAndUpdate(
+        { _id: id },
+        {
+          item_name,
+          description,
+          category,
+          quantity,
+          price,
+        }
+      );
     },
   },
 };
