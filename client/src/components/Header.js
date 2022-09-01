@@ -1,20 +1,21 @@
+import { NavLink } from 'react-router-dom';
 import Navbar from './Navbar';
 
 function Header() {
 
     return (
-        <>
+        <header>
         
             <Navbar />
 
-            {/* ShoppingCart link*/}
+            <NavLink to='/cart'>Cart</NavLink>
             {/* Search Bar */}
             {/* Home link */}
             {/* Wishlist */}
 
 
             {/* IDEA: Currency conversion */}
-        </>
+        </header>
     )
 
 }
