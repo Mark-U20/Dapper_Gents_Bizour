@@ -1,3 +1,4 @@
+import {NavLink} from 'react-router-dom';
 import StoreCard from '../components/StoreCard';
 import {pokemonStore, computerStore, randomStore} from '../components/storeInfo';
 

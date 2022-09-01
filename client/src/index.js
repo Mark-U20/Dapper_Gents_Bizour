@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -15,18 +15,19 @@ import { onError } from '@apollo/client/link/error';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
+
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
-    graphQLErrors.forEach(({ message, locations, path }) =>
+  graphQLErrors.forEach(({ message, locations, path }) =>
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-      )
-    );
-  if (networkError) console.log(`[Network error]: ${networkError}`);
-});
+        )
+        );
+        if (networkError) console.log(`[Network error]: ${networkError}`);
+      });
 
 const httpLink = createHttpLink({
-
+  
   uri: 'http://localhost:3111/graphql',
 });
 
@@ -46,6 +47,9 @@ const client = new ApolloClient({
   link: ApolloLink.from([errorLink, authLink.concat(httpLink)]),
   cache: new InMemoryCache(),
 });
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 ReactDOM.render(
   <ApolloProvider client={client}>
