@@ -1,10 +1,10 @@
 const { gql } = require("apollo-server-express");
 
 /* FIXME:
-* do we need to add something to the user
-* for the cart items? do we need a model?
-* -fixedOtter
-*/
+ * do we need to add something to the user
+ * for the cart items? do we need a model?
+ * -fixedOtter
+ */
 
 const typeDefs = gql`
   type User {
