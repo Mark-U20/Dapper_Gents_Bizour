@@ -36,11 +36,16 @@ const resolvers = {
     // mutation called when logging into an existing account
     async loginUser(_, { email, password }, context) {
       // finds user by email and populates child data
-      const userData = await User.findOne({ email }).populate('listings').populate('shoppingCart').populate('reviews');
+      const userData = await User.findOne({ email })
+        .populate('listings')
+        .populate('shoppingCart')
+        .populate('reviews');
       // no user found? throw error
-      if (!userData) throw new ApolloError(`There isn't a user with that email`);
+      if (!userData)
+        throw new ApolloError(`There isn't a user with that email`);
       // incorrect password? throw error
-      if (!userData.validatePassword(password)) throw new ApolloError(`Your password wrong. Think harder.`);
+      if (!userData.validatePassword(password))
+        throw new ApolloError(`Your password wrong. Think harder.`);
       // if user exists && has correct pass,,,
       try {
         // try signing token!
@@ -52,7 +57,10 @@ const resolvers = {
         throw new ApolloError(err);
       }
     },
-    async addListing(_, { item_name, description, category, quantity, image_url, price }) {
+    async addListing(
+      _,
+      { item_name, description, category, quantity, image_url, price }
+    ) {
       return Listing.create({
         item_name,
         description,
@@ -62,15 +70,21 @@ const resolvers = {
         price,
       });
     },
-    async updateListing(_, { id, item_name, description, category, quantity, image_url, price }) {
-      return Listing.findOneAndUpdate({ _id: id }, {
-        item_name,
-        description,
-        category,
-        quantity,
-        image_url,
-        price,
-      });
+    async updateListing(
+      _,
+      { id, item_name, description, category, quantity, image_url, price }
+    ) {
+      return Listing.findOneAndUpdate(
+        { _id: id },
+        {
+          item_name,
+          description,
+          category,
+          quantity,
+          image_url,
+          price,
+        }
+      );
     },
   },
 };
