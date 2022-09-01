@@ -1,9 +1,42 @@
-import { Dropdown, Icon, Menu, Segment } from 'semantic-ui-react';
+import { Dropdown, Icon, Menu, ModalActions, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-function Header() {
+const searchInit = {
+  loading: false,
+  results: [],
+  value: '',
+}
+
+function searchReducer(currState, searchAction) {
+  switch (searchAction.type) {
+    case 'CLEAN':
+      return searchInit
+    case 'START':
+      return { ...currState, loading: true, value: searchAction.query }
+    case 'FINISH':
+      return { ...currState, loading: false, results: searchAction.results }
+    case 'UPDATE': 
+      return { ...currState, value: searchAction.selection }
+
+    default:
+      throw new Error()
+  }
+}
+
+export default function Header() {
   const [activeItem, setActiveItem] = useState('');
+  const [searchState, searchDispatch] = React.useReducer(searchReducer, searchInit);
+  const { loading, results, value } = searchState;
+
+  const timeoutRef = React.useRef();
+
+
+
+
+
+
+
 
   const handleItemClick = (e, { name }) => {
     console.log(name);
@@ -31,7 +64,8 @@ function Header() {
           <Menu.Menu position="right">
             <div className="ui right aligned category search item">
               <div className="ui transparent icon input">
-                <input
+                <Search
+                  loading={loading}
                   className="prompt"
                   type="text"
                   placeholder="Search items..."
@@ -74,5 +108,3 @@ function Header() {
     </>
   );
 }
-
-export default Header;
