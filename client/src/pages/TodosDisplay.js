@@ -1,6 +1,5 @@
-import { useQuery } from '@apollo/client';
-import { GET_TODOS } from '../utils/queries';
-
+import { useQuery } from "@apollo/client";
+import { GET_TODOS } from "../utils/queries";
 
 function TodosDisplay() {
   const { error, loading, data } = useQuery(GET_TODOS);
@@ -13,13 +12,13 @@ function TodosDisplay() {
 
       {data && (
         <ul>
-          {data.getTodos.map(todo => (
+          {data.getTodos.map((todo) => (
             <li key={todo._id}>{todo.todo_text}</li>
           ))}
         </ul>
       )}
     </div>
-  )
+  );
 }
 
 export default TodosDisplay;

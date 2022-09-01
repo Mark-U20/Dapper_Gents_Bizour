@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_TODOS = gql`
   query GetTodos {
@@ -6,5 +6,5 @@ export const GET_TODOS = gql`
       _id
       todo_text
     }
-  }  
+  }
 `;
