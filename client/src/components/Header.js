@@ -1,4 +1,5 @@
-import { Dropdown, Icon, Menu, Segment } from 'semantic-ui-react';
+import { faker } from '@faker-js/faker';
+import { Dropdown, Icon, Menu, Segment, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 function Header() {
@@ -8,21 +9,53 @@ function Header() {
     console.log(name);
     setActiveItem({ activeItem: name });
   };
+  // changes profile image and name randomly on load
+  const trigger = (
+    <span>
+      <Image avatar src={faker.internet.avatar()} /> {faker.name.findName()}
+    </span>
+  );
+  const options = [
+    { key: 'user', text: 'Account', icon: 'user', as: Link, to: '/profile' },
+    {
+      key: 'cart',
+      text: 'cart',
+      icon: 'shopping cart',
+      as: Link,
+      to: '/cart',
+    },
+    {
+      key: 'wishlist',
+      text: 'wishlist',
+      icon: 'heart outline',
+      as: Link,
+      to: '/wishlist',
+    },
+    {
+      key: 'settings',
+      text: 'Settings',
+      icon: 'settings',
+      as: Link,
+      to: '/settings',
+    },
+    { key: 'sign-out', text: 'Sign Out', icon: 'sign out', as: Link, to: '/' },
+  ];
 
   return (
     <>
-      {/* <div className="ui top inverted attached menu link ">
-        <span className="item link grey">
-          <i className="bars icon"></i>
-        </span>
-      </div> */}
       <div>
         <Menu attached="top">
           <Dropdown item icon="bars" simple as={Link} to="/">
             <Dropdown.Menu>
-              <Dropdown.Item>StoreX</Dropdown.Item>
-              <Dropdown.Item>StoreY</Dropdown.Item>
-              <Dropdown.Item>StoreZ</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/pokemon">
+                Pokemon
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/computer">
+                Computer Parts
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/random">
+                Random Stuff
+              </Dropdown.Item>
               {/* <Dropdown.Divider />  can split dropdowns*/}
             </Dropdown.Menu>
           </Dropdown>
@@ -41,14 +74,14 @@ function Header() {
             </div>
           </Menu.Menu>
 
-          <Menu.Menu position="right" stackable="true">
+          <Menu.Menu position="right" stackable="true" simple dropdown="true">
             {/* semantic ui augmentation for ref */}
-            <Menu.Item as={Link} to="/profile">
-              {/* user profile image */}
-              <img
-                className="ui avatar image"
-                alt="logo"
-                src="https://cdn2.thecatapi.com/images/ebv.jpg"
+            <Menu.Item>
+              <Dropdown
+                trigger={trigger}
+                options={options}
+                pointing="top left"
+                icon={null}
               />
             </Menu.Item>
 
@@ -65,8 +98,6 @@ function Header() {
         </Menu>
       </div>
       {/* ShoppingCart link*/}
-      {/* Search Bar */}
-      {/* Home link */}
       {/* Wishlist */}
 
       {/* IDEA: Currency conversion */}
