@@ -1,19 +1,19 @@
 import Footer from './Footer';
 import Header from './Header';
-import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 import Product from './Product';
 import ProductReviews from './ProductReviews';
 import ShoppingCart from './ShoppingCart';
 import StoreCard from './StoreCard';
-import ShowListings from './ShowListings'
+import ShowListings from './ShowListings';
 
 export {
-    Footer,
-    Header,
-    Navbar,
-    Product,
-    ProductReviews,
-    ShoppingCart,
-    StoreCard,
-    ShowListings
+  Footer,
+  Header,
+  Sidebar,
+  Product,
+  ProductReviews,
+  ShoppingCart,
+  StoreCard,
+  ShowListings,
 };

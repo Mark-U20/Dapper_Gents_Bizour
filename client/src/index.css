@@ -88,11 +88,11 @@ main {
 
 @media screen and (min-width: 480px) {
   
-  /* main {
+   main {
     flex-direction: row;
-  } */
+  } 
 
-  .store-front {
+   .store-front {
     width: 20vw;
     height: 20vh;
   }

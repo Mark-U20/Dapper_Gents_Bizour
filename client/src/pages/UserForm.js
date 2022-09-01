@@ -9,20 +9,20 @@ function UserForm({ setUser }) {
   const [formInput, setFormInput] = useState({
     email: '',
     password: '',
-    type: 'register'
+    type: 'register',
   });
   // defining the ADD_USER mutation and pulling out the function as addUser
   const [addUser] = useMutation(ADD_USER, {
-    variables: formInput
+    variables: formInput,
   });
   // defining the LOGIN_USER mutation and pulling out the function as loginUser
   const [loginUser] = useMutation(LOGIN_USER, {
-    variables: formInput
+    variables: formInput,
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // setting init user and token
     let user, token;
 
@@ -60,21 +60,37 @@ function UserForm({ setUser }) {
         value={formInput.email}
         onChange={handleInputChange}
         type="email"
-        placeholder="Enter your email address" />
+        placeholder="Enter your email address"
+      />
       <input
         name="password"
         value={formInput.password}
         onChange={handleInputChange}
         type="password"
-        placeholder="Enter your password" />
+        placeholder="Enter your password"
+      />
       <div className="type-wrap">
         <label htmlFor="login">
           Login
-          <input checked={formInput.type === 'login'} onChange={handleInputChange} name="type" id="login" type="radio" value="login" />
+          <input
+            checked={formInput.type === 'login'}
+            onChange={handleInputChange}
+            name="type"
+            id="login"
+            type="radio"
+            value="login"
+          />
         </label>
         <label htmlFor="register">
           Register
-          <input checked={formInput.type === 'register'} onChange={handleInputChange} name="type" id="register" type="radio" value="register" />
+          <input
+            checked={formInput.type === 'register'}
+            onChange={handleInputChange}
+            name="type"
+            id="register"
+            type="radio"
+            value="register"
+          />
         </label>
       </div>
       <button>Submit</button>

@@ -1,26 +1,78 @@
-import { NavLink } from 'react-router-dom';
-import Navbar from './Navbar';
-import Search from './SearchBar'
+import { Dropdown, Icon, Menu, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 function Header() {
+  const [activeItem, setActiveItem] = useState('');
 
-    return (
-        <header>
-        
-            <Navbar />
-            <Search />
+  const handleItemClick = (e, { name }) => {
+    console.log(name);
+    setActiveItem({ activeItem: name });
+  };
 
-            <NavLink to='/'>Home</NavLink>
-            <NavLink to='/cart'>Cart</NavLink>
-            {/* Search Bar */}
-            {/* Home link */}
-            {/* Wishlist */}
+  return (
+    <>
+      {/* <div className="ui top inverted attached menu link ">
+        <span className="item link grey">
+          <i className="bars icon"></i>
+        </span>
+      </div> */}
+      <div>
+        <Menu attached="top">
+          <Dropdown item icon="bars" simple as={Link} to="/">
+            <Dropdown.Menu>
+              <Dropdown.Item>StoreX</Dropdown.Item>
+              <Dropdown.Item>StoreY</Dropdown.Item>
+              <Dropdown.Item>StoreZ</Dropdown.Item>
+              {/* <Dropdown.Divider />  can split dropdowns*/}
+            </Dropdown.Menu>
+          </Dropdown>
 
+          <Menu.Menu position="right">
+            <div className="ui right aligned category search item">
+              <div className="ui transparent icon input">
+                <input
+                  className="prompt"
+                  type="text"
+                  placeholder="Search items..."
+                />
+                <i className="search link icon" />
+              </div>
+              <div className="results" />
+            </div>
+          </Menu.Menu>
 
-            {/* IDEA: Currency conversion */}
-        </header>
-    )
+          <Menu.Menu position="right" stackable="true">
+            {/* semantic ui augmentation for ref */}
+            <Menu.Item as={Link} to="/profile">
+              {/* user profile image */}
+              <img
+                className="ui avatar image"
+                alt="logo"
+                src="https://cdn2.thecatapi.com/images/ebv.jpg"
+              />
+            </Menu.Item>
 
+            <Menu.Item
+              name="sign-in"
+              active={activeItem === 'sign-in'}
+              onClick={handleItemClick}
+              as={Link}
+              to="/sign-in"
+            >
+              Sign-in
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu>
+      </div>
+      {/* ShoppingCart link*/}
+      {/* Search Bar */}
+      {/* Home link */}
+      {/* Wishlist */}
+
+      {/* IDEA: Currency conversion */}
+    </>
+  );
 }
 
 export default Header;
