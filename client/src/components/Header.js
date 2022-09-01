@@ -1,5 +1,5 @@
 import { Dropdown, Icon, Menu, Segment } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
 function Header() {
@@ -11,14 +11,14 @@ function Header() {
   };
 
   return (
-    <>
-      {/* <div className="ui top inverted attached menu link ">
-        <span className="item link grey">
-          <i className="bars icon"></i>
-        </span>
-      </div> */}
-      <div>
-        <Menu attached="top">
+    
+      <>
+          {/* <div className="ui top inverted attached menu link ">
+            <span className="item link grey">
+              <i className="bars icon"></i>
+            </span>
+          </div> */}
+        <Menu attached="top" className='header'>
           <Dropdown item icon="bars" simple as={Link} to="/">
             <Dropdown.Menu>
               <Dropdown.Item>StoreX</Dropdown.Item>
@@ -44,6 +44,13 @@ function Header() {
 
           <Menu.Menu position="right" stackable="true">
             {/* semantic ui augmentation for ref */}
+
+            <Menu.Item as={NavLink} to="/cart">
+                <Icon name="shopping cart"></Icon>
+
+
+            </Menu.Item>
+
             <Menu.Item as={Link} to="/profile">
               {/* user profile image */}
               <img
@@ -64,14 +71,14 @@ function Header() {
             </Menu.Item>
           </Menu.Menu>
         </Menu>
-      </div>
-      {/* ShoppingCart link*/}
-      {/* Search Bar */}
-      {/* Home link */}
-      {/* Wishlist */}
-
-      {/* IDEA: Currency conversion */}
+        {/* ShoppingCart link*/}
+        {/* Search Bar */}
+        {/* Home link */}
+        {/* Wishlist */}
+  
+        {/* IDEA: Currency conversion */}
     </>
+    
   );
 }
 
