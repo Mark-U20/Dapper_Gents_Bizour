@@ -1,6 +1,7 @@
 import { Dropdown, Icon, Menu, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+
 function Header() {
   const [activeItem, setActiveItem] = useState('');
 
