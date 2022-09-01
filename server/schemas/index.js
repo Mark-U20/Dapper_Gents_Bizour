@@ -1,5 +1,4 @@
-
 module.exports = {
-    resolvers: require('./resolvers'),
-    typeDefs: require('./typeDefs')
-}
+  resolvers: require('./resolvers'),
+  typeDefs: require('./typeDefs'),
+};

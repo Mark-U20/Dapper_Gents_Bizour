@@ -1,18 +1,10 @@
-import { gql } from "apollo-boost";
+import { gql } from '@apollo/client';
 
-const GET_ME = gql`
-    me {
-      id
-      username
-      email
-      bookCount
-      SavedBooks {
-        bookId
-        authors
-        description
-        title
-        image
-        link
-      }
+export const GET_TODOS = gql`
+  query GetTodos {
+    getTodos {
+      _id
+      todo_text
+    }
   }
 `;

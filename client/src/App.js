@@ -1,11 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SearchBooks from './pages/SearchBooks';
-import SavedBooks from './pages/SavedBooks';
+import { useState, useEffect } from 'react';
+import Landing from './pages/Landing';
+import Header from './components/Header';
+
 import Navbar from './components/Navbar';
 import {Landing, Pokemon, Random, ComputerParts} from './pages'
+import { Routes, Route } from 'react-router-dom';
+import decode from 'jwt-decode';
 
 function App() {
+  // const [user, setUser] = useState(null);
+
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+
+  //   if (!token) {
+  //     return;
+  //   }
+
+  //   const decoded = decode(token);
+  // }, []);
+
   return (
     <>
     <Router>
