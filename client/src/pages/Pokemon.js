@@ -1,9 +1,10 @@
-
-
+import ShowListings from '../components/ShowListings'
 function Pokemon() {
+
+
     return (
         <>
-        
+            <ShowListings />
         </>
     )
 }

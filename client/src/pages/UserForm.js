@@ -1,31 +1,27 @@
 import { useState } from 'react';
-
 import { useMutation } from '@apollo/client';
-import { useNavigate } from 'react-router-dom';
 import { ADD_USER, LOGIN_USER } from '../utils/mutations';
+
 import AuthService from '../utils/auth';
 
-function UserForm(props) {
+function UserForm({ setUser }) {
+  // setting thi initial form state
   const [formInput, setFormInput] = useState({
     email: '',
     password: '',
-
     type: 'register',
   });
+  // defining the ADD_USER mutation and pulling out the function as addUser
   const [addUser] = useMutation(ADD_USER, {
     variables: formInput,
   });
-
+  // defining the LOGIN_USER mutation and pulling out the function as loginUser
   const [loginUser] = useMutation(LOGIN_USER, {
     variables: formInput,
   });
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log('handlesubmit called!');
 
     // setting init user and token
     let user, token;
@@ -38,22 +34,21 @@ function UserForm(props) {
     const { data } = await mutation();
 
     // setting user and token data from mutation
-    user = data[type].user;
-    token = data[type].token;
-
-    console.log('HEY IM LOOKN FOR TOOKINS HERE' + token);
+    user = data[type].userData;
+    token = data[type].tokenData;
 
     // setting user prop to user
-    props.setUser(user);
+    setUser(user);
 
     // saving token to localstorage and navigating to root
     AuthService.login(token);
   };
 
+  // as the form is changed, the forminput state is updated
   const handleInputChange = (e) => {
     setFormInput({
       ...formInput,
-      [e.target.name]: e.target.value, //this is use
+      [e.target.name]: e.target.value,
     });
   };
 
