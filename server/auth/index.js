@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 const { ApolloError } = require('apollo-server-express');
 
-const secret = process.env.TOKEN_SECRET;
+const secret = process.env.JWT_SECRET || 'super secret but also public';
+console.log('SUPER SECRET: ' + secret);
 
 module.exports = {
   authMiddleware({ req }) {
@@ -12,7 +13,8 @@ module.exports = {
     if (!token) return req;
 
     // if token exists, but doesn't include validation string, throw error
-    if (!token.includes('Verify')) {
+
+    if (!token.includes('Validate')) {
       throw new ApolloError('invalid token');
     }
 
@@ -36,7 +38,7 @@ module.exports = {
   },
 
   // method for creating a token on user login / signup
-  signToken(user_data) {
+  async signToken(user_data) {
     return jwt.sign({ data: user_data }, secret, {
       expiresIn: '14d',
     });

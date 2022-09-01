@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { Dropdown } from 'semantic-ui-react';
+
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
 import Auth from '../utils/auth';
@@ -33,6 +34,7 @@ const AppNavbar = () => {
         active={activeItem === 'features'}
         color={'blue'}
         onClick={handleItemClick}
+
       >
         Features
       </Menu.Item>
@@ -41,6 +43,7 @@ const AppNavbar = () => {
         name="testimonials"
         active={activeItem === 'testimonials'}
         onClick={handleItemClick}
+
       >
         Testimonials
       </Menu.Item>
@@ -51,6 +54,7 @@ const AppNavbar = () => {
         onClick={handleItemClick}
         as={Link}
         to="/sign-in"
+
       >
         Sign-in
       </Menu.Item>

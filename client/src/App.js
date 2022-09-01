@@ -13,13 +13,16 @@ function App() {
   const [logo, setTitle] = useState('React Overview');
   const [user, setUser] = useState(null);
 
-  // useEffect(() => {
-  //   const decoded = decode(localStorage.getItem('token'));
 
-  //   if (decoded.exp > Date.now() / 1000) {
-  //     setUser(decoded.data);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      return;
+    }
+
+    const decoded = decode(token);
+  }, []);
 
   return (
     <div>

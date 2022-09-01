@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, SchemaTypes } = require('mongoose');
+
 
 const listingSchema = new Schema({
   item_name: {

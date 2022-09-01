@@ -1,5 +1,8 @@
 const { Cart, Listing, Review, User } = require('../models');
 
+const { ApolloError } = require('apollo-server-express');
+const { signToken } = require('../auth');
+
 const resolvers = {
   Query: {
     async getUser(_, { userId }) {
@@ -16,14 +19,30 @@ const resolvers = {
     },
   },
   Mutation: {
-    // async addUser(_, { email, password }) {
-    //   return User.create({ email, password });
-    // },
+    async addUser(_, { email, password }, context) {
+      try {
+        const newUser = await User.create({ email, password });
+
+        const newToken = signToken(newUser);
+        return { newUser, newToken };
+      } catch (err) {
+        throw new ApolloError(err);
+      }
+    },
     // async loginUser(_, { email, password }){
 
     // },
     async addListing(_, { item_name, description, category, quantity, price }) {
       return Listing.create({
+        item_name,
+        description,
+        category,
+        quantity,
+        price,
+      });
+    },
+    async updateListing(_, { id, item_name, description, category, quantity, price }) {
+      return Listing.findOneAndUpdate({ _id: id }, {
         item_name,
         description,
         category,
