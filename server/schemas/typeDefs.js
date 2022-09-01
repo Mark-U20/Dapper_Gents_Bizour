@@ -56,6 +56,7 @@ const typeDefs = gql`
       description: String!
       category: String!
       quantity: Int!
+      image_url: String!
       price: Int!
     ): Listing
     updateListing(
@@ -64,6 +65,7 @@ const typeDefs = gql`
       description: String!
       category: String!
       quantity: Int!
+      image_url: String!
       price: Int!
     ): Listing
   }
