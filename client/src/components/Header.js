@@ -1,10 +1,11 @@
 import { faker } from '@faker-js/faker';
 import { useQuery } from '@apollo/client';
 import { GET_LISTINGS } from '../utils/queries';
-import { Search, Dropdown, Icon, Menu, Segment, Image } from 'semantic-ui-react';
+import { Search, Dropdown, Icon, Menu, Image } from 'semantic-ui-react';
 import { Link, NavLink } from 'react-router-dom';
 import { useReducer, useEffect, useState, useRef, useCallback } from 'react';
 import _ from 'lodash';
+import exampleSearchData from './DISCARD/testingSearch.json';
 
 // defining what the search should be on init
 const searchInit = {
@@ -42,7 +43,8 @@ export default function Header() {
    * i thin ideally, we would implement that for the listing and just re-set the listings?
    * -fixedOtter
    */
-  const { qError, qLoading, qData } = useQuery(GET_LISTINGS);
+  const { qData } = useQuery(GET_LISTINGS);
+  const searchData = exampleSearchData.data.getListings;
 
   const timeoutRef = useRef();
 
@@ -50,6 +52,7 @@ export default function Header() {
   const searchChangeHandler = useCallback((datBoi, data) => {
     clearTimeout(timeoutRef.current);
     searchDispatch({ type: 'START', query: data.value });
+    console.log('this oyr log:')
 
     timeoutRef.current = setTimeout(() => {
       if (data.value.length === 0) {
@@ -62,7 +65,7 @@ export default function Header() {
 
       searchDispatch({
         type: 'FINISH',
-        results: _.filter(qData, doItMatch)
+        results: _.filter(searchData, doItMatch)
       });
     }, 300)
   }, []);
@@ -124,22 +127,16 @@ export default function Header() {
           </Dropdown>
 
           <Menu.Menu position="right">
-            <div className="ui right aligned category search item">
-              <div className="ui transparent icon input">
-                <Search
-                  loading={loading}
-                  placeholder='Search...'
-                  onResultSelect={(datBoi, data) =>
-                    searchDispatch({ type: 'UPDATE', selection: data.result.title })
-                  }
-                  onSearchChange={searchChangeHandler}
-                  results={results}
-                  value={value}
-                />
-                <i className="search link icon" />
-              </div>
-              <div className="results" />
-            </div>
+            <Search
+              loading={loading}
+              placeholder='Search for an item...'
+              onResultSelect={(datBoi, data) =>
+                searchDispatch({ type: 'UPDATE', selection: data.result.title })
+              }
+              onSearchChange={searchChangeHandler}
+              results={results}
+              value={value}
+            />
           </Menu.Menu>
 
           <Menu.Menu position="right" stackable="true" simple dropdown="true">
@@ -149,14 +146,15 @@ export default function Header() {
                 <Icon name="shopping cart"></Icon>
             </Menu.Item>
 
-            <Menu.Item>
+            {/* COMMENT IN BEFORE PUSHING */}
+            {/* <Menu.Item>
               <Dropdown
                 trigger={trigger}
                 options={options}
                 pointing="top left"
                 icon={null}
               />
-            </Menu.Item>
+            </Menu.Item> */}
 
             <Menu.Item
               name=""
