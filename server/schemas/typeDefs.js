@@ -52,7 +52,7 @@ const typeDefs = gql`
     addUser(email: String!, password: String!): Auth
     loginUser(email: String!, password: String!): Auth
     addListing(
-      item_name: String!
+      title: String!
       description: String!
       category: String!
       quantity: Int!
@@ -61,7 +61,7 @@ const typeDefs = gql`
     ): Listing
     updateListing(
       id: ID!,
-      item_name: String!
+      title: String!
       description: String!
       category: String!
       quantity: Int!

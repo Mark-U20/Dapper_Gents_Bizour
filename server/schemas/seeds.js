@@ -23,7 +23,7 @@ for (let i = 0; i < 69; i++) {
 // pushing random listings
 for (let i = 0; i < 69; i++) {
   listingList.push({
-    item_name: faker.animal.type(),
+    title: faker.animal.type(),
     description: faker.internet.domainWord(),
     category: faker.system.commonFileExt(),
     quantity: faker.mersenne.rand(1, 42),
@@ -90,7 +90,7 @@ db.once('open', async () => {
   for (newCartItem of cartItems) {
     // first grab an item
     const item = listings[Math.floor(Math.random() * users.length)];
-    newCartItem.item_name = item._id;
+    newCartItem.title = item._id;
     await newCartItem.save();
 
     // push this cart item to a user
