@@ -41,7 +41,7 @@ function Header() {
             </div>
           </Menu.Menu>
 
-          <Menu.Menu position="right" stackable>
+          <Menu.Menu position="right" stackable="true">
             {/* semantic ui augmentation for ref */}
             <Menu.Item as={Link} to="/profile">
               {/* user profile image */}
