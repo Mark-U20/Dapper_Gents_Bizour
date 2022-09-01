@@ -1,9 +1,10 @@
-
-const charizard = require('../images/charizard.png')
+import ShowListings from '../components/ShowListings'
 function Pokemon() {
+
+
     return (
         <>
-        <img src={charizard}></img>
+            <ShowListings />
         </>
     )
 }

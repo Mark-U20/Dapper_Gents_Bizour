@@ -44,3 +44,9 @@ header nav a.active {
 .todos {
   padding: 0 3% 25px;
 }
+
+.listings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
