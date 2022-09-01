@@ -1,8 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.css';
+import 'semantic-ui-css/semantic.min.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -15,19 +18,17 @@ import { onError } from '@apollo/client/link/error';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
-
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
-  graphQLErrors.forEach(({ message, locations, path }) =>
+    graphQLErrors.forEach(({ message, locations, path }) =>
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-        )
-        );
-        if (networkError) console.log(`[Network error]: ${networkError}`);
-      });
+      )
+    );
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+});
 
 const httpLink = createHttpLink({
-  
   uri: 'http://localhost:3111/graphql',
 });
 
@@ -48,19 +49,16 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const root = createRoot(document.getElementById('root'));
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-ReactDOM.render(
+root.render(
   <ApolloProvider client={client}>
     <Router>
       <React.StrictMode>
         <App />
       </React.StrictMode>
     </Router>
-  </ApolloProvider>,
-  document.getElementById("root")
-
+  </ApolloProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
