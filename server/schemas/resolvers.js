@@ -32,21 +32,23 @@ const resolvers = {
     // async loginUser(_, { email, password }){
 
     // },
-    async addListing(_, { item_name, description, category, quantity, price }) {
+    async addListing(_, { item_name, description, category, quantity, image_url, price }) {
       return Listing.create({
         item_name,
         description,
         category,
         quantity,
+        image_url,
         price,
       });
     },
-    async updateListing(_, { id, item_name, description, category, quantity, price }) {
+    async updateListing(_, { id, item_name, description, category, quantity, image_url, price }) {
       return Listing.findOneAndUpdate({ _id: id }, {
         item_name,
         description,
         category,
         quantity,
+        image_url,
         price,
       });
     },
