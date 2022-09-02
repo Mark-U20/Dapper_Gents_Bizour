@@ -19,7 +19,7 @@ const Product = () => {
                             ( 
                             <>
                                 <h2>{data.getListing.title}</h2>
-                                <img src={data.getListing.image_url} alt={data.getListing.title} />
+                                <img src={data.getListing.image} alt={data.getListing.title} />
                                 <p>{data.getListing.description}</p>
                                 <p>{data.getListing.quantity}</p>
                                 <p>{data.getListing.price}</p>

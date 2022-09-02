@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Header, Footer } from './components';
+import { Header, Footer, Product } from './components';
 import { Landing, Pokemon, Random, ComputerParts, ShoppingCart } from './pages';
 import { Routes, Route } from 'react-router-dom';
 import decode from 'jwt-decode';
