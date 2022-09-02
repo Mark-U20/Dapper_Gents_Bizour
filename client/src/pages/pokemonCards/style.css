@@ -1,3 +1,16 @@
 .page-logo {
     width: 100%;
-  }
+    height: 10%
+}
+
+.pokemon-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 5%;
+}
+
+main {
+  height: 10vh;
+}
