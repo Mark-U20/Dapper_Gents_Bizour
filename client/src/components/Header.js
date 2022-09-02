@@ -36,7 +36,7 @@ function searchReducer(currState, searchAction) {
   }
 }
 
-export default function Header() {
+export default function Header({user}) {
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState('');
   // reducer and search states for search bar
@@ -92,6 +92,8 @@ export default function Header() {
       clearTimeout(timeoutRef.current);
     };
   }, []);
+
+  console.log(user);
 
   // changes profile image and name randomly on load
   const trigger = (

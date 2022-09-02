@@ -32,7 +32,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header user={user} />
       <main className="mainPage">
         <Routes>
           <Route exact path="/" element={<Landing />} />
