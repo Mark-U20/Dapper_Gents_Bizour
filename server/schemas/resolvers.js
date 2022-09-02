@@ -86,6 +86,9 @@ const resolvers = {
         }
       );
     },
+    async deleteListing(_, { id, title }) {
+      return await Listing.findOneAndDelete({ _id: id }, { title })
+    }
   },
 };
 
