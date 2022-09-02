@@ -47,10 +47,6 @@ header nav a.active {
   text-decoration: underline;
 }
 
-footer {
-  height: 0vh;
-}
-
 .todos {
   padding: 0 3% 25px;
 }
@@ -120,13 +116,6 @@ main {
   padding-top: 75%;
 }
 
-.page-logo {
-  width: 100%;
-}
-
-.page-logo {
-  width: 100%;
-}
 
 .checkout-container {
   display: flex;

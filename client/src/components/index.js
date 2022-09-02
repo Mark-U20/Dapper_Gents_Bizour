@@ -1,4 +1,4 @@
-import Footer from './Footer';
+import Footer from './footer';
 import Header from './Header';
 import Product from './Product';
 import ProductReviews from './ProductReviews';

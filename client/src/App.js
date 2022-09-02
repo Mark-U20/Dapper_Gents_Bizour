@@ -9,7 +9,7 @@ import UserForm from './pages/UserForm';
 import Checkout from './pages/Checkout';
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [userToken, setUserToken] = useState(null);
 
   useEffect(() => {
     // grabbing token from localstorage
@@ -22,17 +22,15 @@ function App() {
 
     // if it didn't break out, then decode and set to user
     const decoded = decode(token);
-    setUser({
-      ...user,
+    setUserToken({
+      ...userToken,
       token: decoded,
     });
-    console.log('this is the user: ');
-    console.log(user);
   }, []);
 
   return (
     <>
-      <Header />
+      <Header userTokenData={userToken} />
       <main className="mainPage">
         <Routes>
           <Route exact path="/" element={<Landing />} />
@@ -42,7 +40,7 @@ function App() {
           <Route
             exact
             path="/sign-in"
-            element={<UserForm setUser={setUser} />}
+            element={<UserForm setUser={setUserToken} />}
           />
           <Route exact path="/cart" element={<ShoppingCart />} />
           {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}

@@ -1,21 +1,10 @@
-import { faker } from '@faker-js/faker';
-import { useQuery } from '@apollo/client';
-import { GET_LISTINGS } from '../utils/queries';
-import { Search, Dropdown, Icon, Menu, Image } from 'semantic-ui-react';
+import { Dropdown, Menu, Image } from 'semantic-ui-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useReducer, useEffect, useState, useRef, useCallback } from 'react';
 import _ from 'lodash';
-import exampleSearchData from './DISCARD/testingSearch.json';
-import { Button } from 'react-bootstrap';
 import NavSearch from './NavSearch';
+import AuthService from '../utils/auth';
 
-export default function Header() {
-  // changes profile image and name randomly on load
-  const trigger = (
-    <span>
-      <Image avatar src={faker.internet.avatar()} /> {faker.name.fullName()}
-    </span>
-  );
+export default function Header({ userTokenData }) {
   const options = [
     { key: 'user', text: 'Account', icon: 'user', as: Link, to: '/profile' },
 
@@ -33,7 +22,7 @@ export default function Header() {
       as: Link,
       to: '/settings',
     },
-    { key: 'sign-out', text: 'Sign Out', icon: 'sign out', as: Link, to: '/' },
+    { key: 'sign-out', text: 'Sign Out', icon: 'sign out', as: Link, to: '/', onClick: AuthService.logout },
   ];
 
   return (
@@ -63,25 +52,30 @@ export default function Header() {
           <Menu.Menu position="right" stackable="true" dropdown="true">
             {/* semantic ui augmentation for ref */}
 
-            <Menu.Item>
-              <Dropdown
-                trigger={trigger}
-                options={options}
-                pointing="top left"
-                icon={null}
-              />
-            </Menu.Item>
+            {/* ternary for checking if the user is signed in */}
+            {AuthService.loggedIn() ? 
+              <Menu.Item>
+                <Dropdown
+                  trigger={<span>
+                    <Image avatar src={AuthService.getProfile().data.profilePic} /> {AuthService.getProfile().data.email}
+                  </span>}
+                  options={options}
+                  pointing="top left"
+                  icon={null}
+                />
+            </Menu.Item> :
+            <Menu.Item name="sign-in" as={Link} to="/sign-in">
+            Sign-in
+          </Menu.Item> }
 
             <Menu.Item
               name=""
+              // active={activeItem === 'shopping cart'}
               as={Link}
               to="/cart"
               icon="shopping cart"
             ></Menu.Item>
-
-            <Menu.Item name="sign-in" as={Link} to="/sign-in">
-              Sign-in
-            </Menu.Item>
+            
           </Menu.Menu>
         </Menu>
       </div>
