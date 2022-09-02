@@ -35,9 +35,9 @@ function App() {
         <main className="mainPage">
           <Routes>
               <Route exact path="/" element={<Landing />} />
-              <Route exact path="/pokemon" element={<Pokemon />} />
-              <Route exact path="/computer" element={<ComputerParts />} />
-              <Route exact path="/random" element={<Random />} />
+              <Route exact path="/pokemon/*" element={<Pokemon />} />
+              <Route exact path="/computer/*" element={<ComputerParts />} />
+              <Route exact path="/random/*" element={<Random />} />
               <Route exact path="/sign-in" element={<UserForm setUser={setUser} />} />
               <Route exact path="/cart" element={<ShoppingCart />} />
             {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}

@@ -142,9 +142,14 @@ export default function Header() {
           <Menu.Menu position="right" stackable="true" simple dropdown="true">
             {/* semantic ui augmentation for ref */}
 
-            <Menu.Item as={NavLink} to="/cart">
-                <Icon name="shopping cart"></Icon>
-            </Menu.Item>
+            <Menu.Item
+              name=""
+              active={activeItem === 'shopping cart'}
+              onClick={handleItemClick}
+              as={Link}
+              to="/cart"
+              icon="shopping cart"
+            ></Menu.Item>
 
             <Menu.Item>
               <Dropdown
@@ -154,15 +159,6 @@ export default function Header() {
                 icon={null}
               />
             </Menu.Item>
-
-            <Menu.Item
-              name=""
-              active={activeItem === 'shopping cart'}
-              onClick={handleItemClick}
-              as={Link}
-              to="/cart"
-              icon="shopping cart"
-            ></Menu.Item>
 
             <Menu.Item
               name="sign-in"
