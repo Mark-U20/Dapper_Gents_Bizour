@@ -5,4 +5,4 @@ import ComputerParts from './computerFarts';
 import UserForm from './UserForm';
 import ShoppingCart from './ShoppingCart';
 
-export { Landing, Pokemon, Random, ComputerParts, UserForm };
+export { Landing, Pokemon, Random, ComputerParts, UserForm, ShoppingCart };

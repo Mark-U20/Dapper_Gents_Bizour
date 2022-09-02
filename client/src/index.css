@@ -128,7 +128,6 @@ main {
   width: 100%;
 }
 
-<<<<<<< HEAD
 .checkout-container {
   display: flex;
   flex-direction: column;
@@ -136,7 +135,8 @@ main {
   justify-content: center;
   height: 100%;
   background-color: aquamarine;
-=======
+}
+
 @media screen and (min-width: 480px) {
 
 
