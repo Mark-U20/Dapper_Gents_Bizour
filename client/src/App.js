@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Header, Footer, ShoppingCart } from './components';
-import { Landing, Pokemon, Random, ComputerParts } from './pages';
+import { Header, Footer } from './components';
+import { Landing, Pokemon, Random, ComputerParts, ShoppingCart } from './pages';
 import { Routes, Route } from 'react-router-dom';
 import decode from 'jwt-decode';
 
 // update from gunnars ugly code to be consistent ??
 import UserForm from './pages/UserForm';
+import Checkout from './pages/Checkout';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,17 +31,21 @@ function App() {
   return (
     <>
       <Header />
-        <main>
-          <Routes>
-              <Route exact path="/" element={<Landing />} />
-              <Route exact path="/pokemon" element={<Pokemon />} />
-              <Route exact path="/computer" element={<ComputerParts />} />
-              <Route exact path="/random" element={<Random />} />
-              <Route exact path="/sign-in" element={<UserForm setUser={setUser} />} />
-              <Route exact path="/cart" element={<ShoppingCart />} />
-            {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
-          </Routes>
-        </main>
+      <main>
+        <Routes>
+          <Route exact path="/" element={<Landing />} />
+          <Route exact path="/pokemon" element={<Pokemon />} />
+          <Route exact path="/computer" element={<ComputerParts />} />
+          <Route exact path="/random" element={<Random />} />
+          <Route
+            exact
+            path="/sign-in"
+            element={<UserForm setUser={setUser} />}
+          />
+          <Route exact path="/cart" element={<ShoppingCart />} />
+          {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
+        </Routes>
+      </main>
       <Footer />
     </>
   );
