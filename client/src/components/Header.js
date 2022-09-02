@@ -42,11 +42,15 @@ export default function Header() {
   // reducer and search states for search bar
   const [searchState, searchDispatch] = useReducer(searchReducer, searchInit);
   const { loading, results, value } = searchState;
+
   //state holding the path to the clicked search item
   const [searchPath, setSearchPath] = useState('');
+  //listens to searchPath and navigates to the path when it changes
   useEffect(() => {
-    if (searchPath.length > 1) {
-      navigate(searchPath);
+    if (searchPath.length > 2) {
+      const path = searchPath;
+      setSearchPath('');
+      navigate(path);
     }
   }, [searchPath]);
 
@@ -141,7 +145,10 @@ export default function Header() {
             <Search
               loading={loading}
               placeholder="Search for an item..."
-              onResultSelect={(datBoi, data) => {
+              onResultSelect={(event, data) => {
+                event.preventDefault();
+                event.stopPropagation();
+                event.nativeEvent.stopImmediatePropagation();
                 setSearchPath('/' + data.result._id);
                 searchDispatch({
                   type: 'UPDATE',
@@ -149,19 +156,14 @@ export default function Header() {
                 });
               }}
               onSearchChange={searchChangeHandler}
-              onSearchClick={() => {
-                console.log('searchpath: ', searchPath);
-                navigate(searchPath);
-              }}
               results={results}
               value={value}
-              as={Link}
-              to={searchPath}
+
               //onclick will take you to the listing page
             />
           </Menu.Menu>
 
-          <Menu.Menu position="right" stackable="true" simple dropdown="true">
+          <Menu.Menu position="right" stackable="true" dropdown="true">
             {/* semantic ui augmentation for ref */}
 
             <Menu.Item>
