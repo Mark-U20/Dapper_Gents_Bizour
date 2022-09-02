@@ -63,7 +63,7 @@ main {
   justify-content: center;
   align-items: center;
   background-color: green;
-  
+
 }
 
 .store-front {
@@ -87,34 +87,30 @@ main {
 
 @media screen and (min-width: 768px) {
   main {
-   flex-direction: row;
-  } 
-
-  
-}
-
-
-
-@media screen and (min-width: 480px) {
-  
-
-   .store-front {
-    width: 20vw;
-    height: 20vh;
+    flex-direction: row;
   }
+
+
 }
 
+.stores {
 
-.listings {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
+  padding-top: 75%;
 }
 
 .page-logo {
   width: 100%;
 }
 
+.page-logo {
+  width: 100%;
+}
+
+<<<<<<< HEAD
 .checkout-container {
   display: flex;
   flex-direction: column;
@@ -122,4 +118,22 @@ main {
   justify-content: center;
   height: 100%;
   background-color: aquamarine;
+=======
+@media screen and (min-width: 480px) {
+
+
+  .store-front {
+    width: 20vw;
+    height: 20vh;
+  }
+
+  .stores {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5%;
+  
+  }
 }

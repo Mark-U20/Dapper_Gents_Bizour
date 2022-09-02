@@ -42,9 +42,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    getUser: User
+    getUser(userID: ID!): User
     getUsers: [User]
-    getListing: Listing
+    getListing(listingID: ID!): Listing
     getListings: [Listing]
   }
 
@@ -68,6 +68,7 @@ const typeDefs = gql`
       image_url: String!
       price: Int!
     ): Listing
+    deleteListing(id: ID!): Listing
   }
 `;
 
