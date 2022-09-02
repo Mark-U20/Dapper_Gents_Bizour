@@ -1,7 +1,7 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
 
 const cartSchema = new Schema({
-  item_name: {
+  title: {
     type: SchemaTypes.ObjectId,
     ref: 'Listing',
   },

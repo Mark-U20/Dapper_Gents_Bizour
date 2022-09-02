@@ -4,7 +4,7 @@ export const GET_LISTINGS = gql`
     query getListings {
     getListings {
         _id
-        item_name
+        title
         description
         category
         quantity
