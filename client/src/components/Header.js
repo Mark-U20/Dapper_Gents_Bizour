@@ -163,7 +163,7 @@ export default function Header() {
             />
           </Menu.Menu>
 
-          <Menu.Menu position="right" stackable="true" simple dropdown="true">
+          <Menu.Menu position="right" stackable="true" dropdown="true">
             {/* semantic ui augmentation for ref */}
 
             <Menu.Item>
