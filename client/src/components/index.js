@@ -5,6 +5,7 @@ import ProductReviews from './ProductReviews';
 import ShoppingCart from './ShoppingCart';
 import StoreCard from './StoreCard';
 import ShowListings from './ShowListings';
+import NavSearch from './NavSearch';
 
 export {
   Footer,
@@ -14,4 +15,5 @@ export {
   ShoppingCart,
   StoreCard,
   ShowListings,
+  NavSearch,
 };
