@@ -59,20 +59,20 @@ const resolvers = {
     },
     async addListing(
       _,
-      { title, description, category, quantity, image_url, price }
+      { title, description, category, quantity, image, price }
     ) {
       return Listing.create({
         title,
         description,
         category,
         quantity,
-        image_url,
+        image,
         price,
       });
     },
     async updateListing(
       _,
-      { id, title, description, category, quantity, image_url, price }
+      { id, title, description, category, quantity, image, price }
     ) {
       return Listing.findOneAndUpdate(
         { _id: id },
@@ -81,7 +81,7 @@ const resolvers = {
           description,
           category,
           quantity,
-          image_url,
+          image,
           price,
         }
       );

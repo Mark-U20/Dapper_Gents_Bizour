@@ -14,7 +14,7 @@ function Random() {
             <h1>Random Stuff</h1>
             <p>Your home for random crap</p>
             {inventory.map((item, i) => {
-                return <ProductCard key={i} name={item.name} price={item.price} image_url={item.image_url} placeholder={item.placeholder} rating={item.rating} />
+                return <ProductCard key={i} name={item.name} price={item.price} image={item.image} placeholder={item.placeholder} rating={item.rating} />
             })}
         </section>
     )
