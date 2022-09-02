@@ -47,10 +47,6 @@ header nav a.active {
   text-decoration: underline;
 }
 
-footer {
-  height: 0vh;
-}
-
 .todos {
   padding: 0 3% 25px;
 }
