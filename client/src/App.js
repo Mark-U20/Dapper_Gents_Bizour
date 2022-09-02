@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <Header />
-        <main>
+        <main className="mainPage">
           <Routes>
               <Route exact path="/" element={<Landing />} />
               <Route exact path="/pokemon" element={<Pokemon />} />
