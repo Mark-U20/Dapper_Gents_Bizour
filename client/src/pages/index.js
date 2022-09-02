@@ -1,5 +1,5 @@
 import Landing from './Landing';
-import Pokemon from './Pokemon';
+import Pokemon from './pokemonCards';
 import Random from './Random';
 import ComputerParts from './computerFarts';
 import UserForm from './UserForm';

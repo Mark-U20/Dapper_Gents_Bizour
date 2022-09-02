@@ -1,6 +1,7 @@
-import ShowListings from '../components/ShowListings'
-import pageLogo from '../images/justynsPokemonCards.png'
+import ShowListings from '../../components/ShowListings'
+import pageLogo from '../../images/justynsPokemonCards.png'
 import { Routes, Route } from 'react-router-dom';
+import './style.css';
 function Pokemon() {
 
 
