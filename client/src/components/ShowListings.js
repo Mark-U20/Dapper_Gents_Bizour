@@ -1,8 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { NavLink } from 'react-router-dom';
 import { GET_LISTINGS } from '../utils/queries';
-import { Routes, Route } from 'react-router-dom';
-import Product from './Product';
 
 function ShowListings() {
     const { error, loading, data } = useQuery(GET_LISTINGS);

@@ -34,9 +34,10 @@ function App() {
       <main className="mainPage">
         <Routes>
           <Route exact path="/" element={<Landing />} />
-          <Route exact path="/pokemon/*" element={<Pokemon />} />
-          <Route exact path="/computer/*" element={<ComputerParts />} />
-          <Route exact path="/random/*" element={<Random />} />
+          <Route exact path="/pokemon" element={<Pokemon />} />
+          <Route exact path="/computer" element={<ComputerParts />} />
+          <Route exact path="/random" element={<Random />} />
+          <Route path="/products/:id" element={<Product />} />
           <Route
             exact
             path="/sign-in"
