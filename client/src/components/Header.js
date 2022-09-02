@@ -1,4 +1,3 @@
-
 import { faker } from '@faker-js/faker';
 import { Dropdown, Icon, Menu, Segment, Image } from 'semantic-ui-react';
 import { Link, NavLink } from 'react-router-dom';
@@ -73,10 +72,6 @@ function Header() {
           <Menu.Menu position="right" stackable="true" simple dropdown="true">
             {/* semantic ui augmentation for ref */}
 
-            <Menu.Item as={NavLink} to="/cart">
-                <Icon name="shopping cart"></Icon>
-            </Menu.Item>
-
             <Menu.Item>
               <Dropdown
                 trigger={trigger}
@@ -110,7 +105,6 @@ function Header() {
 
       {/* IDEA: Currency conversion */}
     </>
-    
   );
 }
 
