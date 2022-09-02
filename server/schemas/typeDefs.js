@@ -42,9 +42,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    getUser: User
+    getUser(userID: ID!): User
     getUsers: [User]
-    getListing: Listing
+    getListing(listingID: ID!): Listing
     getListings: [Listing]
   }
 
