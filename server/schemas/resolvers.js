@@ -15,7 +15,7 @@ const resolvers = {
       return await Listing.findOne({ _id: listingId });
     },
     async getListings() {
-      return await Listing.find();
+      return await Listing.find().populate('listing_author').populate('reviews');
     },
   },
   Mutation: {
@@ -59,10 +59,10 @@ const resolvers = {
     },
     async addListing(
       _,
-      { item_name, description, category, quantity, image_url, price }
+      { title, description, category, quantity, image_url, price }
     ) {
       return Listing.create({
-        item_name,
+        title,
         description,
         category,
         quantity,
@@ -72,12 +72,12 @@ const resolvers = {
     },
     async updateListing(
       _,
-      { id, item_name, description, category, quantity, image_url, price }
+      { id, title, description, category, quantity, image_url, price }
     ) {
       return Listing.findOneAndUpdate(
         { _id: id },
         {
-          item_name,
+          title,
           description,
           category,
           quantity,
