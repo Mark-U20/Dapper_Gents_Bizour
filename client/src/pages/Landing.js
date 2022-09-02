@@ -4,7 +4,7 @@ import {pokemonStore, computerStore, randomStore} from '../components/storeInfo'
 
 function Landing () {
     return (
-        <section>
+        <section className='stores'>
             <div className='store-front'>
             <NavLink to="/pokemon"><StoreCard image_url={pokemonStore.image_url} placeholder={pokemonStore.placeholder} store_title={pokemonStore.name} synopsis={pokemonStore.synopsis} /></NavLink>
             </div>
