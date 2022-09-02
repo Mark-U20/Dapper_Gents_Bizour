@@ -26,6 +26,8 @@ function App() {
       ...user,
       token: decoded,
     });
+    console.log('this is the user: ');
+    console.log(user);
   }, []);
 
   return (
@@ -34,9 +36,9 @@ function App() {
       <main className="mainPage">
         <Routes>
           <Route exact path="/" element={<Landing />} />
-          <Route exact path="/pokemon" element={<Pokemon />} />
-          <Route exact path="/computer" element={<ComputerParts />} />
-          <Route exact path="/random" element={<Random />} />
+          <Route exact path="/pokemon/*" element={<Pokemon />} />
+          <Route exact path="/computer/*" element={<ComputerParts />} />
+          <Route exact path="/random/*" element={<Random />} />
           <Route
             exact
             path="/sign-in"

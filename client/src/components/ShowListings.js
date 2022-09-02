@@ -1,10 +1,13 @@
 import { useQuery } from '@apollo/client';
+import { NavLink } from 'react-router-dom';
 import { GET_LISTINGS } from '../utils/queries';
+import { Routes, Route } from 'react-router-dom';
+import Product from './Product';
 
 function ShowListings() {
     const { error, loading, data } = useQuery(GET_LISTINGS);
     return (
-        <div>
+        <div className='store-list'>
             {error && <p className="error">{error.message}</p>}
 
             {loading && <p>Loading...</p>}
@@ -12,6 +15,11 @@ function ShowListings() {
             {data && ( 
                 <div className='listings'>
                 {data.getListings.map((listing) => (
+                <>
+                <Routes>
+                <Route path={`/${listing._id}`} component={<Product id={listing._id} image_url={listing.image_url} title={listing.title} category={listing.category} description={listing.description} quantity={listing.quantity} price={listing.price} />} />
+                </Routes>
+                    <NavLink to={`/${listing._id}`}>
                 <div className="ui card" key={listing._id}>
                     <div className="image">
                         <img src={listing.image_url} alt={listing.title}></img>
@@ -28,6 +36,8 @@ function ShowListings() {
                         </div>
                     </div>
                 </div>
+                </NavLink>
+                </>
             ))}
             </div>
             )}
