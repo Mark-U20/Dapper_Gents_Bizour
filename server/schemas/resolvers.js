@@ -12,7 +12,8 @@ const resolvers = {
       return await User.find().populate('listings').populate('shoppingCart').populate('reviews');
     },
     async getListing(_, { listingID }) {
-      return await Listing.findOne({ _id: listingID }).populate('listing_author').populate('reviews');
+      return await Listing.findOne({ _id: listingID }).populate('listing_author')
+      // .populate('reviews');
     },
     async getListings() {
       return await Listing.find().populate('listing_author').populate('reviews');

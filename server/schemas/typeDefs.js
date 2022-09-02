@@ -25,7 +25,7 @@ const typeDefs = gql`
     image_url: String!
     price: Float!
     listing_author: User
-    reviews: [Review]
+    # reviews: [Review]
   }
 
   type Review {
