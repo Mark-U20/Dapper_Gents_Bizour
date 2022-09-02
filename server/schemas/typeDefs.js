@@ -68,6 +68,7 @@ const typeDefs = gql`
       image_url: String!
       price: Int!
     ): Listing
+    deleteListing(id: ID!): Listing
   }
 `;
 
