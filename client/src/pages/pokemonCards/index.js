@@ -7,10 +7,13 @@ function Pokemon() {
 
     return (
         <div>
-            <img src={pageLogo} className="page-logo"/>
+            <div className='pokemon-header'>
+                <img src={pageLogo} className="page-logo" />
+                <p>A curated shop of all the raddest of Pokemon cards? Gotta catch em' all? Then start here!</p>
+            </div>
 
             <ShowListings />
-            
+
         </div>
     )
 }
