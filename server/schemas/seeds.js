@@ -27,7 +27,7 @@ for (let i = 0; i < 69; i++) {
     description: faker.internet.domainWord(),
     category: faker.system.commonFileExt(),
     quantity: faker.mersenne.rand(1, 42),
-    image_url: faker.image.cats(640, 640, true),
+    image: faker.image.cats(640, 640, true),
     price: faker.finance.amount(1, 69, 2)
   });
 }

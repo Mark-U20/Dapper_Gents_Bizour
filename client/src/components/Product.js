@@ -4,7 +4,7 @@ function Product(product) {
     return (
         <>
             <h2>{product.title}</h2>
-            <img src={product.image_url} alt={product.title} />
+            <img src={product.image} alt={product.title} />
             <p>{product.description}</p>
             <p>{product.quantity}</p>
             <p>{product.price}</p>
