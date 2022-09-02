@@ -22,7 +22,7 @@ const typeDefs = gql`
     description: String!
     category: String!
     quantity: Int!
-    image_url: String!
+    image: String!
     price: Float!
     listing_author: User
     reviews: [Review]
@@ -56,7 +56,7 @@ const typeDefs = gql`
       description: String!
       category: String!
       quantity: Int!
-      image_url: String!
+      image: String!
       price: Int!
     ): Listing
     updateListing(
@@ -65,7 +65,7 @@ const typeDefs = gql`
       description: String!
       category: String!
       quantity: Int!
-      image_url: String!
+      image: String!
       price: Int!
     ): Listing
     deleteListing(id: ID!): Listing

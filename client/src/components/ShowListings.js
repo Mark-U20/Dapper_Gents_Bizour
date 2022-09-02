@@ -17,12 +17,12 @@ function ShowListings() {
                 {data.getListings.map((listing) => (
                 <>
                 <Routes>
-                <Route path={`/${listing._id}`} component={<Product id={listing._id} image_url={listing.image_url} title={listing.title} category={listing.category} description={listing.description} quantity={listing.quantity} price={listing.price} />} />
+                <Route path={`/${listing._id}`} component={<Product id={listing._id} image={listing.image} title={listing.title} category={listing.category} description={listing.description} quantity={listing.quantity} price={listing.price} />} />
                 </Routes>
                     <NavLink to={`/${listing._id}`}>
                 <div className="ui card" key={listing._id}>
                     <div className="image">
-                        <img src={listing.image_url} alt={listing.title}></img>
+                        <img src={listing.image} alt={listing.title}></img>
                     </div>
                     <div className="content">
                         <p className="header">{listing.title}</p>
