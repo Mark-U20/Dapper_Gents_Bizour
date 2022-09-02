@@ -30,7 +30,7 @@ mutation deleteListing($id: Int!) {
     description
     category
     quantity
-    image_url
+    image
     price
     reviews {
       _id

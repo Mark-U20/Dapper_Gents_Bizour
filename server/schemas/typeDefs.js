@@ -13,6 +13,7 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
+    profilePic: String
     listings: [Listing]
   }
 
@@ -22,7 +23,7 @@ const typeDefs = gql`
     description: String!
     category: String!
     quantity: Int!
-    image_url: String!
+    image: String!
     price: Float!
     listing_author: User
     # reviews: [Review]
@@ -49,14 +50,14 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(email: String!, password: String!): Auth
+    addUser(email: String!, profilePic: String, password: String!): Auth
     loginUser(email: String!, password: String!): Auth
     addListing(
       title: String!
       description: String!
       category: String!
       quantity: Int!
-      image_url: String!
+      image: String!
       price: Int!
     ): Listing
     updateListing(
@@ -65,7 +66,7 @@ const typeDefs = gql`
       description: String!
       category: String!
       quantity: Int!
-      image_url: String!
+      image: String!
       price: Int!
     ): Listing
     deleteListing(id: ID!): Listing

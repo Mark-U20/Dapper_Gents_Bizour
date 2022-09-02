@@ -18,7 +18,7 @@ const listingSchema = new Schema({
     type: Number,
     required: true,
   },
-  image_url: {
+  image: {
     type: String,
     required: true
   },

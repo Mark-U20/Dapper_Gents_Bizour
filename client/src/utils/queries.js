@@ -44,7 +44,7 @@ export const GET_LISTINGS = gql`
         description
         category
         quantity
-        image_url
+        image
         price
     }
 }

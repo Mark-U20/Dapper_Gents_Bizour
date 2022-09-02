@@ -21,10 +21,10 @@ const resolvers = {
   },
   Mutation: {
     // mutation called when registering a new user account
-    async addUser(_, { email, password }, context) {
+    async addUser(_, { email, profilePic, password }, context) {
       try {
         // try to create user
-        const userData = await User.create({ email, password });
+        const userData = await User.create({ email, profilePic, password });
         // create token based on user data
         const tokenData = signToken(userData);
         // return userdata and token
@@ -60,20 +60,20 @@ const resolvers = {
     },
     async addListing(
       _,
-      { title, description, category, quantity, image_url, price }
+      { title, description, category, quantity, image, price }
     ) {
       return Listing.create({
         title,
         description,
         category,
         quantity,
-        image_url,
+        image,
         price,
       });
     },
     async updateListing(
       _,
-      { id, title, description, category, quantity, image_url, price }
+      { id, title, description, category, quantity, image, price }
     ) {
       return Listing.findOneAndUpdate(
         { _id: id },
@@ -82,7 +82,7 @@ const resolvers = {
           description,
           category,
           quantity,
-          image_url,
+          image,
           price,
         }
       );
