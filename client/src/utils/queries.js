@@ -8,7 +8,7 @@ export const GET_LISTING = gql`
       description
       category
       quantity
-      image_url
+      image
       price
       listing_author {
         _id
