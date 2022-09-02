@@ -48,7 +48,7 @@ header nav a.active {
 }
 
 footer {
-  height: 10vh;
+  height: 0vh;
 }
 
 .todos {
@@ -106,6 +106,19 @@ main {
   width: 100%;
 }
 
+.page-logo {
+  width: 100%;
+}
+
+<<<<<<< HEAD
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: aquamarine;
+=======
 @media screen and (min-width: 480px) {
 
 

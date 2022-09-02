@@ -2,40 +2,53 @@ import { faker } from '@faker-js/faker';
 import { useQuery } from '@apollo/client';
 import { GET_LISTINGS } from '../utils/queries';
 import { Search, Dropdown, Icon, Menu, Image } from 'semantic-ui-react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useReducer, useEffect, useState, useRef, useCallback } from 'react';
 import _ from 'lodash';
 import exampleSearchData from './DISCARD/testingSearch.json';
+import { Button } from 'react-bootstrap';
 
 // defining what the search should be on init
 const searchInit = {
   loading: false,
   results: [],
   value: '',
-}
+};
 
 // this is a little function for handling the search dispatches
 function searchReducer(currState, searchAction) {
   switch (searchAction.type) {
     case 'CLEAN':
-      return searchInit
+      return searchInit;
     case 'START':
-      return { ...currState, loading: true, value: searchAction.query }
+      return { ...currState, loading: true, value: searchAction.query };
     case 'FINISH':
-      return { ...currState, loading: false, results: searchAction.results }
-    case 'UPDATE': 
-      return { ...currState, value: searchAction.selection }
+      //get all suggestions from the search and add an id to each one
+      const mergedSuggestions = searchAction.results.map((suggestion) => {
+        return { ...suggestion, key: suggestion._id };
+      });
+      return { ...currState, loading: false, results: mergedSuggestions };
+    case 'UPDATE':
+      return { ...currState, value: searchAction.selection };
 
     default:
-      throw new Error()
+      throw new Error();
   }
 }
 
 export default function Header() {
+  const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState('');
   // reducer and search states for search bar
   const [searchState, searchDispatch] = useReducer(searchReducer, searchInit);
   const { loading, results, value } = searchState;
+  //state holding the path to the clicked search item
+  const [searchPath, setSearchPath] = useState('');
+  useEffect(() => {
+    if (searchPath.length > 1) {
+      navigate(searchPath);
+    }
+  }, [searchPath]);
 
   /* Nice To Have:
    * should we be setting the listings query to a global state?
@@ -52,12 +65,11 @@ export default function Header() {
   const searchChangeHandler = useCallback((datBoi, data) => {
     clearTimeout(timeoutRef.current);
     searchDispatch({ type: 'START', query: data.value });
-    console.log('this oyr log:')
 
     timeoutRef.current = setTimeout(() => {
       if (data.value.length === 0) {
         searchDispatch({ type: 'CLEAN' });
-        return
+        return;
       }
 
       const regularExpression = new RegExp(_.escapeRegExp(data.value), 'i');
@@ -65,22 +77,18 @@ export default function Header() {
 
       searchDispatch({
         type: 'FINISH',
-        results: _.filter(searchData, doItMatch)
+        results: _.filter(searchData, doItMatch),
       });
-    }, 300)
+    }, 300);
   }, []);
 
   // some timeout clearing
   useEffect(() => {
     return () => {
       clearTimeout(timeoutRef.current);
-    }
+    };
   }, []);
 
-  const handleItemClick = (e, { name }) => {
-    console.log(name);
-    setActiveItem({ activeItem: name });
-  };
   // changes profile image and name randomly on load
   const trigger = (
     <span>
@@ -111,8 +119,11 @@ export default function Header() {
     <>
       <div>
         <Menu attached="top">
-          <Dropdown item icon="bars" simple as={Link} to="/">
+          <Dropdown item icon="bars" simple>
             <Dropdown.Menu>
+              <Dropdown.Item as={Link} to="/">
+                Home
+              </Dropdown.Item>
               <Dropdown.Item as={Link} to="/pokemon">
                 Pokemon
               </Dropdown.Item>
@@ -129,22 +140,29 @@ export default function Header() {
           <Menu.Menu position="right">
             <Search
               loading={loading}
-              placeholder='Search for an item...'
-              onResultSelect={(datBoi, data) =>
-                searchDispatch({ type: 'UPDATE', selection: data.result.title })
-              }
+              placeholder="Search for an item..."
+              onResultSelect={(datBoi, data) => {
+                setSearchPath('/' + data.result._id);
+                searchDispatch({
+                  type: 'UPDATE',
+                  selection: data.result.title,
+                });
+              }}
               onSearchChange={searchChangeHandler}
+              onSearchClick={() => {
+                console.log('searchpath: ', searchPath);
+                navigate(searchPath);
+              }}
               results={results}
               value={value}
+              as={Link}
+              to={searchPath}
+              //onclick will take you to the listing page
             />
           </Menu.Menu>
 
           <Menu.Menu position="right" stackable="true" simple dropdown="true">
             {/* semantic ui augmentation for ref */}
-
-            <Menu.Item as={NavLink} to="/cart">
-                <Icon name="shopping cart"></Icon>
-            </Menu.Item>
 
             <Menu.Item>
               <Dropdown
@@ -158,7 +176,6 @@ export default function Header() {
             <Menu.Item
               name=""
               active={activeItem === 'shopping cart'}
-              onClick={handleItemClick}
               as={Link}
               to="/cart"
               icon="shopping cart"
@@ -167,7 +184,6 @@ export default function Header() {
             <Menu.Item
               name="sign-in"
               active={activeItem === 'sign-in'}
-              onClick={handleItemClick}
               as={Link}
               to="/sign-in"
             >
@@ -179,6 +195,5 @@ export default function Header() {
 
       {/* IDEA: Currency conversion */}
     </>
-    
   );
 }
