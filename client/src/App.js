@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Header, Footer, Product } from './components';
-import { Landing, Pokemon, Random, ComputerParts, ShoppingCart } from './pages';
+import {
+  Landing,
+  Pokemon,
+  Random,
+  ComputerParts,
+  ShoppingCart,
+  Pixi,
+} from './pages';
 import { Routes, Route } from 'react-router-dom';
 import decode from 'jwt-decode';
 
@@ -45,6 +52,7 @@ function App() {
           />
           <Route exact path="/cart" element={<ShoppingCart />} />
           <Route exact path="/checkout" element={''} />
+          <Route exact path="/pixi" element={<Pixi />} />
 
           {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
         </Routes>
