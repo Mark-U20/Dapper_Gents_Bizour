@@ -2,12 +2,24 @@ const { Schema, model, SchemaTypes } = require('mongoose');
 
 const cartSchema = new Schema({
   title: {
-    type: SchemaTypes.ObjectId,
-    ref: 'Listing',
+    type: String,
+    required: false,
   },
   quantity: {
     type: Number,
-    required: true,
+    required: false,
+  },
+  description: {
+    type: String,
+    required: false,
+  },
+  image: {
+    type: String,
+    required: false,
+  },
+  price: {
+    type: Number,
+    required: false,
   },
 });
 

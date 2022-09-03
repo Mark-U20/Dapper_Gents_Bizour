@@ -32,6 +32,7 @@ function UserForm({ setUser }) {
 
     // running mutation depending on form type
     const { data } = await mutation();
+    console.log(data);
 
     // setting user and token data from mutation
     user = data[type].userData;

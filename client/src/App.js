@@ -44,6 +44,8 @@ function App() {
             element={<UserForm setUser={setUserToken} />}
           />
           <Route exact path="/cart" element={<ShoppingCart />} />
+          <Route exact path="/checkout" element={''} />
+
           {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
         </Routes>
       </main>
