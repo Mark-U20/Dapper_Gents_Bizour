@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const GET_LISTING = gql`
   query getListing($listingID: ID!) {
-    getListing {
+    getListing(listingID: $listingID) {
       _id
       title
       description
@@ -13,25 +13,25 @@ export const GET_LISTING = gql`
       listing_author {
         _id
         email
-        listings {
-          _id
-          title
-          description
-          quantity
-          image
-          price
-        }
+        # listings {
+        #   _id
+        #   title
+        #   description
+        #   quantity
+        #   image_url
+        #   price
+        # }
       }
-      reviews {
-        _id
-        review_rating
-        review_title
-        review_text
-        review_author {
-          _id
-          email
-        }
-      }
+      # reviews {
+      #   _id
+      #   review_rating
+      #   review_title
+      #   review_text
+      #   review_author {
+      #     _id
+      #     email
+      #   }
+      # }
     }
   }
 `;
