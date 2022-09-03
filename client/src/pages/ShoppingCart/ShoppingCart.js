@@ -1,6 +1,10 @@
 import './shoppingCart.css';
 import React, { useState, useEffect, createRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_USER } from '../../utils/queries';
+import AuthService from '../../utils/auth';
+
 import { CartCard, CartSummaryCard } from '../../components';
 import {
   Grid,
@@ -13,16 +17,15 @@ import {
   Container,
   Sticky,
 } from 'semantic-ui-react';
-import { from } from '@apollo/client';
-
-// import SignUpForm from './SignupForm';
-// import LoginForm from './LoginForm';
-// import Auth from '../utils/auth';
 
 //query all shopping cart items
 //loop through shopping cart items and display them in cart card
 
 const ShoppingCart = () => {
+  const { error, loading, data } = useQuery(GET_USER, {
+    variables: { userID: AuthService.getProfile().data._id },
+  });
+  console.log('data', data);
   // set modal display state
 
   //   const [activeItem, setActiveItem] = useState('');

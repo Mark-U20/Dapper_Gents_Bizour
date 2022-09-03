@@ -6,17 +6,27 @@ const { signToken } = require('../auth');
 const resolvers = {
   Query: {
     async getUser(_, { userID }) {
-      return await User.findOne({ _id: userID }).populate('listings').populate('shoppingCart').populate('reviews');
+      return await User.findOne({ _id: userID })
+        .populate('listings')
+        .populate('shoppingCart')
+        .populate('reviews');
     },
     async getUsers() {
-      return await User.find().populate('listings').populate('shoppingCart').populate('reviews');
+      return await User.find()
+        .populate('listings')
+        .populate('shoppingCart')
+        .populate('reviews');
     },
     async getListing(_, { listingID }) {
-      return await Listing.findOne({ _id: listingID }).populate('listing_author')
+      return await Listing.findOne({ _id: listingID }).populate(
+        'listing_author'
+      );
       // .populate('reviews');
     },
     async getListings() {
-      return await Listing.find().populate('listing_author').populate('reviews');
+      return await Listing.find()
+        .populate('listing_author')
+        .populate('reviews');
     },
   },
   Mutation: {
@@ -88,8 +98,8 @@ const resolvers = {
       );
     },
     async deleteListing(_, { id, title }) {
-      return await Listing.findOneAndDelete({ _id: id }, { title })
-    }
+      return await Listing.findOneAndDelete({ _id: id }, { title });
+    },
   },
 };
 

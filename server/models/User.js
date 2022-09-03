@@ -15,7 +15,8 @@ const userSchema = new Schema({
   },
   profilePic: {
     type: String,
-    default: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F3d%2F66%2F78%2F3d667893c5788613ff3590ca218a9cb2.jpg&f=1&nofb=1'
+    default:
+      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F3d%2F66%2F78%2F3d667893c5788613ff3590ca218a9cb2.jpg&f=1&nofb=1',
   },
   listings: [
     {

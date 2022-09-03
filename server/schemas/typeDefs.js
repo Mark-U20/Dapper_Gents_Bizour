@@ -15,6 +15,16 @@ const typeDefs = gql`
     email: String!
     profilePic: String
     listings: [Listing]
+    shoppingCart: [Cart]
+  }
+
+  type Cart {
+    _id: ID!
+    title: String
+    quantity: Int
+    description: String
+    image: String
+    price: Float
   }
 
   type Listing {
@@ -61,7 +71,7 @@ const typeDefs = gql`
       price: Int!
     ): Listing
     updateListing(
-      id: ID!,
+      id: ID!
       title: String!
       description: String!
       category: String!
