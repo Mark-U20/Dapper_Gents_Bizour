@@ -3,6 +3,6 @@ import Pokemon from './pokemonCards';
 import Random from './Random';
 import ComputerParts from './computerFarts';
 import UserForm from './UserForm';
-import ShoppingCart from './ShoppingCart';
+import ShoppingCart from './ShoppingCart/ShoppingCart';
 
 export { Landing, Pokemon, Random, ComputerParts, UserForm, ShoppingCart };

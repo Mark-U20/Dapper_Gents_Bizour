@@ -127,15 +127,7 @@ main {
   background-color: aquamarine;
 }
 
-.shopping-cart-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  background-color: aquamarine;
-}
+
 
 @media screen and (min-width: 480px) {
 
