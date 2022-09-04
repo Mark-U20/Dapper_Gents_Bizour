@@ -73,3 +73,20 @@ export const GET_USER = gql`
     }
   }
 `;
+
+export const CHECKOUT = gql`
+  query checkout($userID: ID!) {
+    checkout(userID: $userID) {
+      _id
+      email
+      shoppingCart {
+        _id
+        title
+        description
+        quantity
+        image
+        price
+      }
+    }
+  }
+`;
