@@ -25,6 +25,7 @@ const ShoppingCart = () => {
   const { error, loading, data } = useQuery(GET_USER, {
     variables: { userID: AuthService.getProfile().data._id },
   });
+  const cart = data?.getUser?.shoppingCart || [];
   console.log('data', data);
   // set modal display state
 
@@ -49,13 +50,19 @@ const ShoppingCart = () => {
           <Grid.Column>
             <Header as="h2">Shopping Cart</Header>
             <Container className="listing-container">
-              <CartCard
-                image={''}
-                title={''}
-                description={''}
-                price={''}
-                listingAuth={{}}
-              />
+              {cart.length > 0 ? (
+                cart.map((item) => (
+                  <CartCard
+                    image={item.image}
+                    title={item.title}
+                    description={item.description}
+                    price={item.price}
+                    listingAuth={item.listingAuth}
+                  />
+                ))
+              ) : (
+                <h3>No items in your cart</h3>
+              )}
             </Container>{' '}
           </Grid.Column>
           <Grid.Column>
