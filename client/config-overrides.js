@@ -11,4 +11,11 @@ module.exports = {
       return config;
     };
   },
+  webpack: function (config, env) {
+    config.resolve.alias = {
+      'react-pixi$': 'react-pixi-fiber/react-pixi-alias',
+    };
+
+    return config;
+  },
 };

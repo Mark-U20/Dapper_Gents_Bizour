@@ -7,42 +7,45 @@ import { Sprite, Stage } from 'react-pixi-fiber';
 import * as PIXI from 'pixi.js';
 
 const app = new PIXI.Application({
-  width: 800,
-  height: 600,
+  width: window.innerWidth,
+  height: window.innerHeight,
   backgroundColor: 0x5bba6f,
 });
 
 function Pixi() {
   const ref = useRef(null);
+  //add a sprite to the stage
+  const [sprite, setSprite] = useState(null);
 
+  //add png element to canvas
   useEffect(() => {
-    // On first render add app to DOM
-    ref.current.appendChild(app.view);
-    // Start the PixiJS app
-    app.start();
-
-    return () => {
-      // On unload stop the application
-      app.stop();
-    };
+    const sprite = PIXI.Sprite.from(moshiMon);
+    sprite.anchor.set(0.5);
+    sprite.x = app.screen.width / 2;
+    sprite.y = app.screen.height / 2;
+    app.stage.addChild(sprite);
+    setSprite(sprite);
   }, []);
 
-  return <div ref={ref} />;
+  useEffect(
+    () => {
+      // On first render add app to DOM
+      ref.current.appendChild(app.view);
+      // Start the PixiJS app
+      app.start();
 
-  // try {
-  //   function Bunny(props) {
-  //     return <Sprite texture={PIXI.Texture.from(moshiMon)} {...props} />;
-  //   }
-  //   const container = document.getElementById('container');
-  //   const root = createRoot(container);
-  //   root.render(
-  //     <Stage options={{ backgroundColor: 0x10bb99, height: 600, width: 800 }}>
-  //       <Bunny x={200} y={200} />
-  //     </Stage>
-  //   );
-  // } catch {
-  //   console.log('lol');
-  // }
+      return () => {
+        // On unload stop the application
+        console.log('unmounting');
+        app.stop();
+      };
+    },
+    window.addEventListener('resize', () => {
+      app.renderer.resize(window.innerWidth, window.innerHeight);
+    })
+  );
+
+  return <div ref={ref} />;
 }
 
 export default Pixi;
