@@ -97,6 +97,9 @@ const resolvers = {
         }
       );
     },
+    async updateQuantity(_, { id, quantity }) {
+      return Listing.findOneAndUpdate({ _id: id }, { quantity });
+    },
     async deleteListing(_, { id, title }) {
       return await Listing.findOneAndDelete({ _id: id }, { title });
     },
