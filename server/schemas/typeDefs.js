@@ -84,7 +84,7 @@ const typeDefs = gql`
       quantity: Int!
     ): Listing
     deleteListing(id: ID!): Listing
-    addToCart(listingID: ID!): User
+    addToCart(listingID: ID!, title: String!, quantity: Int, description: String, image: String, price: Float): User
   }
 `;
 

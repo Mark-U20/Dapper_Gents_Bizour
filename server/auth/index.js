@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { ApolloError } = require('apollo-server-express');
 
-const secret = 'super secret but also public';
+const secret = process.env.JWT_SECRET || 'super secret but also public';
 console.log('SUPER SECRET: ' + secret);
 
 module.exports = {
@@ -29,8 +29,6 @@ module.exports = {
 
       // pushing token data to req.user and returning
       req.user = data;
-
-      console.log(req.user)
       return req;
 
       // if it can't decode it with our secret, then the token is invalid

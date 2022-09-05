@@ -32,13 +32,12 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('id_token');
 
   return {
     headers: {
       ...headers,
-
-      auth: token ? `Validate ${token}` : '',
+      authorization: token ? `Validate ${token}` : '',
     },
   };
 });
@@ -53,9 +52,9 @@ const root = createRoot(document.getElementById('root'));
 root.render(
   <ApolloProvider client={client}>
     <Router>
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <App />
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     </Router>
   </ApolloProvider>
 );
