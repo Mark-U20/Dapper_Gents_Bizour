@@ -23,7 +23,7 @@ export default function Header({ userTokenData }) {
         cartCountLabel = <></>;
       }
     } catch (e) {
-      console.log('there is nothing in the cart');
+      console.log('there is nothing in the cart or nothing loaded');
     }
   }, [UserContext]);
 
