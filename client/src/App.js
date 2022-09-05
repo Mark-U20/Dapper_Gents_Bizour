@@ -22,6 +22,7 @@ function App() {
   const [userToken, setUserToken] = useState(null);
   const [userContextValue, setUserContextValue] = useState('');
 
+  //getUser will update the global user context after there is a user that is signed in
   const [getUser, { error, loading, data }] = useLazyQuery(GET_USER);
   if (error) throw new ApolloError();
   // console.log(AuthService.getProfile().data._id);
@@ -56,6 +57,7 @@ function App() {
     }
   }, [data]);
   // setUserContextValue(data);
+  //123
   // // UserContext;
   return (
     <>

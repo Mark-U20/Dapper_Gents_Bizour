@@ -104,7 +104,7 @@ const resolvers = {
     async updateQuantity(_, { id, quantity }) {
       return Listing.findOneAndUpdate({ _id: id }, { quantity });
     },
-    
+
     async deleteListing(_, { id, title }) {
       return await Listing.findOneAndDelete({ _id: id }, { title });
     },
@@ -133,15 +133,13 @@ const resolvers = {
       });
       return 'session.url';
     },
-  },
 
-
-    async addToCart(_, {listingID}, context) {
-      console.log(context.user)
+    async addToCart(_, { listingID }, context) {
+      console.log(context.user);
 
       if (context.user) {
         return await User.findOneAndUpdate(
-          {_id: context.user._id},
+          { _id: context.user._id },
           {
             $addToSet: {
               shoppingCart: {
@@ -151,18 +149,16 @@ const resolvers = {
                 description,
                 image,
                 price,
-              }
-            }
+              },
+            },
           },
           {
-            new: true
+            new: true,
           }
         );
       }
-
-    }
-
-  }
-
+    },
+  },
+};
 
 module.exports = resolvers;
