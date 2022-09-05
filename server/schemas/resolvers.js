@@ -20,7 +20,7 @@ const resolvers = {
         // .populate('reviews');
     },
     async getListing(_, { listingID }, context) {
-      console.log(context.user)
+      console.log(context.user);
       return await Listing.findOne({ _id: listingID }).populate(
         'listing_author'
       );
@@ -35,6 +35,7 @@ const resolvers = {
   Mutation: {
     // mutation called when registering a new user account
     async addUser(_, { email, profilePic, password }, context) {
+      // console.log(context.user)
       try {
         // try to create user
         const userData = await User.create({ email, profilePic, password });
@@ -52,8 +53,8 @@ const resolvers = {
       // finds user by email and populates child data
       const userData = await User.findOne({ email })
         .populate('listings')
-        .populate('shoppingCart')
-        // .populate('reviews');
+        .populate('shoppingCart');
+      // .populate('reviews');
       // no user found? throw error
       if (!userData)
         throw new ApolloError(`There isn't a user with that email`);
@@ -103,6 +104,7 @@ const resolvers = {
     async updateQuantity(_, { id, quantity }) {
       return Listing.findOneAndUpdate({ _id: id }, { quantity });
     },
+
     async deleteListing(_, { id, title }) {
       return await Listing.findOneAndDelete({ _id: id }, { title });
     },
@@ -152,11 +154,6 @@ const resolvers = {
       });
       return 'session.url';
     },
-  },
-
-
-
-
   };
 
 module.exports = resolvers;

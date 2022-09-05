@@ -5,7 +5,11 @@ import decode from 'jwt-decode';
 class AuthService {
   // get user data
   getProfile() {
-    return decode(this.getToken());
+    if (this.getToken()) {
+      return decode(this.getToken());
+    } else {
+      return 'notValidToken';
+    }
   }
 
   // check if user's logged in
