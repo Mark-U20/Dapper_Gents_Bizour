@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
 const { ApolloError } = require('apollo-server-express');
 
-const secret = process.env.JWT_SECRET || 'super secret but also public';
+const secret = 'super secret but also public';
 console.log('SUPER SECRET: ' + secret);
 
 module.exports = {
-  authMiddleware({ req }) {
+  authMiddleware({ req }, res) {
     // grabbing defined authorization data
     let token = req.headers.authorization;
 
@@ -17,9 +17,9 @@ module.exports = {
     if (!token.includes('Validate')) {
       throw new ApolloError('invalid token');
     }
+    token = token.split(' ').pop().trim();
 
     // actually grabbing token string
-    token = token.split(' ').pop().trim();
 
     // try decoding token with max age of 14 days
     try {
@@ -29,6 +29,8 @@ module.exports = {
 
       // pushing token data to req.user and returning
       req.user = data;
+
+      console.log(req.user)
       return req;
 
       // if it can't decode it with our secret, then the token is invalid
@@ -38,7 +40,7 @@ module.exports = {
   },
 
   // method for creating a token on user login / signup
-  async signToken(user_data) {
+  signToken(user_data) {
     return jwt.sign({ data: user_data }, secret, {
       expiresIn: '14d',
     });

@@ -42,3 +42,21 @@ mutation deleteListing($id: Int!) {
   }
 }
 `;
+
+export const ADD_TO_CART = gql`
+  mutation addToCart($listingID: ID!) {
+    addToCart(listingID: $listingID) {
+      _id
+      email
+      shoppingCart {
+        _id
+        title
+        quantity 
+        description
+        image
+        price
+      }
+    }
+  }
+
+`;
