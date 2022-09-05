@@ -1,4 +1,6 @@
+require('dotenv').config();
 const { Cart, Listing, Review, User } = require('../models');
+const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 
 const { ApolloError } = require('apollo-server-express');
 const { signToken } = require('../auth');
@@ -104,6 +106,33 @@ const resolvers = {
     async deleteListing(_, { id, title }) {
       return await Listing.findOneAndDelete({ _id: id }, { title });
     },
+
+    async createCheckoutSession(_, { userID }) {
+      console.log('test 2');
+      const user = await User.findOne({ _id: userID });
+      const cart = user.shoppingCart;
+      console.log('cart ', cart);
+      const line_items = cart.map((item) => ({
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.title,
+          },
+          unit_amount: item.price * 100,
+        },
+        quantity: item.quantity,
+      }));
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items,
+        mode: 'payment',
+        success_url: `${process.env.SERVER_URL}/success.html`,
+        cancel_url: `${process.env.SERVER_URL}/cancel.html`,
+      });
+      return 'session.url';
+    },
+  },
+
 
     async addToCart(_, {listingID}, context) {
       console.log(context.user)

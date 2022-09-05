@@ -53,9 +53,9 @@ const root = createRoot(document.getElementById('root'));
 root.render(
   <ApolloProvider client={client}>
     <Router>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      {/* <React.StrictMode> */}
+      <App />
+      {/* </React.StrictMode> */}
     </Router>
   </ApolloProvider>
 );

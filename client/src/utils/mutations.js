@@ -58,7 +58,7 @@ export const ADD_TO_CART = gql`
 
 `;
 export const DELETE_LISTING = gql`
-mutation deleteListing($$deleteListingId: ID!) {
+  mutation deleteListing($$deleteListingId: ID!) {
   deleteListing(id: $deleteListingId) {
     _id
     title
@@ -74,6 +74,15 @@ mutation deleteListing($$deleteListingId: ID!) {
     }
 }
 `;
+
+export const CREATE_CHECKOUT_SESSION = gql`
+  mutation createCheckoutSession($userID: ID!) {
+    createCheckoutSession(userID: $userID) {
+      session
+    }
+   `;
+
+
 export const UPDATE_QUANTITY = gql`
 mutation updateQuantity($updateQuantityId: ID!, $quantity: Int!) {
   updateQuantity(id: $updateQuantityId, quantity: $quantity) {
@@ -85,5 +94,4 @@ mutation updateQuantity($updateQuantityId: ID!, $quantity: Int!) {
     image
     price
   }
-}
 `;
