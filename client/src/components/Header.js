@@ -6,13 +6,22 @@ import { UserContext } from './../utils/UserContext';
 import _ from 'lodash';
 import NavSearch from './NavSearch';
 import AuthService from '../utils/auth';
-import ShoppingCart from './../pages/ShoppingCart/ShoppingCart';
 
 export default function Header({ userTokenData }) {
-  let cartCount = 0;
+  let cartCount = 1;
+  let cartCountLabel = <></>;
   useEffect(() => {
     try {
       cartCount = UserContext.getContextValue.getUser.shoppingCart.length;
+      if (cartCount > 0) {
+        cartCountLabel = (
+          <Label color="red" attached="bottom left" circular size="mini">
+            cartCount
+          </Label>
+        );
+      } else {
+        cartCountLabel = <></>;
+      }
     } catch (e) {
       console.log('there is nothing in the cart');
     }
@@ -104,9 +113,7 @@ export default function Header({ userTokenData }) {
             >
               <Icon name="shopping cart" />
 
-              <Label color="red" attached="bottom left" circular size="mini">
-                {cartCount}
-              </Label>
+              {cartCountLabel}
             </Menu.Item>
           </Menu.Menu>
         </Menu>
