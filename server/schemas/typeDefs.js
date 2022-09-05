@@ -87,7 +87,6 @@ const typeDefs = gql`
     deleteListing(id: ID!): Listing
     createCheckoutSession(userID: ID!): Url
     addToCart(listingID: ID!): User
->>>>>>> dd1042ebe1f6244edc206f86a5e271c17d509812
   }
 `;
 
