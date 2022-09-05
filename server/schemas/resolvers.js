@@ -11,13 +11,13 @@ const resolvers = {
       return await User.findOne({ _id: userID })
         .populate('listings')
         .populate('shoppingCart')
-        .populate('reviews');
+        // .populate('reviews');
     },
     async getUsers() {
       return await User.find()
         .populate('listings')
         .populate('shoppingCart')
-        .populate('reviews');
+        // .populate('reviews');
     },
     async getListing(_, { listingID }, context) {
       console.log(context.user);
@@ -28,8 +28,8 @@ const resolvers = {
     },
     async getListings() {
       return await Listing.find()
-        .populate('listing_author')
-        .populate('reviews');
+        // .populate('listing_author')
+        // .populate('reviews');
     },
   },
   Mutation: {
@@ -109,6 +109,27 @@ const resolvers = {
       return await Listing.findOneAndDelete({ _id: id }, { title });
     },
 
+    async addToCart(_, {listingID}, context) {
+      console.log(context.user)
+
+      if (context.user) {
+        return await User.findOneAndUpdate(
+          {_id: context.user._id},
+          {
+            $addToSet: {
+              shoppingCart: {
+                listingID
+              }
+            }
+          },
+          {
+            new: true
+          }
+        );
+      }
+
+    },
+
     async createCheckoutSession(_, { userID }) {
       console.log('test 2');
       const user = await User.findOne({ _id: userID });
@@ -133,32 +154,6 @@ const resolvers = {
       });
       return 'session.url';
     },
-
-    async addToCart(_, { listingID }, context) {
-      console.log(context.user);
-
-      if (context.user) {
-        return await User.findOneAndUpdate(
-          { _id: context.user._id },
-          {
-            $addToSet: {
-              shoppingCart: {
-                _id: listingID,
-                title,
-                quantity,
-                description,
-                image,
-                price,
-              },
-            },
-          },
-          {
-            new: true,
-          }
-        );
-      }
-    },
-  },
-};
+  };
 
 module.exports = resolvers;
