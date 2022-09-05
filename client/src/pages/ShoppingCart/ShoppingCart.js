@@ -27,6 +27,7 @@ const ShoppingCart = () => {
   });
   const cart = data?.getUser?.shoppingCart || [];
   console.log('data', data);
+  console.log(cart)
   // set modal display state
 
   //   const [activeItem, setActiveItem] = useState('');

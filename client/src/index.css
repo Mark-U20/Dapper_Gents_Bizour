@@ -53,7 +53,9 @@ header nav a.active {
 
 
 main {
-  height: 140vh;
+
+  height: 80vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;

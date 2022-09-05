@@ -29,12 +29,19 @@ function App() {
 
     // if it didn't break out, then decode and set to user
     const decoded = decode(token);
+
+    console.log(decoded)
+    console.log(userToken)
     setUserToken({
       ...userToken,
-      token: decoded,
+      token: decoded
     });
+
+    
   }, []);
 
+
+  console.log(userToken)
   return (
     <>
       <Header userTokenData={userToken} />
@@ -56,7 +63,7 @@ function App() {
 
           {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
         </Routes>
-        <canvas id="container"></canvas>{' '}
+        {/* <canvas id="container"></canvas>{' '} */}
       </main>
       <Footer />
     </>

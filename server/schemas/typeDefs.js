@@ -15,7 +15,7 @@ const typeDefs = gql`
     email: String!
     profilePic: String
     listings: [Listing]
-    shoppingCart: [Cart]
+    shoppingCart: [Listing]
   }
 
   type Cart {
@@ -84,6 +84,7 @@ const typeDefs = gql`
       quantity: Int!
     ): Listing
     deleteListing(id: ID!): Listing
+    addToCart(listingID: ID!): User
   }
 `;
 

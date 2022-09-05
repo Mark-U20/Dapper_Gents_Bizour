@@ -17,7 +17,8 @@ const resolvers = {
         .populate('shoppingCart')
         .populate('reviews');
     },
-    async getListing(_, { listingID }) {
+    async getListing(_, { listingID }, context) {
+      console.log(context.user)
       return await Listing.findOne({ _id: listingID }).populate(
         'listing_author'
       );
@@ -50,7 +51,7 @@ const resolvers = {
       const userData = await User.findOne({ email })
         .populate('listings')
         .populate('shoppingCart')
-        .populate('reviews');
+        // .populate('reviews');
       // no user found? throw error
       if (!userData)
         throw new ApolloError(`There isn't a user with that email`);
@@ -103,7 +104,29 @@ const resolvers = {
     async deleteListing(_, { id, title }) {
       return await Listing.findOneAndDelete({ _id: id }, { title });
     },
-  },
+
+    async addToCart(_, {listingID}, context) {
+      console.log(context.user)
+
+      if (context.user) {
+        return await User.findOneAndUpdate(
+          {_id: context.user._id},
+          {
+            $addToSet: {
+              shoppingCart: {
+                listingID
+              }
+            }
+          },
+          {
+            new: true
+          }
+        );
+      }
+
+    }
+
+  }
 };
 
 module.exports = resolvers;
