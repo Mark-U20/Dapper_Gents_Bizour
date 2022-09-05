@@ -8,7 +8,7 @@
     "dev:client": "cd ./client && npm start",
     "dev": "concurrently  \"npm run dev:server\"  \"npm run dev:client\"",
     "start": "cd ./server && npm start",
-    "seed": "cd ./server/schemas && node seeds.js",
+    "seed": "cd ./server/seeders && node seed.js",
     "format": "prettier --write \"client/**/*.{js,jsx}\" && prettier --write \"server/**/*.{js,jsx}\""
   },
   "keywords": [],

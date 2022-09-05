@@ -39,7 +39,7 @@ const typeDefs = gql`
     quantity: Int!
     image: String!
     price: Float!
-    listing_author: User
+    listing_author: String!
     # reviews: [Review]
   }
 
