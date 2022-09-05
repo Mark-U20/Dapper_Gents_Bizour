@@ -53,7 +53,7 @@ root.render(
   <ApolloProvider client={client}>
     <Router>
       {/* <React.StrictMode> */}
-        <App />
+      <App />
       {/* </React.StrictMode> */}
     </Router>
   </ApolloProvider>

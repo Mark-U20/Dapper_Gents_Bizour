@@ -5,6 +5,8 @@ import ComputerParts from './computerFarts';
 import UserForm from './UserForm';
 import ShoppingCart from './ShoppingCart/ShoppingCart';
 import Pixi from './Pixi/Pixi';
+import Wishlist from './Wishlist/Wishlist';
+import Settings from './Settings/Settings';
 
 export {
   Landing,
@@ -14,4 +16,6 @@ export {
   UserForm,
   ShoppingCart,
   Pixi,
+  Wishlist,
+  Settings,
 };

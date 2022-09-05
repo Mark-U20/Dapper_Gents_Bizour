@@ -27,6 +27,10 @@ const typeDefs = gql`
     price: Float
   }
 
+  type Url {
+    session: String
+  }
+
   type Listing {
     _id: ID!
     title: String!
@@ -79,12 +83,11 @@ const typeDefs = gql`
       image: String!
       price: Int!
     ): Listing
-    updateQuantity(
-      id: ID!
-      quantity: Int!
-    ): Listing
+    updateQuantity(id: ID!, quantity: Int!): Listing
     deleteListing(id: ID!): Listing
-    addToCart(listingID: ID!, title: String!, quantity: Int, description: String, image: String, price: Float): User
+    createCheckoutSession(userID: ID!): Url
+    addToCart(listingID: ID!): User
+>>>>>>> dd1042ebe1f6244edc206f86a5e271c17d509812
   }
 `;
 
