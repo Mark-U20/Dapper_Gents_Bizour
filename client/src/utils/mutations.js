@@ -22,23 +22,36 @@ export const LOGIN_USER = gql`
   }
 `;
 export const ADD_LISTING = gql`
-mutation AddListing($title: String!, $category: String!, $quantity: Int!, $image: String!, $price: Int!, $description: String!) {
-  addListing(title: $title, category: $category, quantity: $quantity, image: $image, price: $price, description: $description) {
-    _id
-    title
-    description
-    category
-    quantity
-    image
-    price
-    listing_author {
+  mutation AddListing(
+    $title: String!
+    $category: String!
+    $quantity: Int!
+    $image: String!
+    $price: Int!
+    $description: String!
+  ) {
+    addListing(
+      title: $title
+      category: $category
+      quantity: $quantity
+      image: $image
+      price: $price
+      description: $description
+    ) {
       _id
-      email
+      title
+      description
+      category
+      quantity
+      image
+      price
+      listing_author {
+        _id
+        email
+      }
     }
   }
-}
 `;
-
 
 export const ADD_TO_CART = gql`
   mutation addToCart($listingID: ID!) {
@@ -48,31 +61,43 @@ export const ADD_TO_CART = gql`
       shoppingCart {
         _id
         title
-        quantity 
+        quantity
         description
         image
         price
       }
     }
   }
-
 `;
 export const DELETE_LISTING = gql`
-  mutation deleteListing($$deleteListingId: ID!) {
-  deleteListing(id: $deleteListingId) {
-    _id
-    title
-    description
-    category
-    quantity
-    image
-    price
-    listing_author {
+  mutation deleteListing($deleteListingId: ID!) {
+    deleteListing(id: $deleteListingId) {
       _id
-      email
+      title
+      description
+      category
+      quantity
+      image
+      price
+      listing_author {
+        _id
+        email
+      }
     }
+  }
+`;
+export const UPDATE_QUANTITY = gql`
+  mutation updateQuantity($updateQuantityId: ID!, $quantity: Int!) {
+    updateQuantity(id: $updateQuantityId, quantity: $quantity) {
+      _id
+      title
+      description
+      category
+      quantity
+      image
+      price
     }
-}
+  }
 `;
 
 export const CREATE_CHECKOUT_SESSION = gql`
@@ -80,18 +105,5 @@ export const CREATE_CHECKOUT_SESSION = gql`
     createCheckoutSession(userID: $userID) {
       session
     }
-   `;
-
-
-export const UPDATE_QUANTITY = gql`
-mutation updateQuantity($updateQuantityId: ID!, $quantity: Int!) {
-  updateQuantity(id: $updateQuantityId, quantity: $quantity) {
-    _id
-    title
-    description
-    category
-    quantity
-    image
-    price
   }
 `;

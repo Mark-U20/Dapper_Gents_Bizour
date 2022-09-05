@@ -30,7 +30,6 @@ const ShoppingCart = () => {
   const { error, loading, data } = useQuery(GET_USER, {
     variables: { userID: AuthService.getProfile().data._id },
   });
-
   const cart = [];
   console.log('data', cart);
 
