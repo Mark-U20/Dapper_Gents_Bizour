@@ -19,11 +19,10 @@ const resolvers = {
         .populate('shoppingCart')
         // .populate('reviews');
     },
-    async getListing(_, { listingID }, context) {
+    async getListing(_, { listingId }, context) {
       console.log(context.user);
-      return await Listing.findOne({ _id: listingID }).populate(
-        'listing_author'
-      );
+      return await Listing.findOne({ _id: listingId })
+      // .populate('listing_author');
       // .populate('reviews');
     },
     async getListings() {
@@ -109,27 +108,6 @@ const resolvers = {
       return await Listing.findOneAndDelete({ _id: id }, { title });
     },
 
-    async addToCart(_, {listingID}, context) {
-      console.log(context.user)
-
-      if (context.user) {
-        return await User.findOneAndUpdate(
-          {_id: context.user._id},
-          {
-            $addToSet: {
-              shoppingCart: {
-                listingID
-              }
-            }
-          },
-          {
-            new: true
-          }
-        );
-      }
-
-    },
-
     async createCheckoutSession(_, { userID }) {
       console.log('test 2');
       const user = await User.findOne({ _id: userID });
@@ -154,7 +132,30 @@ const resolvers = {
       });
       return 'session.url';
     },
-  }
+
+
+    async addToCart(_, { listingId }, context) {
+      console.log(context.user._id);
+
+      const item = await Listing.findOne({_id: listingId});
+
+      console.log(item)
+
+      if (context.user) {
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $addToSet: {
+              shoppingCart: item._id
+            },
+          },
+          {
+            new: true,
+          }
+        );
+      }
+    },
+  },
 };
 
 module.exports = resolvers;

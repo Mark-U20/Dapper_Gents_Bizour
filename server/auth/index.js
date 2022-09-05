@@ -17,9 +17,9 @@ module.exports = {
     if (!token.includes('Validate')) {
       throw new ApolloError('invalid token');
     }
-    token = token.split(' ').pop().trim();
-
+    
     // actually grabbing token string
+    token = token.split(' ').pop().trim();
 
     // try decoding token with max age of 14 days
     try {

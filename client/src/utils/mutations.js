@@ -56,8 +56,8 @@ export const ADD_LISTING = gql`
 `;
 
 export const ADD_TO_CART = gql`
-  mutation addToCart($listingID: ID!) {
-    addToCart(listingID: $listingID) {
+  mutation addToCart($listingId: ID!) {
+    addToCart(listingId: $listingId) {
       _id
       email
       shoppingCart {

@@ -27,7 +27,7 @@ const userSchema = new Schema({
   shoppingCart: [
     {
       type: SchemaTypes.ObjectId,
-      ref: 'Cart',
+      ref: 'Listing',
     },
   ],
   reviews: [
