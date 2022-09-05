@@ -58,7 +58,7 @@ export const ADD_TO_CART = gql`
 
 `;
 export const DELETE_LISTING = gql`
-  mutation deleteListing($$deleteListingId: ID!) {
+  mutation deleteListing($deleteListingId: ID!) {
   deleteListing(id: $deleteListingId) {
     _id
     title
@@ -80,7 +80,7 @@ export const CREATE_CHECKOUT_SESSION = gql`
     createCheckoutSession(userID: $userID) {
       session
     }
-   `;
+  }`;
 
 
 export const UPDATE_QUANTITY = gql`
@@ -94,4 +94,4 @@ mutation updateQuantity($updateQuantityId: ID!, $quantity: Int!) {
     image
     price
   }
-`;
+}`;
