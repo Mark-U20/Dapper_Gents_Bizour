@@ -23,22 +23,30 @@ export const LOGIN_USER = gql`
 `;
 
 export const DELETE_LISTING = gql`
-mutation deleteListing($id: Int!) {
-  deleteListings(where: {id: $id}) {
-    _id
-    title
-    description
-    category
-    quantity
-    image
-    price
-    reviews {
+  mutation deleteListing($id: Int!) {
+    deleteListings(where: { id: $id }) {
       _id
-      review_title
-      review_rating
-      review_text
-      review_author
-    }  
+      title
+      description
+      category
+      quantity
+      image
+      price
+      reviews {
+        _id
+        review_title
+        review_rating
+        review_text
+        review_author
+      }
+    }
   }
-}
+`;
+
+export const CREATE_CHECKOUT_SESSION = gql`
+  mutation createCheckoutSession($userID: ID!) {
+    createCheckoutSession(userID: $userID) {
+      session
+    }
+  }
 `;
