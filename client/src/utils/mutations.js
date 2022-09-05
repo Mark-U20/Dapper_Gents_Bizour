@@ -109,16 +109,3 @@ export const CREATE_CHECKOUT_SESSION = gql`
       session
     }
   }`;
-
-
-export const UPDATE_QUANTITY = gql`
-mutation updateQuantity($updateQuantityId: ID!, $quantity: Int!) {
-  updateQuantity(id: $updateQuantityId, quantity: $quantity) {
-    _id
-    title
-    description
-    category
-    quantity
-    image
-  }
-}`;

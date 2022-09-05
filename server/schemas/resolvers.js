@@ -154,6 +154,7 @@ const resolvers = {
       });
       return 'session.url';
     },
-  };
+  }
+};
 
 module.exports = resolvers;
