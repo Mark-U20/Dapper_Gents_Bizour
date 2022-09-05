@@ -108,5 +108,4 @@ export const CREATE_CHECKOUT_SESSION = gql`
     createCheckoutSession(userID: $userID) {
       session
     }
-  }
-`;
+  }`;

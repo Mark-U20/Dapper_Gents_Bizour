@@ -28,8 +28,8 @@ const resolvers = {
     },
     async getListings() {
       return await Listing.find()
-        .populate('listing_author')
-        .populate('reviews');
+        // .populate('listing_author')
+        // .populate('reviews');
     },
   },
   Mutation: {

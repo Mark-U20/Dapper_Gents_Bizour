@@ -33,13 +33,13 @@ const typeDefs = gql`
 
   type Listing {
     _id: ID!
-    title: String
-    description: String
-    category: String
-    quantity: Int
-    image: String
-    price: Float
-    listing_author: User
+    title: String!
+    description: String!
+    category: String!
+    quantity: Int!
+    image: String!
+    price: Float!
+    listing_author: String!
     # reviews: [Review]
   }
 

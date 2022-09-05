@@ -46,6 +46,7 @@ export const GET_LISTINGS = gql`
       quantity
       image
       price
+      listing_author
     }
   }
 `;
@@ -55,6 +56,7 @@ export const GET_USER = gql`
     getUser(userID: $userID) {
       _id
       email
+<<<<<<< HEAD
       listings {
         _id
         title
@@ -80,6 +82,8 @@ export const GET_USERS = gql`
     getUsers {
       _id
       email
+=======
+>>>>>>> main
       listings {
         _id
         title
