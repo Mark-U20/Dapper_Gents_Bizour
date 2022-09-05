@@ -19,11 +19,10 @@ const resolvers = {
         .populate('shoppingCart')
         // .populate('reviews');
     },
-    async getListing(_, { listingID }, context) {
+    async getListing(_, { listingId }, context) {
       console.log(context.user);
-      return await Listing.findOne({ _id: listingID }).populate(
-        'listing_author'
-      );
+      return await Listing.findOne({ _id: listingId })
+      // .populate('listing_author');
       // .populate('reviews');
     },
     async getListings() {

@@ -12,7 +12,7 @@ const Product = () => {
     const [savedItemIds, setSavedItemIds] = useState(getCartItemIds());
 
     const { id } = useParams();
-    const { error, loading, data } = useQuery(GET_LISTING, { variables: { listingID: id } });
+    const { error, loading, data } = useQuery(GET_LISTING, { variables: { listingId: id } });
 
     const [saveToCart] = useMutation(ADD_TO_CART);
 

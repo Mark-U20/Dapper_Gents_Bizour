@@ -33,13 +33,13 @@ const typeDefs = gql`
 
   type Listing {
     _id: ID!
-    title: String!
-    description: String!
-    category: String!
-    quantity: Int!
-    image: String!
-    price: Float!
-    listing_author: String!
+    title: String
+    description: String
+    category: String
+    quantity: Int
+    image: String
+    price: Float
+    listing_author: String
     # reviews: [Review]
   }
 
@@ -59,7 +59,7 @@ const typeDefs = gql`
   type Query {
     getUser(userID: ID!): User
     getUsers: [User]
-    getListing(listingID: ID!): Listing
+    getListing(listingId: ID!): Listing
     getListings: [Listing]
   }
 
