@@ -79,6 +79,10 @@ const typeDefs = gql`
       image: String!
       price: Int!
     ): Listing
+    updateQuantity(
+      id: ID!
+      quantity: Int!
+    ): Listing
     deleteListing(id: ID!): Listing
   }
 `;
