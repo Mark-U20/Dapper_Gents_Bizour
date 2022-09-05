@@ -70,21 +70,21 @@ export const ADD_TO_CART = gql`
   }
 `;
 export const DELETE_LISTING = gql`
-mutation deleteListing($$deleteListingId: ID!) {
-  deleteListing(id: $deleteListingId) {
-    _id
-    title
-    description
-    category
-    quantity
-    image
-    price
-    listing_author {
+  mutation deleteListing($deleteListingId: ID!) {
+    deleteListing(id: $deleteListingId) {
       _id
-      email
+      title
+      description
+      category
+      quantity
+      image
+      price
+      listing_author {
+        _id
+        email
+      }
     }
-    }
-}
+  }
 `;
 export const UPDATE_QUANTITY = gql`
   mutation updateQuantity($updateQuantityId: ID!, $quantity: Int!) {
