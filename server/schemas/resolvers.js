@@ -131,31 +131,27 @@ const resolvers = {
       });
       return 'session.url';
     },
-  },
 
-
-    async addToCart(_, {listingID}, context) {
-      console.log(context.user)
+    async addToCart(_, { listingID }, context) {
+      console.log(context.user);
 
       if (context.user) {
         return await User.findOneAndUpdate(
-          {_id: context.user._id},
+          { _id: context.user._id },
           {
             $addToSet: {
               shoppingCart: {
-                listingID
-              }
-            }
+                listingID,
+              },
+            },
           },
           {
-            new: true
+            new: true,
           }
         );
       }
-
-    }
-
-  }
+    },
+  },
 };
 
 module.exports = resolvers;

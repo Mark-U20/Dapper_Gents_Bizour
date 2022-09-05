@@ -10,7 +10,8 @@ import {
 } from '../components/storeInfo';
 
 function Landing() {
-  console.log(useContext(UserContext));
+  console.log(useContext(UserContext).userContextValue.getUser);
+
   return (
     <section className="stores">
       <div className="store-front">
