@@ -37,8 +37,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-
-      auth: token ? `Validate ${token}` : '',
+      authorization: token ? `Validate ${token}` : '',
     },
   };
 });

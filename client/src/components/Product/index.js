@@ -24,14 +24,12 @@ const Product = () => {
     const handleCartSave = async (prodID) => {
         
         const token = AuthService.loggedIn() ? AuthService.getToken() : null;
-        
-        
 
         if (!token) {
             return false;
         }
 
-        console.log(data.getListing._id)
+        console.log(data.getListing.title)
         console.log(prodID)
 
         const shoppingCart = await saveToCart({variables: {listingID: data.getListing._id}});

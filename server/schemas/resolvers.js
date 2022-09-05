@@ -35,6 +35,7 @@ const resolvers = {
   Mutation: {
     // mutation called when registering a new user account
     async addUser(_, { email, profilePic, password }, context) {
+      // console.log(context.user)
       try {
         // try to create user
         const userData = await User.create({ email, profilePic, password });
@@ -103,6 +104,7 @@ const resolvers = {
     async updateQuantity(_, { id, quantity }) {
       return Listing.findOneAndUpdate({ _id: id }, { quantity });
     },
+    
     async deleteListing(_, { id, title }) {
       return await Listing.findOneAndDelete({ _id: id }, { title });
     },
@@ -141,17 +143,24 @@ const resolvers = {
           {
             $addToSet: {
               shoppingCart: {
-                listingID,
-              },
-            },
+                _id: listingID,
+                title,
+                quantity,
+                description,
+                image,
+                price,
+              }
+            }
           },
           {
             new: true,
           }
         );
       }
-    },
-  },
-};
+
+    }
+
+  }
+
 
 module.exports = resolvers;
