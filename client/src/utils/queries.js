@@ -54,6 +54,32 @@ export const GET_USER = gql`
   query getUser($userID: ID!) {
     getUser(userID: $userID) {
       _id
+      email
+      listings {
+        _id
+        title
+        description
+        quantity
+        image
+        price
+      }
+      shoppingCart {
+        _id
+        title
+        description
+        quantity
+        image
+        price
+      }
+    }
+  }
+`;
+
+export const GET_USERS = gql`
+  query getUsers {
+    getUsers {
+      _id
+      email
       listings {
         _id
         title

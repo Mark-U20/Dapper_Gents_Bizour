@@ -11,13 +11,13 @@ const resolvers = {
       return await User.findOne({ _id: userID })
         .populate('listings')
         .populate('shoppingCart')
-        .populate('reviews');
+        // .populate('reviews');
     },
     async getUsers() {
       return await User.find()
         .populate('listings')
         .populate('shoppingCart')
-        .populate('reviews');
+        // .populate('reviews');
     },
     async getListing(_, { listingID }, context) {
       console.log(context.user);
@@ -134,22 +134,20 @@ const resolvers = {
       return 'session.url';
     },
 
-    async addToCart(_, { listingID }, context) {
-      console.log(context.user);
+
+    async addToCart(_, { listingId }, context) {
+      console.log(context.user._id);
+
+      const item = await Listing.findOne({_id: listingId});
+
+      console.log(item)
 
       if (context.user) {
         return await User.findOneAndUpdate(
           { _id: context.user._id },
           {
             $addToSet: {
-              shoppingCart: {
-                _id: listingID,
-                title,
-                quantity,
-                description,
-                image,
-                price,
-              },
+              shoppingCart: item._id
             },
           },
           {
