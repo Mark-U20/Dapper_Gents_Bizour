@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as PIXI from 'pixi.js';
-import { Stage, Text } from 'react-pixi-fiber';
+import { Stage, Text, Container } from 'react-pixi-fiber';
 import AnimatedSprite from './Assets/components/AnimatedSprite';
 import RotatingBunny from './Assets/components/RotatingBunny';
 
@@ -20,6 +20,7 @@ const style = {
 function Canvas() {
   // console.log('test');
   const [textures, setTextures] = useState([]);
+  const [filters, setFilters] = useState([]);
   const animationRef = useRef(null);
 
   useEffect(() => {
@@ -43,8 +44,10 @@ function Canvas() {
       PIXI.Loader.shared
         .add('fighter.json', { crossOrigin: 'anonymous' })
         .load(onAssetsLoaded);
+      setFilters([new PIXI.filters.BlurFilter()]);
     } else {
       onAssetsLoaded();
+      setFilters([new PIXI.filters.BlurFilter()]);
     }
   }, []);
 
@@ -62,15 +65,17 @@ function Canvas() {
 
   return (
     <Stage options={options} style={style}>
-      <Text x={100} y={100} text="Click to animate!" />
-      <RotatingBunny position="50,50" />
-      <AnimatedSprite
-        ref={animationRef}
-        position="300,75"
-        textures={textures}
-        interactive={true}
-        pointerdown={toggleAnimation}
-      />
+      <Container filters={filters}>
+        <Text x={100} y={100} text="Click to animate!" />
+        <RotatingBunny position="50,50" />
+        {/* <AnimatedSprite
+          ref={animationRef}
+          position="300,75"
+          textures={textures}
+          interactive={true}
+          pointerdown={toggleAnimation}
+        /> */}
+      </Container>
     </Stage>
   );
 }

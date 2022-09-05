@@ -1,12 +1,11 @@
-import * as React from 'react';
-import { useState, createContext, useCallback, useEffect } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { AppContext } from 'react-pixi-fiber';
 import Bunny from './Bunny';
 
 // http://pixijs.io/examples/#/basics/basic.js
-function RotatingBunny() {
+function RotatingBunny({ ...props }) {
   const [rotation, setRotation] = useState(0);
-  const app = createContext(AppContext);
+  const app = useContext(AppContext);
 
   const animate = useCallback((delta) => {
     // just for fun, let's rotate mr rabbit a little
@@ -23,7 +22,7 @@ function RotatingBunny() {
     };
   }, [app.ticker, animate]);
 
-  return <Bunny rotation={rotation} />;
+  return <Bunny {...props} rotation={rotation} />;
 }
 
 export default RotatingBunny;
