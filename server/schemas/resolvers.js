@@ -106,6 +106,7 @@ const resolvers = {
     async deleteListing(_, { id, title }) {
       return await Listing.findOneAndDelete({ _id: id }, { title });
     },
+
     async createCheckoutSession(_, { userID }) {
       console.log('test 2');
       const user = await User.findOne({ _id: userID });
@@ -131,6 +132,30 @@ const resolvers = {
       return 'session.url';
     },
   },
+
+
+    async addToCart(_, {listingID}, context) {
+      console.log(context.user)
+
+      if (context.user) {
+        return await User.findOneAndUpdate(
+          {_id: context.user._id},
+          {
+            $addToSet: {
+              shoppingCart: {
+                listingID
+              }
+            }
+          },
+          {
+            new: true
+          }
+        );
+      }
+
+    }
+
+  }
 };
 
 module.exports = resolvers;

@@ -85,8 +85,8 @@ const typeDefs = gql`
     ): Listing
     updateQuantity(id: ID!, quantity: Int!): Listing
     deleteListing(id: ID!): Listing
-    addToCart(listingID: ID!): User
     createCheckoutSession(userID: ID!): Url
+    addToCart(listingID: ID!): User
   }
 `;
 
