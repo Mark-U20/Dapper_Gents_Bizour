@@ -15,7 +15,7 @@ const typeDefs = gql`
     email: String!
     profilePic: String
     listings: [Listing]
-    shoppingCart: [Cart]
+    shoppingCart: [Listing]
   }
 
   type Cart {
@@ -83,7 +83,9 @@ const typeDefs = gql`
       image: String!
       price: Int!
     ): Listing
+    updateQuantity(id: ID!, quantity: Int!): Listing
     deleteListing(id: ID!): Listing
+    addToCart(listingID: ID!): User
     createCheckoutSession(userID: ID!): Url
   }
 `;

@@ -21,10 +21,23 @@ export const LOGIN_USER = gql`
     }
   }
 `;
-
-export const DELETE_LISTING = gql`
-  mutation deleteListing($id: Int!) {
-    deleteListings(where: { id: $id }) {
+export const ADD_LISTING = gql`
+  mutation AddListing(
+    $title: String!
+    $category: String!
+    $quantity: Int!
+    $image: String!
+    $price: Int!
+    $description: String!
+  ) {
+    addListing(
+      title: $title
+      category: $category
+      quantity: $quantity
+      image: $image
+      price: $price
+      description: $description
+    ) {
       _id
       title
       description
@@ -32,13 +45,57 @@ export const DELETE_LISTING = gql`
       quantity
       image
       price
-      reviews {
+      listing_author {
         _id
-        review_title
-        review_rating
-        review_text
-        review_author
+        email
       }
+    }
+  }
+`;
+
+export const ADD_TO_CART = gql`
+  mutation addToCart($listingID: ID!) {
+    addToCart(listingID: $listingID) {
+      _id
+      email
+      shoppingCart {
+        _id
+        title
+        quantity
+        description
+        image
+        price
+      }
+    }
+  }
+`;
+export const DELETE_LISTING = gql`
+mutation deleteListing($$deleteListingId: ID!) {
+  deleteListing(id: $deleteListingId) {
+    _id
+    title
+    description
+    category
+    quantity
+    image
+    price
+    listing_author {
+      _id
+      email
+    }
+    }
+}
+`;
+export const UPDATE_QUANTITY = gql`
+  mutation updateQuantity($updateQuantityId: ID!, $quantity: Int!) {
+    updateQuantity(id: $updateQuantityId, quantity: $quantity) {
+      _id
+      title
+      description
+      category
+      quantity
+      image
+      price
     }
   }
 `;

@@ -4,7 +4,7 @@ import { ADD_USER, LOGIN_USER } from '../utils/mutations';
 
 import AuthService from '../utils/auth';
 
-function UserForm({ setUser }) {
+function UserForm({setUser}) {
   // setting thi initial form state
   const [formInput, setFormInput] = useState({
     email: '',
