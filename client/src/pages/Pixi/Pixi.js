@@ -9,22 +9,27 @@ import * as PIXI from 'pixi.js';
 const app = new PIXI.Application({
   width: window.innerWidth,
   height: window.innerHeight,
+//   resizeTo: window,
   backgroundColor: 0x5bba6f,
 });
 
-function Pixi() {
-  const ref = useRef(null);
-  //add a sprite to the stage
-  const [sprite, setSprite] = useState(null);
 
-  //add png element to canvas
-  useEffect(() => {
+function Pixi() {
+    const ref = useRef(null);
+    //add a sprite to the stage
+    //   const [sprite, setSprite] = useState(null);
+    
+    //add png element to canvas
+    useEffect(() => {
+    //   PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
     const sprite = PIXI.Sprite.from(moshiMon);
     sprite.anchor.set(0.5);
     sprite.x = app.screen.width / 2;
     sprite.y = app.screen.height / 2;
+    sprite.width = 100;
+    sprite.height = 100;
     app.stage.addChild(sprite);
-    setSprite(sprite);
+    // setSprite(sprite);
   }, []);
 
   useEffect(
