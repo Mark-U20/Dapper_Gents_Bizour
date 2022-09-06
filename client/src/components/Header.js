@@ -63,8 +63,11 @@ export default function Header({ userTokenData }) {
   console.log('header did header');
   return (
     <>
-      <div>
-        <Menu attached="top">
+      <header className="title-search">
+        <h1 className='site-title'>The Dapper Gents' Biz-Our Bizarre Bazaar</h1>
+        <h3 className='subtitle'>For All the Buzz of the Hour!</h3> 
+      </header>
+        <Menu attached="top" className='header'>
           <Dropdown item icon="bars" simple>
             <Dropdown.Menu>
               <Dropdown.Item as={Link} to="/">
@@ -79,7 +82,6 @@ export default function Header({ userTokenData }) {
               <Dropdown.Item as={Link} to="/random">
                 Random Stuff
               </Dropdown.Item>
-              {/* <Dropdown.Divider />  can split dropdowns*/}
             </Dropdown.Menu>
           </Dropdown>
           {/* Search bar */}
@@ -124,9 +126,6 @@ export default function Header({ userTokenData }) {
             </Menu.Item>
           </Menu.Menu>
         </Menu>
-      </div>
-
-      {/* IDEA: Currency conversion */}
     </>
   );
 }

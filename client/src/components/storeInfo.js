@@ -2,6 +2,8 @@
 // import CompParts from '../images/computer_parts';
 // import RandoPic from '../images/random';
 
+import { Tab } from "semantic-ui-react"
+
 
 export const pokemonStore = {
     name: "Pokemon Store",
@@ -25,3 +27,48 @@ export const randomStore = {
     synopsis: "Because sometimes you're high and just NEED a stuffed wombat",
 
 }
+
+export const constrStores = [
+    {
+        name: "TBA",
+        placeholder: "Under Construction",
+        image: "/images/construction.png",
+        synposis: "Coming soon!"
+    },
+    {
+        name: "TBA",
+        placeholder: "Under Construction",
+        image: "/images/construction.png",
+        synposis: "Coming soon!"
+    },
+    {
+        name: "TBA",
+        placeholder: "Under Construction",
+        image: "/images/construction.png",
+        synposis: "Coming soon!"
+    },
+    {
+        name: "TBA",
+        placeholder: "Under Construction",
+        image: "/images/construction.png",
+        synposis: "Coming soon!"
+    },
+    {
+        name: "TBA",
+        placeholder: "Under Construction",
+        image: "/images/construction.png",
+        synposis: "Coming soon!"
+    },
+    {
+        name: "TBA",
+        placeholder: "Under Construction",
+        image: "/images/construction.png",
+        synposis: "Coming soon!"
+    },
+    {
+        name: "TBA",
+        placeholder: "Under Construction",
+        image: "/images/construction.png",
+        synposis: "Coming soon!"
+    },
+]

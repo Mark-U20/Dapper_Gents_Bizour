@@ -2,18 +2,24 @@ import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import StoreCard from '../components/StoreCard';
 import { UserContext } from './../utils/UserContext';
+import {motion} from 'framer-motion'
 
 import {
   pokemonStore,
   computerStore,
   randomStore,
+  constrStores
 } from '../components/storeInfo';
 
 function Landing() {
   console.log(useContext(UserContext).userContextValue.getUser);
 
   return (
-    <section className="stores">
+    <motion.section className="stores" 
+      initial={{opacity: 0, transition: {duration: 0.5}}}
+      animate={{opacity: 1}}
+      exit={{opacity: 0, transition: {duration: 1}}}
+    >
       <div className="store-front">
         <NavLink to="/pokemon">
           <StoreCard
@@ -44,7 +50,21 @@ function Landing() {
           />
         </NavLink>
       </div>
-    </section>
+      {constrStores.map((store) => {
+        return (
+          <div className='store-front'>
+            {/* <NavLink to='/'> */}
+            <StoreCard 
+              image={store.image}
+              placeholder={store.placeholder}
+              store_title={store.name}
+              synopsis={store.synposis}
+            />
+            {/* </NavLink> */}
+          </div>
+        )
+      })}
+    </motion.section>
   );
 }
 
