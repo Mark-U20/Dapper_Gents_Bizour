@@ -1,10 +1,32 @@
-import { Dropdown, Menu, Image } from 'semantic-ui-react';
+import { Dropdown, Menu, Image, Label, Icon } from 'semantic-ui-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { UserContext } from './../utils/UserContext';
+
 import _ from 'lodash';
 import NavSearch from './NavSearch';
 import AuthService from '../utils/auth';
 
 export default function Header({ userTokenData }) {
+  let cartCount = 1;
+  let cartCountLabel = <></>;
+  useEffect(() => {
+    try {
+      cartCount = UserContext.getContextValue.getUser.shoppingCart.length;
+      if (cartCount > 0) {
+        cartCountLabel = (
+          <Label color="red" attached="bottom left" circular size="mini">
+            cartCount
+          </Label>
+        );
+      } else {
+        cartCountLabel = <></>;
+      }
+    } catch (e) {
+      console.log('there is nothing in the cart or nothing loaded');
+    }
+  }, [UserContext]);
+
   const options = [
     { key: 'user', text: 'Account', icon: 'user', as: Link, to: '/profile' },
 
@@ -22,7 +44,14 @@ export default function Header({ userTokenData }) {
       as: Link,
       to: '/settings',
     },
-    { key: 'sign-out', text: 'Sign Out', icon: 'sign out', as: Link, to: '/', onClick: AuthService.logout },
+    {
+      key: 'sign-out',
+      text: 'Sign Out',
+      icon: 'sign out',
+      as: Link,
+      to: '/',
+      onClick: AuthService.logout,
+    },
   ];
 
   return (
@@ -53,29 +82,39 @@ export default function Header({ userTokenData }) {
             {/* semantic ui augmentation for ref */}
 
             {/* ternary for checking if the user is signed in */}
-            {AuthService.loggedIn() ? 
+            {AuthService.loggedIn() ? (
               <Menu.Item>
                 <Dropdown
-                  trigger={<span>
-                    <Image avatar src={AuthService.getProfile().data.profilePic} /> {AuthService.getProfile().data.email}
-                  </span>}
+                  trigger={
+                    <span>
+                      <Image
+                        avatar
+                        src={AuthService.getProfile().data.profilePic}
+                      />{' '}
+                      {AuthService.getProfile().data.email}
+                    </span>
+                  }
                   options={options}
                   pointing="top left"
                   icon={null}
                 />
-            </Menu.Item> :
-            <Menu.Item name="sign-in" as={Link} to="/sign-in">
-            Sign-in
-          </Menu.Item> }
+              </Menu.Item>
+            ) : (
+              <Menu.Item name="sign-in" as={Link} to="/sign-in">
+                Sign-in
+              </Menu.Item>
+            )}
 
             <Menu.Item
               name=""
               // active={activeItem === 'shopping cart'}
               as={Link}
               to="/cart"
-              icon="shopping cart"
-            ></Menu.Item>
-            
+            >
+              <Icon name="shopping cart" />
+
+              {cartCountLabel}
+            </Menu.Item>
           </Menu.Menu>
         </Menu>
       </div>

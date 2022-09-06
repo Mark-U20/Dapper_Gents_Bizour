@@ -27,8 +27,9 @@ const listingSchema = new Schema({
     required: true,
   },
   listing_author: {
-    type: SchemaTypes.ObjectId,
-    ref: 'User',
+    type: String,
+    required: true,
+    trim: true,
   },
   reviews: [
     {

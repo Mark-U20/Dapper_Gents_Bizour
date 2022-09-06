@@ -15,7 +15,7 @@ const typeDefs = gql`
     email: String!
     profilePic: String
     listings: [Listing]
-    shoppingCart: [Cart]
+    shoppingCart: [Listing]
   }
 
   type Cart {
@@ -27,15 +27,19 @@ const typeDefs = gql`
     price: Float
   }
 
+  type Url {
+    session: String
+  }
+
   type Listing {
     _id: ID!
-    title: String!
-    description: String!
-    category: String!
-    quantity: Int!
-    image: String!
-    price: Float!
-    listing_author: User
+    title: String
+    description: String
+    category: String
+    quantity: Int
+    image: String
+    price: Float
+    listing_author: String
     # reviews: [Review]
   }
 
@@ -55,7 +59,7 @@ const typeDefs = gql`
   type Query {
     getUser(userID: ID!): User
     getUsers: [User]
-    getListing(listingID: ID!): Listing
+    getListing(listingId: ID!): Listing
     getListings: [Listing]
   }
 
@@ -79,7 +83,10 @@ const typeDefs = gql`
       image: String!
       price: Int!
     ): Listing
+    updateQuantity(id: ID!, quantity: Int!): Listing
     deleteListing(id: ID!): Listing
+    createCheckoutSession(userID: ID!): Url
+    addToCart(listingId: ID!): User
   }
 `;
 

@@ -4,7 +4,7 @@ import { ADD_USER, LOGIN_USER } from '../utils/mutations';
 
 import AuthService from '../utils/auth';
 
-function UserForm({ setUser }) {
+function UserForm({setUser}) {
   // setting thi initial form state
   const [formInput, setFormInput] = useState({
     email: '',
@@ -32,6 +32,8 @@ function UserForm({ setUser }) {
 
     // running mutation depending on form type
     const { data } = await mutation();
+
+    console.log(formInput)
     console.log(data);
 
     // setting user and token data from mutation
@@ -40,6 +42,8 @@ function UserForm({ setUser }) {
 
     // setting user prop to user
     setUser(user);
+
+    console.log(token)
 
     // saving token to localstorage and navigating to root
     AuthService.login(token);

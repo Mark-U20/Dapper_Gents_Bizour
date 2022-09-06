@@ -5,7 +5,7 @@ const secret = process.env.JWT_SECRET || 'super secret but also public';
 console.log('SUPER SECRET: ' + secret);
 
 module.exports = {
-  authMiddleware({ req }) {
+  authMiddleware({ req }, res) {
     // grabbing defined authorization data
     let token = req.headers.authorization;
 
@@ -17,7 +17,7 @@ module.exports = {
     if (!token.includes('Validate')) {
       throw new ApolloError('invalid token');
     }
-
+    
     // actually grabbing token string
     token = token.split(' ').pop().trim();
 
@@ -38,7 +38,7 @@ module.exports = {
   },
 
   // method for creating a token on user login / signup
-  async signToken(user_data) {
+  signToken(user_data) {
     return jwt.sign({ data: user_data }, secret, {
       expiresIn: '14d',
     });
