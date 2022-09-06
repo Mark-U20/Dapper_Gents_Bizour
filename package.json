@@ -1,6 +1,6 @@
 {
-  "name": "excellent_ecommerce",
-  "version": "1.0.0",
+  "name": "biz-our_bizarre_bazaar",
+  "version": "1.2.3",
   "description": "",
   "main": "server/server.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "install:server": "cd ./server && npm i",
     "install:client": "cd ./client && npm i",
     "install:dep": "npm run install:server && npm run install:client",
-    "install": "npm i && npm run install:dep"
+    "install": "npm run install:dep && npm i"
   },
   "keywords": [],
   "author": "dapper_gents",
