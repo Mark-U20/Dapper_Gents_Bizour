@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProductCard from "../components/ProductCard";
+import { ShowRandomListings } from '../components';
 // import { random_inventory } from "../store_inventory/random_inventory";
 
 
@@ -16,6 +17,7 @@ function Random() {
             {/* {inventory.map((item, i) => {
                 return <ProductCard key={i} name={item.name} price={item.price} image={item.image} placeholder={item.placeholder} rating={item.rating} />
             })} */}
+            <ShowRandomListings />
         </section>
     )
 }

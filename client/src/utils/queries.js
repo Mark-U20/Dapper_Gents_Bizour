@@ -66,8 +66,8 @@ export const GET_USER = gql`
 `;
 
 export const GET_USER_LISTINGS = gql`
-query Query($userId: ID!) {
-  getUserListings(userID: $userId) {
+query Query($email: String!) {
+  getUserListings(email: $email) {
     listings {
       _id
       title

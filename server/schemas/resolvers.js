@@ -13,8 +13,8 @@ const resolvers = {
         .populate('shoppingCart')
         // .populate('reviews');
     },
-    async getUserListings(_, { userID }) {
-      return await User.findOne({ _id: userID })
+    async getUserListings(_, { email }) {
+      return await User.findOne({ email: email })
         .populate('listings')
     },
     async getUsers() {

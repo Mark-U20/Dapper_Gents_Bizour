@@ -34,5 +34,23 @@
         "image": "images/metapodCard.jpeg",
         "price": 5,
         "listing_author": "justyn@bizour.com"
+    },
+    {
+        "title": "Computer",
+        "description": "Boop boop. Beep beep",
+        "category": "Computer",
+        "quantity": 69,
+        "image": "images/brokenComputer.jpeg",
+        "price": 420,
+        "listing_author": "gunnar@bizour.com"
+    },
+    {
+        "title": "Random",
+        "description": "Harambe didn't die for this.",
+        "category": "Random",
+        "quantity": 69,
+        "image": "images/angelHarambe.jpeg",
+        "price": 420,
+        "listing_author": "logan@bizour.com"
     }
 ]

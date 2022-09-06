@@ -1,13 +1,10 @@
 import { useQuery } from '@apollo/client';
 import { NavLink } from 'react-router-dom';
-import { GET_LISTINGS } from '../utils/queries';
 import { GET_USER_LISTINGS } from '../utils/queries';
 
-function ShowListings() {
-     // const { error, loading, data } = useQuery(GET_LISTINGS);
-     const { error, loading, data } = useQuery(GET_USER_LISTINGS, {
-        // This ID is for justyn@bizour.com
-        variables: {userId: "631763fc8735ff3fd5a92422"}
+function ShowPokemonListings() {
+    const { error, loading, data } = useQuery(GET_USER_LISTINGS, {
+        variables: { email: "justyn@bizour.com" }
     });
     return (
         <div className='store-list'>
@@ -45,4 +42,4 @@ function ShowListings() {
     )
 };
 
-export default ShowListings;
+export default ShowPokemonListings;
