@@ -4,7 +4,6 @@ import { Search, Menu } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useReducer, useEffect, useState, useRef, useCallback } from 'react';
 import _ from 'lodash';
-import exampleSearchData from './DISCARD/testingSearch.json';
 
 // defining what the search should be on init
 const searchInit = {
@@ -34,11 +33,23 @@ function searchReducer(currState, searchAction) {
   }
 }
 
-export default function NavSearch() {
+export default function NavSearch({searchData}) {
   const navigate = useNavigate();
   // reducer and search states for search bar
   const [searchState, searchDispatch] = useReducer(searchReducer, searchInit);
   const { loading, results, value } = searchState;
+  const { loading: qLoading, data: qData, error: qError } = useQuery(GET_LISTINGS);
+  const [searchDataObj, setSearchDataObj] = useState({data: qData});
+
+
+  /* Nice To Have:
+   * should we be setting the listings query to a global state?
+   * i remember JD talking about having states that can be accessed from any page
+   * i thin ideally, we would implement that for the listing and just re-set the listings?
+   * -fixedOtter
+  */
+
+  const timeoutRef = useRef();
 
   //state holding the path to the clicked search item
   const [searchPath, setSearchPath] = useState('');
@@ -50,16 +61,6 @@ export default function NavSearch() {
       navigate(path);
     }
   }, [searchPath]);
-
-  /* Nice To Have:
-   * should we be setting the listings query to a global state?
-   * i remember JD talking about having states that can be accessed from any page
-   * i thin ideally, we would implement that for the listing and just re-set the listings?
-   * -fixedOtter
-   */
-  const searchData = exampleSearchData.data.getListings;
-
-  const timeoutRef = useRef();
 
   // semantics search handler
   const searchChangeHandler = useCallback((datBoi, data) => {
@@ -77,8 +78,9 @@ export default function NavSearch() {
 
       searchDispatch({
         type: 'FINISH',
-        results: _.filter(searchData, doItMatch),
+        results: _.filter(qData.getListings, doItMatch),
       });
+
     }, 300);
   }, []);
 
