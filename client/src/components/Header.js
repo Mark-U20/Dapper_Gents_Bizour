@@ -64,68 +64,70 @@ export default function Header({ userTokenData }) {
   return (
     <>
       <header className="title-search">
-        <h1 className='site-title'>The Dapper Gents' Biz-Our Bizarre Bazaar</h1>
-        <h3 className='subtitle'>For All the Buzz of the Hour!</h3> 
+        <h1 className="site-title">The Dapper Gents' Biz-Our Bizarre Bazaar</h1>
+        <h3 className="subtitle">For All the Buzz of the Hour!</h3>
       </header>
-        <Menu attached="top" className='header'>
-          <Dropdown item icon="bars" simple>
-            <Dropdown.Menu>
-              <Dropdown.Item as={Link} to="/">
-                Home
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/pokemon">
-                Pokemon
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/computer">
-                Computer Parts
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/random">
-                Random Stuff
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          {/* Search bar */}
-          {qData && <NavSearch searchData={qData} />}
+      <Menu attached="top" className="header">
+        <Dropdown item icon="bars" simple>
+          <Dropdown.Menu>
+            <Dropdown.Item as={Link} to="/">
+              Home
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/pokemon">
+              Pokemon
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/computer">
+              Computer Parts
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/random">
+              Random Stuff
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        {/* Search bar */}
+        {qData && <NavSearch searchData={qData} />}
 
-          <Menu.Menu position="right" stackable="true" dropdown="true">
-            {/* semantic ui augmentation for ref */}
+        <Menu.Menu position="right" stackable="true" dropdown="true">
+          {/* semantic ui augmentation for ref */}
 
-            {/* ternary for checking if the user is signed in */}
-            {AuthService.loggedIn() ? (
-              <Menu.Item>
-                <Dropdown
-                  trigger={
-                    <span>
-                      <Image
-                        avatar
-                        src={AuthService.getProfile().data.profilePic}
-                      />{' '}
+          {/* ternary for checking if the user is signed in */}
+          {AuthService.loggedIn() ? (
+            <Menu.Item>
+              <Dropdown
+                trigger={
+                  <span>
+                    <Image
+                      avatar
+                      src={AuthService.getProfile().data.profilePic}
+                    />{' '}
+                    <div className="show-email">
                       {AuthService.getProfile().data.email}
-                    </span>
-                  }
-                  options={options}
-                  pointing="top left"
-                  icon={null}
-                />
-              </Menu.Item>
-            ) : (
-              <Menu.Item name="sign-in" as={Link} to="/sign-in">
-                Sign-in
-              </Menu.Item>
-            )}
-
-            <Menu.Item
-              name=""
-              // active={activeItem === 'shopping cart'}
-              as={Link}
-              to="/cart"
-            >
-              <Icon name="shopping cart" />
-
-              {cartCountLabel}
+                    </div>
+                  </span>
+                }
+                options={options}
+                pointing="top left"
+                icon={null}
+              />
             </Menu.Item>
-          </Menu.Menu>
-        </Menu>
+          ) : (
+            <Menu.Item name="sign-in" as={Link} to="/sign-in">
+              Sign-in
+            </Menu.Item>
+          )}
+
+          <Menu.Item
+            name=""
+            // active={activeItem === 'shopping cart'}
+            as={Link}
+            to="/cart"
+          >
+            <Icon name="shopping cart" />
+
+            {cartCountLabel}
+          </Menu.Item>
+        </Menu.Menu>
+      </Menu>
     </>
   );
 }

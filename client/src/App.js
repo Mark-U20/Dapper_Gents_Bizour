@@ -17,7 +17,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import decode from 'jwt-decode';
 import UserForm from './pages/UserForm';
 import { UserContext } from './utils/UserContext';
-import {AnimatePresence} from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   const [userToken, setUserToken] = useState(null);
@@ -27,6 +27,7 @@ function App() {
   const [getUser, { error, loading, data }] = useLazyQuery(GET_USER);
   if (error) throw new ApolloError();
   // console.log(AuthService.getProfile().data._id);
+  // console.log(getUser);
   useEffect(() => {
     // grabbing token from localstorage
     const token = localStorage.getItem('id_token');
@@ -35,11 +36,15 @@ function App() {
     if (!token) {
       return;
     }
+
+    getUser({
+      variables: { userID: AuthService.getProfile().data._id },
+    });
     //if there is a token, then get user
-    getUser({ variables: { userID: AuthService.getProfile().data._id } });
     console.log('being used');
     // if it didn't break out, then decode and set to user
     const decoded = decode(token);
+
     setUserToken({
       ...userToken,
       token: decoded,
@@ -50,6 +55,7 @@ function App() {
     console.log('data was changed');
     console.log(data);
     if (data && loading === false) {
+      console.log('settings context');
       console.log(data);
       setUserContextValue(data);
     }

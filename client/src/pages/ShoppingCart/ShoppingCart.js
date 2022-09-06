@@ -42,17 +42,19 @@ const ShoppingCart = () => {
     try {
       if (userContextValue.getUser.shoppingCart !== undefined) {
         userContextValue.getUser.shoppingCart.forEach((item) => {
+          console.log(`item: ${item}`);
           console.log(item);
           cart.push(item);
         });
-        cartItems = cartItems.map((item) => (
+        console.log('adding cart items');
+        cartItems = cart.map((item) => (
           <CartCard
             title={item.title}
             price={item.price}
             image={item.image}
           ></CartCard>
         ));
-
+        console.log(`cartItems: ${cartItems}`);
         console.log(cart);
       }
     } catch (err) {}
