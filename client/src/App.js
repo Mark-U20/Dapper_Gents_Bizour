@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Header, Footer, Product } from './components';
-import { Landing, Pokemon, Random, ComputerParts, ShoppingCart } from './pages';
+import { Landing, Pokemon, Random, ComputerParts, ShoppingCart, Pixi } from './pages';
 import { Routes, Route } from 'react-router-dom';
 import decode from 'jwt-decode';
 
@@ -22,6 +22,7 @@ function App() {
 
     // if it didn't break out, then decode and set to user
     const decoded = decode(token);
+    console.log(decoded)
     setUserToken({
       ...userToken,
       token: decoded,
@@ -38,6 +39,7 @@ function App() {
           <Route exact path="/computer" element={<ComputerParts />} />
           <Route exact path="/random" element={<Random />} />
           <Route path="/products/:id" element={<Product />} />
+          <Route exact path="/pixi" element={<Pixi />} />
           <Route
             exact
             path="/sign-in"
