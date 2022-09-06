@@ -9,7 +9,6 @@ import {
   Random,
   ComputerParts,
   ShoppingCart,
-  Canvas,
   Wishlist,
   Settings,
 } from './pages';
@@ -73,7 +72,6 @@ function App() {
               />
               <Route exact path="/cart" element={<ShoppingCart />} />
               <Route exact path="/checkout" element={''} />
-              <Route exact path="/pixi" element={<Canvas />} />
               <Route exact path="/wishlist" element={<Wishlist />} />
               <Route exact path="/settings" element={<Settings />} />
               {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
