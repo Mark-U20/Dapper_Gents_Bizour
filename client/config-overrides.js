@@ -11,15 +11,4 @@ module.exports = {
       return config;
     };
   },
-  webpack: function (config, env) {
-    config.resolve.alias = {
-      'react-pixi$': 'react-pixi-fiber/react-pixi-alias',
-    };
-
-    config.module.rules.push({
-      exclude: /node_modules\/(?!(react-pixi-fiber|ANOTHER-ONE)\/).*/,
-    });
-
-    return config;
-  },
 };
