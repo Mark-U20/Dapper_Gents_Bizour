@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import StoreCard from '../components/StoreCard';
 import { UserContext } from './../utils/UserContext';
+import {motion} from 'framer-motion'
 
 import {
   pokemonStore,
@@ -14,7 +15,11 @@ function Landing() {
   console.log(useContext(UserContext).userContextValue.getUser);
 
   return (
-    <section className="stores">
+    <motion.section className="stores" 
+      initial={{opacity: 0, transition: {duration: 0.5}}}
+      animate={{opacity: 1}}
+      exit={{opacity: 0, transition: {duration: 1}}}
+    >
       <div className="store-front">
         <NavLink to="/pokemon">
           <StoreCard
@@ -59,7 +64,7 @@ function Landing() {
           </div>
         )
       })}
-    </section>
+    </motion.section>
   );
 }
 

@@ -13,10 +13,11 @@ import {
   Wishlist,
   Settings,
 } from './pages';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import decode from 'jwt-decode';
 import UserForm from './pages/UserForm';
 import { UserContext } from './utils/UserContext';
+import {AnimatePresence} from 'framer-motion';
 
 function App() {
   const [userToken, setUserToken] = useState(null);
@@ -56,29 +57,33 @@ function App() {
   // setUserContextValue(data);
   //123
   // // UserContext;
+
+  const location = useLocation();
   return (
     <>
       <UserContext.Provider value={{ userContextValue, setUserContextValue }}>
         <Header userTokenData={userToken} />
         <main className="mainPage">
-          <Routes>
-            <Route exact path="/" element={<Landing />} />
-            <Route exact path="/pokemon" element={<Pokemon />} />
-            <Route exact path="/computer" element={<ComputerParts />} />
-            <Route exact path="/random" element={<Random />} />
-            <Route path="/products/:id" element={<Product />} />
-            <Route
-              exact
-              path="/sign-in"
-              element={<UserForm setUser={setUserToken} />}
-            />
-            <Route exact path="/cart" element={<ShoppingCart />} />
-            <Route exact path="/checkout" element={''} />
-            <Route exact path="/pixi" element={<Canvas />} />
-            <Route exact path="/wishlist" element={<Wishlist />} />
-            <Route exact path="/settings" element={<Settings />} />
-            {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
-          </Routes>
+          <AnimatePresence>
+            <Routes location={location} key={location.pathname}>
+              <Route exact path="/" element={<Landing />} />
+              <Route exact path="/pokemon" element={<Pokemon />} />
+              <Route exact path="/computer" element={<ComputerParts />} />
+              <Route exact path="/random" element={<Random />} />
+              <Route path="/products/:id" element={<Product />} />
+              <Route
+                exact
+                path="/sign-in"
+                element={<UserForm setUser={setUserToken} />}
+              />
+              <Route exact path="/cart" element={<ShoppingCart />} />
+              <Route exact path="/checkout" element={''} />
+              <Route exact path="/pixi" element={<Canvas />} />
+              <Route exact path="/wishlist" element={<Wishlist />} />
+              <Route exact path="/settings" element={<Settings />} />
+              {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
+            </Routes>
+          </AnimatePresence>
         </main>
       </UserContext.Provider>
       <Footer />
