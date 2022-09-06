@@ -13,6 +13,7 @@
     "pixi.js": "^6.5.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "react-pixi-fiber": "^1.0.1",
@@ -50,8 +51,7 @@
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",
     "install": "^0.13.0",
-    "npm": "^8.19.0",
-    "react-app-rewired": "^2.2.1"
+    "npm": "^8.19.0"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
