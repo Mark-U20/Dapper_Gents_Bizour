@@ -12,8 +12,6 @@ import {
 } from '../components/storeInfo';
 
 function Landing() {
-  console.log(useContext(UserContext).userContextValue.getUser);
-
   return (
     <motion.section className="stores" 
       initial={{opacity: 0, transition: {duration: 0.5}}}
