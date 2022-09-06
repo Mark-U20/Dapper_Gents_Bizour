@@ -21,14 +21,7 @@ code {
     monospace;
 }
 
-/* body {
-  display: flex;
-  flex-direction: column;
-} */
-
-
 .mainPage {
-  /* height: 80vh; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -58,22 +51,19 @@ code {
   margin: 20px;
 }
 
-/* .header {
 
-} */
 
 .title-search {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 20vw;
   background: radial-gradient(rgb(20, 116, 53), rgb(130, 155, 197));
   background-size: 400% 400%;
   animation: gradient 30s ease infinite;
   color: rgba(28, 28, 8, 0.975);
   padding: 7px 20px;
-  border-radius: 50px;
-  box-shadow: 2px 2px 5px 5px gray;
+  margin: 0;
+  box-shadow: 5px 5px 5px 5px gray;
   text-shadow: 2px 2px 5px whitesmoke;
 }
 
@@ -81,26 +71,14 @@ code {
   color: black;
   margin-bottom: 0;
   font-family: Combo, cursive;
+  font-size: calc(1.3em + 1.5vw);
 }
 
 .subtitle {
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   margin-top: 0;
   padding-top: 0;
+  font-size: calc(.7em + 1vw)
 }
-
-/* .store_card {
-  height: 100%;
-  margin: 20px;
-} */
-
-/* 
-.store-list {
-  display: flex;
-  align-items: flex-start;
-} */
 
 .listings {
   display: flex;
@@ -114,8 +92,15 @@ code {
   margin: 10px 200px;
 }
 
-
-
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: aquamarine;
+}
 
 @media screen and (min-width: 480px) {
 
@@ -126,41 +111,8 @@ code {
     min-height: 80vh;
   }
 
-  .stores {
-    /* flex-direction: column;
-    align-items: flex-start; */
-    /* padding-top: 10%; */
-  }
-
-
-  .store-front {
-    /* width: 20vw;
-    height: 20vh; */
-  }
-
 }
-
-  @media screen and (min-width: 768px) {
-    
-    .stores {
-      /* flex-direction: row;
-      padding-top: 5%; */
-      
-    }
   
-    
-  }
-  
-  
-  .checkout-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    background-color: aquamarine;
-  }
 
   @keyframes gradient {
     0% {

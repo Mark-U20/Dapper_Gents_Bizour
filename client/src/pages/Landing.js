@@ -18,7 +18,7 @@ function Landing() {
     <motion.section className="stores" 
       initial={{opacity: 0, transition: {duration: 0.5}}}
       animate={{opacity: 1}}
-      exit={{opacity: 0, transition: {duration: 0.5}}}
+      exit={{opacity: 0, transition: {duration: 1}}}
     >
       <div className="store-front">
         <NavLink to="/pokemon">

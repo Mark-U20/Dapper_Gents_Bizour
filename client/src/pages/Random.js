@@ -12,9 +12,9 @@ function Random() {
 
     return (
         <motion.section
-            initial={{opacity: 0}}
+            initial={{opacity: 0, transition: {duration: 0.5}}}
             animate={{opacity: 1}}
-            exit={{opacity: 0}}
+            exit={{opacity: 0, transition: {duration: .5}}}
         >
             <h1>Random Stuff</h1>
             <p>Your home for random crap</p>
