@@ -9,7 +9,10 @@
     "dev": "concurrently  \"npm run dev:server\"  \"npm run dev:client\"",
     "start": "cd ./server && npm start",
     "seed": "cd ./server/seeders && node seed.js",
-    "format": "prettier --write \"client/**/*.{js,jsx}\" && prettier --write \"server/**/*.{js,jsx}\""
+    "format": "prettier --write \"client/**/*.{js,jsx}\" && prettier --write \"server/**/*.{js,jsx}\"",
+    "install:server": "cd ./server && npm i",
+    "install:client": "cd ./client && npm i",
+    "install": "npm install:server && npm install:client"
   },
   "keywords": [],
   "author": "dapper_gents",
