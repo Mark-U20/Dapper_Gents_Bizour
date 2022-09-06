@@ -20,7 +20,7 @@ db.once('open', async() => {
             const {_id, listing_author} = await Listing.create(listingSeeds[i]);
             console.log(listing_author)
             console.log(_id)
-            const updateUser = User.findOneAndUpdate(
+            const updateUser =  await User.findOneAndUpdate(
                 {email: listing_author},
                 { $addToSet: {
                     listings: _id,

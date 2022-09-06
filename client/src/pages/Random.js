@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProductCard from "../components/ProductCard";
+import { ShowRandomListings } from '../components';
 // import { random_inventory } from "../store_inventory/random_inventory";
 import {motion} from 'framer-motion';
 

@@ -1,10 +1,8 @@
-import { ShowListings } from '../../components';
 import {motion} from 'framer-motion';
+import { ShowComputerListings } from '../../components';
 import './style.css';
 
 export default function ComputerFarts() {
-
-
 
   return (
     <motion.div
@@ -13,7 +11,7 @@ export default function ComputerFarts() {
       exit={{opacity: 0, transition: {duration: .5}}}
     >
       <h1>Yes this is text</h1>
-      <ShowListings />
+      <ShowComputerListings />
     </motion.div>
   );
 }
