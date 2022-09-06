@@ -3,7 +3,7 @@ import { useReducer, useEffect, useState, useRef, useCallback } from 'react';
 // import './Assets/Styles/pixiStyles.css';
 import { createRoot } from 'react-dom/client';
 import { Sprite, Stage } from 'react-pixi-fiber';
-import * as PIXI from 'pixi.js';
+// import * as PIXI from 'pixi.js';
 
 const app = new PIXI.Application({
 //   width: window.innerWidth,

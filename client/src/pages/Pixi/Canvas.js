@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import * as PIXI from 'pixi.js';
+// import * as PIXI from 'pixi.js';
 import { Stage, Text, Container } from 'react-pixi-fiber';
 import AnimatedSprite from './Assets/components/AnimatedSprite';
 import RotatingBunny from './Assets/components/RotatingBunny';
