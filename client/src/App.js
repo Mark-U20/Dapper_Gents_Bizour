@@ -26,7 +26,6 @@ function App() {
   //getUser will update the global user context after there is a user that is signed in
   const [getUser, { error, loading, data }] = useLazyQuery(GET_USER);
   if (error) throw new ApolloError();
-  // console.log(AuthService.getProfile().data._id);
   useEffect(() => {
     // grabbing token from localstorage
     const token = localStorage.getItem('id_token');
@@ -37,7 +36,6 @@ function App() {
     }
     //if there is a token, then get user
     getUser({ variables: { userID: AuthService.getProfile().data._id } });
-    console.log('being used');
     // if it didn't break out, then decode and set to user
     const decoded = decode(token);
     setUserToken({
@@ -47,10 +45,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log('data was changed');
-    console.log(data);
     if (data && loading === false) {
-      console.log(data);
       setUserContextValue(data);
     }
   }, [data]);
