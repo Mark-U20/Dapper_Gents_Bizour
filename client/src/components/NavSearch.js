@@ -4,7 +4,6 @@ import { Search, Menu } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useReducer, useEffect, useState, useRef, useCallback } from 'react';
 import _ from 'lodash';
-import exampleSearchData from './DISCARD/testingSearch.json';
 
 // defining what the search should be on init
 const searchInit = {
@@ -49,55 +48,22 @@ export default function NavSearch({searchData}) {
    * i thin ideally, we would implement that for the listing and just re-set the listings?
    * -fixedOtter
   */
-  // const searchData = exampleSearchData.data.getListings;
-
-  // setSearchDataObj({
-  //   ...searchDataObj,
-  //   data: qData
-  // });
-
-  
-  // var searchData;
-
-  // listens for the query to be updated and sets the searchData
-  // useEffect(() => {
-  //   try {
-  //     // setSearchDataObj({
-  //     //   data: qData
-  //     // });
-  //     // searchData = qData;
-  //     console.log(searchData);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-
-  // }, [qData]);
-
-      
 
   const timeoutRef = useRef();
 
   //state holding the path to the clicked search item
   const [searchPath, setSearchPath] = useState('');
   //listens to searchPath and navigates to the path when it changes
-  // useEffect(() => {
-  //   if (searchPath.length > 2) {
-  //     const path = searchPath;
-  //     setSearchPath('');
-  //     navigate(path);
-  //   }
-  // }, [searchPath]);
-
-  if (qData) {
-    console.log('init data', searchData);
-  }
+  useEffect(() => {
+    if (searchPath.length > 2) {
+      const path = searchPath;
+      setSearchPath('');
+      navigate(path);
+    }
+  }, [searchPath]);
 
   // semantics search handler
   const searchChangeHandler = useCallback((datBoi, data) => {
-    console.log('data again', searchData);
-    console.log('search end');
-
-
     clearTimeout(timeoutRef.current);
     searchDispatch({ type: 'START', query: data.value });
 
@@ -109,7 +75,6 @@ export default function NavSearch({searchData}) {
 
       const regularExpression = new RegExp(_.escapeRegExp(data.value), 'i');
       const doItMatch = (query) => regularExpression.test(query.title);
-
 
       searchDispatch({
         type: 'FINISH',
