@@ -48,14 +48,14 @@ function Landing() {
       {constrStores.map((store) => {
         return (
           <div className='store-front'>
-            <NavLink to='/'>
+            {/* <NavLink to='/'> */}
             <StoreCard 
               image={store.image}
               placeholder={store.placeholder}
               store_title={store.name}
-              synopsis={store.synopsis}
+              synopsis={store.synposis}
             />
-            </NavLink>
+            {/* </NavLink> */}
           </div>
         )
       })}

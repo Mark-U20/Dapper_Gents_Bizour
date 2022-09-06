@@ -57,7 +57,7 @@ export default function Header({ userTokenData }) {
   return (
     <>
       <div>
-        <Menu attached="top">
+        <Menu attached="top" className='header'>
           <Dropdown item icon="bars" simple>
             <Dropdown.Menu>
               <Dropdown.Item as={Link} to="/">
@@ -76,10 +76,14 @@ export default function Header({ userTokenData }) {
             </Dropdown.Menu>
           </Dropdown>
           {/* Search bar */}
-          <NavSearch />
 
+          <div className="title-search">
+            <h1 className='site-title'>The Dapper Gents' Biz-Our Bizarre Bazaar</h1>
+              <h3 className='subtitle'>For All the Buzz of the Hour!</h3> 
+          </div>
           <Menu.Menu position="right" stackable="true" dropdown="true">
             {/* semantic ui augmentation for ref */}
+            <NavSearch />
 
             {/* ternary for checking if the user is signed in */}
             {AuthService.loggedIn() ? (

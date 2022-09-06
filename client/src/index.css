@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Combo&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -49,7 +51,31 @@ code {
   align-items: center;
   justify-content: center;
   margin: 20px;
+}
 
+/* .header {
+
+} */
+
+.title-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20vw;
+}
+
+.site-title {
+  color: black;
+  margin-bottom: 0;
+  font-family: Combo, cursive;
+}
+
+.subtitle {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  margin-top: 0;
+  padding-top: 0;
 }
 
 /* .store_card {
