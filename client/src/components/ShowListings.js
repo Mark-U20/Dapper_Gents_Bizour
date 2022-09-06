@@ -4,11 +4,11 @@ import { GET_LISTINGS } from '../utils/queries';
 import { GET_USER_LISTINGS } from '../utils/queries';
 
 function ShowListings() {
-    const { error, loading, data } = useQuery(GET_LISTINGS);
-    // const { error, loading, data } = useQuery(GET_USER_LISTINGS, {
-    //     variables: {userId: "631763fc8735ff3fd5a92422"}
-    // });
-    console.log(data);
+     // const { error, loading, data } = useQuery(GET_LISTINGS);
+     const { error, loading, data } = useQuery(GET_USER_LISTINGS, {
+        // This ID is for justyn@bizour.com
+        variables: {userId: "631763fc8735ff3fd5a92422"}
+    });
     return (
         <div className='store-list'>
             {error && <p className="error">{error.message}</p>}
@@ -17,7 +17,7 @@ function ShowListings() {
 
             {data && (
                 <div className='listings'>
-                    {data.getListings.map((listing) => (
+                    {data.getUserListings.listings.map((listing) => (
                         <>
                             <NavLink to={`/products/${listing._id}`}>
                                 <div className="ui card" key={listing._id}>
