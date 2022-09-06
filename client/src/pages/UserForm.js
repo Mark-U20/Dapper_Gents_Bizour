@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER, LOGIN_USER } from '../utils/mutations';
+import {motion} from 'framer-motion';
 
 import AuthService from '../utils/auth';
 
@@ -58,7 +59,11 @@ function UserForm({setUser}) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <motion.form onSubmit={handleSubmit}
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      exit={{opacity: 0}}
+    >
       <h1>{formInput.type[0].toUpperCase() + formInput.type.slice(1)}</h1>
       <input
         name="email"
@@ -99,7 +104,7 @@ function UserForm({setUser}) {
         </label>
       </div>
       <button>Submit</button>
-    </form>
+    </motion.form>
   );
 }
 

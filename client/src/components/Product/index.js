@@ -5,6 +5,7 @@ import { GET_LISTING } from "../../utils/queries";
 import { ADD_TO_CART } from "../../utils/mutations";
 import AuthService from '../../utils/auth';
 import {saveItemIds, getCartItemIds} from '../../utils/localStorage';
+import {motion} from 'framer-motion';
 import './style.css'
 
 const Product = () => {
@@ -38,7 +39,11 @@ const Product = () => {
     }
 
     return (
-        <div className='product'>
+        <motion.div className='product'
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+        >
             {error && <p className="error">{error.message}</p>}
 
             {loading && <p>Loading...</p>}
@@ -65,7 +70,7 @@ const Product = () => {
                         <button className="ui primary button" onClick={() => handleCartSave(data.getListing._id)}>Add to Cart</button>
                     </div>
             )}
-        </div>
+        </motion.div>
     )
 }
 
