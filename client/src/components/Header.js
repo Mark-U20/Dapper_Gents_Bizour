@@ -3,6 +3,9 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { UserContext } from './../utils/UserContext';
 
+import { useQuery } from '@apollo/client';
+import { GET_LISTINGS } from '../utils/queries';
+
 import _ from 'lodash';
 import NavSearch from './NavSearch';
 import AuthService from '../utils/auth';
@@ -10,6 +13,9 @@ import AuthService from '../utils/auth';
 export default function Header({ userTokenData }) {
   let cartCount = 1;
   let cartCountLabel = <></>;
+
+  const { data: qData } = useQuery(GET_LISTINGS);
+
   useEffect(() => {
     try {
       cartCount = UserContext.getContextValue.getUser.shoppingCart.length;
@@ -54,6 +60,7 @@ export default function Header({ userTokenData }) {
     },
   ];
 
+  console.log('header did header');
   return (
     <>
       <div>
@@ -76,7 +83,7 @@ export default function Header({ userTokenData }) {
             </Dropdown.Menu>
           </Dropdown>
           {/* Search bar */}
-          <NavSearch />
+          {qData && <NavSearch searchData={qData} />}
 
           <Menu.Menu position="right" stackable="true" dropdown="true">
             {/* semantic ui augmentation for ref */}

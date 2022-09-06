@@ -34,35 +34,70 @@ function searchReducer(currState, searchAction) {
   }
 }
 
-export default function NavSearch() {
+export default function NavSearch({searchData}) {
   const navigate = useNavigate();
   // reducer and search states for search bar
   const [searchState, searchDispatch] = useReducer(searchReducer, searchInit);
   const { loading, results, value } = searchState;
+  const { loading: qLoading, data: qData, error: qError } = useQuery(GET_LISTINGS);
+  const [searchDataObj, setSearchDataObj] = useState({data: qData});
 
-  //state holding the path to the clicked search item
-  const [searchPath, setSearchPath] = useState('');
-  //listens to searchPath and navigates to the path when it changes
-  useEffect(() => {
-    if (searchPath.length > 2) {
-      const path = searchPath;
-      setSearchPath('');
-      navigate(path);
-    }
-  }, [searchPath]);
 
   /* Nice To Have:
    * should we be setting the listings query to a global state?
    * i remember JD talking about having states that can be accessed from any page
    * i thin ideally, we would implement that for the listing and just re-set the listings?
    * -fixedOtter
-   */
-  const searchData = exampleSearchData.data.getListings;
+  */
+  // const searchData = exampleSearchData.data.getListings;
+
+  // setSearchDataObj({
+  //   ...searchDataObj,
+  //   data: qData
+  // });
+
+  
+  // var searchData;
+
+  // listens for the query to be updated and sets the searchData
+  // useEffect(() => {
+  //   try {
+  //     // setSearchDataObj({
+  //     //   data: qData
+  //     // });
+  //     // searchData = qData;
+  //     console.log(searchData);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+
+  // }, [qData]);
+
+      
 
   const timeoutRef = useRef();
 
+  //state holding the path to the clicked search item
+  const [searchPath, setSearchPath] = useState('');
+  //listens to searchPath and navigates to the path when it changes
+  // useEffect(() => {
+  //   if (searchPath.length > 2) {
+  //     const path = searchPath;
+  //     setSearchPath('');
+  //     navigate(path);
+  //   }
+  // }, [searchPath]);
+
+  if (qData) {
+    console.log('init data', searchData);
+  }
+
   // semantics search handler
   const searchChangeHandler = useCallback((datBoi, data) => {
+    console.log('data again', searchData);
+    console.log('search end');
+
+
     clearTimeout(timeoutRef.current);
     searchDispatch({ type: 'START', query: data.value });
 
@@ -75,10 +110,12 @@ export default function NavSearch() {
       const regularExpression = new RegExp(_.escapeRegExp(data.value), 'i');
       const doItMatch = (query) => regularExpression.test(query.title);
 
+
       searchDispatch({
         type: 'FINISH',
-        results: _.filter(searchData, doItMatch),
+        results: _.filter(qData.getListings, doItMatch),
       });
+
     }, 300);
   }, []);
 
