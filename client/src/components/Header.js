@@ -81,9 +81,9 @@ export default function Header({ userTokenData }) {
             <h1 className='site-title'>The Dapper Gents' Biz-Our Bizarre Bazaar</h1>
               <h3 className='subtitle'>For All the Buzz of the Hour!</h3> 
           </div>
+            <NavSearch />
           <Menu.Menu position="right" stackable="true" dropdown="true">
             {/* semantic ui augmentation for ref */}
-            <NavSearch />
 
             {/* ternary for checking if the user is signed in */}
             {AuthService.loggedIn() ? (
