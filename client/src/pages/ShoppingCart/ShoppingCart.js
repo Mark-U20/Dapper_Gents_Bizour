@@ -1,9 +1,16 @@
 import './shoppingCart.css';
-import React, { useState, useEffect, createRef, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  createRef,
+  useRef,
+  useContext,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../../utils/queries';
 import AuthService from '../../utils/auth';
+import { UserContext } from '../../utils/UserContext';
 
 import { CartCard, CartSummaryCard } from '../../components';
 import {
@@ -22,15 +29,39 @@ import {
 //loop through shopping cart items and display them in cart card
 
 const ShoppingCart = () => {
+  const { userContextValue, setUserContextValue } = useContext(UserContext);
   const [activeSticky, setActiveSticky] = useState(false);
+  let cartItems = <h1>Cart is empty</h1>;
+  const cart = [];
   useEffect(() => {
     setActiveSticky(true);
   }, []);
 
-  const { error, loading, data } = useQuery(GET_USER, {
-    variables: { userID: AuthService.getProfile().data._id },
-  });
-  const cart = [];
+  useEffect(() => {
+    console.log(userContextValue);
+    try {
+      if (userContextValue.getUser.shoppingCart !== undefined) {
+        userContextValue.getUser.shoppingCart.forEach((item) => {
+          console.log(item);
+          cart.push(item);
+        });
+        cartItems = cartItems.map((item) => (
+          <CartCard
+            title={item.title}
+            price={item.price}
+            image={item.image}
+          ></CartCard>
+        ));
+
+        console.log(cart);
+      }
+    } catch (err) {}
+  }, [userContextValue]);
+
+  // const { error, loading, data } = useQuery(GET_USER, {
+  //   variables: { userID: AuthService.getProfile().data._id },
+  // });
+  console.log(userContextValue.getUser);
   console.log('data', cart);
 
   return (
@@ -41,18 +72,7 @@ const ShoppingCart = () => {
           <Grid.Column>
             <Header as="h2">Shopping Cart</Header>
             <Container className="listing-container">
-              {cart.length > 0 ? (
-                cart.map((item) => (
-                  <CartCard
-                    image={item.image}
-                    title={item.title}
-                    description={item.description}
-                    price={item.price}
-                  />
-                ))
-              ) : (
-                <h3>No items in your cart</h3>
-              )}
+              {cartItems}
             </Container>{' '}
           </Grid.Column>
           <Grid.Column>

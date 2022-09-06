@@ -68,13 +68,13 @@ function Canvas() {
       <Container filters={filters}>
         <Text x={100} y={100} text="Click to animate!" />
         <RotatingBunny position="50,50" />
-        {/* <AnimatedSprite
+        <AnimatedSprite
           ref={animationRef}
           position="300,75"
           textures={textures}
           interactive={true}
           pointerdown={toggleAnimation}
-        /> */}
+        />
       </Container>
     </Stage>
   );
