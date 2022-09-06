@@ -59,7 +59,7 @@ const typeDefs = gql`
   type Query {
     getUsers: [User]
     getUser(userID: ID!): User
-    getUserListings(userID: ID!): User
+    getUserListings(email: String!): User
     getListings: [Listing]
     getListing(listingId: ID!): Listing
   }
