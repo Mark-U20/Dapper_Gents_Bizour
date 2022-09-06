@@ -19,6 +19,7 @@ const resolvers = {
         .populate('shoppingCart')
         // .populate('reviews');
     },
+
     async getListing(_, { listingId }, context) {
       console.log(context.user);
       return await Listing.findOne({ _id: listingId })

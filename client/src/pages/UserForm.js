@@ -13,11 +13,11 @@ function UserForm({setUser}) {
   });
   // defining the ADD_USER mutation and pulling out the function as addUser
   const [addUser] = useMutation(ADD_USER, {
-    variables: formInput,
+    variables: {...formInput},
   });
   // defining the LOGIN_USER mutation and pulling out the function as loginUser
   const [loginUser] = useMutation(LOGIN_USER, {
-    variables: formInput,
+    variables: {...formInput},
   });
 
   const handleSubmit = async (e) => {

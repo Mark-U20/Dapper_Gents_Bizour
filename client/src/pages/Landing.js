@@ -7,6 +7,7 @@ import {
   pokemonStore,
   computerStore,
   randomStore,
+  constrStores
 } from '../components/storeInfo';
 
 function Landing() {
@@ -44,6 +45,20 @@ function Landing() {
           />
         </NavLink>
       </div>
+      {constrStores.map((store) => {
+        return (
+          <div className='store-front'>
+            {/* <NavLink to='/'> */}
+            <StoreCard 
+              image={store.image}
+              placeholder={store.placeholder}
+              store_title={store.name}
+              synopsis={store.synposis}
+            />
+            {/* </NavLink> */}
+          </div>
+        )
+      })}
     </section>
   );
 }

@@ -39,9 +39,6 @@ function App() {
     console.log('being used');
     // if it didn't break out, then decode and set to user
     const decoded = decode(token);
-
-    console.log(decoded);
-    console.log(userToken);
     setUserToken({
       ...userToken,
       token: decoded,
@@ -84,7 +81,6 @@ function App() {
           </Routes>
         </main>
       </UserContext.Provider>
-
       <Footer />
     </>
   );
