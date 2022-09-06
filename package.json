@@ -15,7 +15,8 @@
     "install:server": "cd ./server && npm i",
     "install:client": "cd ./client && npm i",
     "install:dep": "npm run install:server && npm run install:client",
-    "install": "npm run install:dep && npm i"
+    "install:main": "npm i",
+    "install": "npm run install:dep && npm run install:main"
   },
   "keywords": [],
   "author": "dapper_gents",
