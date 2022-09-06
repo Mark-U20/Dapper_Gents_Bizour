@@ -17,6 +17,7 @@ import {
   Container,
   Sticky,
 } from 'semantic-ui-react';
+import {motion} from 'framer-motion';
 
 //query all shopping cart items
 //loop through shopping cart items and display them in cart card
@@ -34,7 +35,11 @@ const ShoppingCart = () => {
   console.log('data', cart);
 
   return (
-    <>
+    <motion.section
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      exit={{opacity: 0, transition: {duration: 0.5}} }
+    >
       {/* {//loop through cart items and display them} */}
       <Container className="shopping-cart-container" textAlign="center">
         <Grid columns={2}>
@@ -62,7 +67,7 @@ const ShoppingCart = () => {
           </Grid.Column>
         </Grid>
       </Container>{' '}
-    </>
+    </motion.section>
   );
 };
 

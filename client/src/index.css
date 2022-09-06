@@ -29,14 +29,19 @@ code {
 
 .mainPage {
   /* height: 80vh; */
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   overflow-y: scroll;
-
+  overflow-x: hidden;
+  background: linear-gradient(45deg, rgb(12, 55, 4), rgb(117, 133, 126), rgb(103, 109, 114), rgb(89, 111, 69), rgb(122, 122, 48), rgb(95, 61, 46));
+  background-size: 400% 400%;
+  animation: gradient 30s ease infinite;
 }
+
+
 
 .stores {
   display: flex;
@@ -63,6 +68,8 @@ code {
   align-items: center;
   margin-left: 20vw;
   background: radial-gradient(rgb(20, 116, 53), rgb(130, 155, 197));
+  background-size: 400% 400%;
+  animation: gradient 30s ease infinite;
   color: rgba(28, 28, 8, 0.975);
   padding: 7px 20px;
   border-radius: 50px;
@@ -110,14 +117,13 @@ code {
 
 
 
-
-
 @media screen and (min-width: 480px) {
 
   .mainPage {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 80vh;
   }
 
   .stores {
@@ -154,4 +160,16 @@ code {
     height: 100%;
     width: 100%;
     background-color: aquamarine;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
