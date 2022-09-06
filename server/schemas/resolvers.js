@@ -13,6 +13,10 @@ const resolvers = {
         .populate('shoppingCart')
         // .populate('reviews');
     },
+    async getUserListings(_, { userID }) {
+      return await User.findOne({ _id: userID })
+        .populate('listings')
+    },
     async getUsers() {
       return await User.find()
         .populate('listings')

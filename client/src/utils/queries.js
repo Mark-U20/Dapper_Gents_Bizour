@@ -65,6 +65,23 @@ export const GET_USER = gql`
   }
 `;
 
+export const GET_USER_LISTINGS = gql`
+query Query($userId: ID!) {
+  getUserListings(userID: $userId) {
+    listings {
+      _id
+      title
+      description
+      category
+      quantity
+      image
+      price
+      listing_author
+    }
+  }
+}
+`;
+
 export const GET_USERS = gql`
   query getUsers {
     getUsers {
