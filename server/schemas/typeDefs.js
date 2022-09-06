@@ -57,10 +57,11 @@ const typeDefs = gql`
   }
 
   type Query {
-    getUser(userID: ID!): User
     getUsers: [User]
-    getListing(listingId: ID!): Listing
+    getUser(userID: ID!): User
+    getUserListings(email: String!): User
     getListings: [Listing]
+    getListing(listingId: ID!): Listing
   }
 
   type Mutation {

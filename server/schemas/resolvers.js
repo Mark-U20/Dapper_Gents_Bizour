@@ -13,12 +13,17 @@ const resolvers = {
         .populate('shoppingCart')
         // .populate('reviews');
     },
+    async getUserListings(_, { email }) {
+      return await User.findOne({ email: email })
+        .populate('listings')
+    },
     async getUsers() {
       return await User.find()
         .populate('listings')
         .populate('shoppingCart')
         // .populate('reviews');
     },
+
     async getListing(_, { listingId }, context) {
       console.log(context.user);
       return await Listing.findOne({ _id: listingId })

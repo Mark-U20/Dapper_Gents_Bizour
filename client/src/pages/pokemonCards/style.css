@@ -6,13 +6,23 @@
 .pokemon-header {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
+  font-size: large;
+  text-align: center;
   padding: 5% 0%;
   /* margin-bottom: 20%; */
 }
 
+.listings a {
+  margin-bottom: 20px;
+}
+
+.card {
+  height: 440px;
+}
 
 @media screen and (min-width: 480px) {
-
+.listings a {
+  margin: 0px 10px;
+}
 }
