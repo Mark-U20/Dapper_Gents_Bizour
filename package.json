@@ -12,9 +12,9 @@
     "build": "npm run seed && npm run build:client",
     "seed": "cd ./server/seeders && node seed.js",
     "format": "prettier --write \"client/**/*.{js,jsx}\" && prettier --write \"server/**/*.{js,jsx}\"",
-    "install:server": "cd ./server & npm i",
-    "install:client": "cd ./client & npm i",
-    "install:dep": "npm run install:server & npm run install:client",
+    "install:server": "cd ./server && npm i",
+    "install:client": "cd ./client && npm i",
+    "install:dep": "npm run install:server && npm run install:client",
     "install:main": "npm i",
     "install": "npm run install:dep"
   },
