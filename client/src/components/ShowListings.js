@@ -8,7 +8,7 @@ function ShowListings() {
     // const { error, loading, data } = useQuery(GET_USER_LISTINGS, {
     //     variables: {userId: "631763fc8735ff3fd5a92422"}
     // });
-    console.log(data.getListings);
+    console.log(data);
     return (
         <div className='store-list'>
             {error && <p className="error">{error.message}</p>}
