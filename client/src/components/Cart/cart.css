@@ -19,3 +19,11 @@
     padding: 30px;
     margin: 20px;
   }
+
+  .cart-card{
+    width: 330px;
+    height: 470px;
+    background-color: rgb(255, 210, 127);
+    padding: 30px;
+    margin: 20px;
+  }
