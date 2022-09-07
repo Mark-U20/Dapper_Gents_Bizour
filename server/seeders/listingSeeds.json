@@ -4,16 +4,16 @@
         "description": "This spicy boi does not mess around. Card is in pristine condition and will be the crown jewel of any collection!",
         "category": "Pokemon Card",
         "quantity": 1,
-        "image": "images/charizardCard.jpeg",
+        "image": "/images/charizardCard.jpeg",
         "price": 400,
         "listing_author": "justyn@bizour.com"
     },
     {
-        "title": "Bastoise (Base Set)",
+        "title": "Blastoise (Base Set)",
         "description": "This one gets wet, real wet. This card is in top notch condition and ready for a new home!",
         "category": "Pokemon Card",
         "quantity": 15,
-        "image": "images/blastoiseCard.jpeg",
+        "image": "/images/blastoiseCard.jpeg",
         "price": 200,
         "listing_author": "justyn@bizour.com"
     },
@@ -22,7 +22,7 @@
         "description": "Look at that egg. Chansey needs a new owner and I think it should be you. This card is bossin'!",
         "category": "Pokemon Card",
         "quantity": 5,
-        "image": "images/chanseyCard.jpeg",
+        "image": "/images/chanseyCard.jpeg",
         "price": 300,
         "listing_author": "justyn@bizour.com"
     },
@@ -31,13 +31,22 @@
         "description": "You need this card.",
         "category": "Pokemon Card",
         "quantity": 500,
-        "image": "images/metapodCard.jpeg",
+        "image": "/images/metapodCard.jpeg",
         "price": 5,
         "listing_author": "justyn@bizour.com"
     },
     {
+      "title": "cool guy shades",
+      "description": "Big monie balla's will get a kick out of this one. Have you ever been chillin with your significant other and this craving for watch \"Election\" by Alexander Payne but don't want to remove your shades because you're too much of a 'fly guy?' Now, watch your favorite movies with these rockin shades.",
+      "category": "Computer",
+      "quantity": 69,
+      "image": "https://64.media.tumblr.com/fd8cc715e9ba9723f5b86ef453b4fff5/tumblr_od2lae9sBb1vfq1e2o1_500.jpg",
+      "price": 420,
+      "listing_author": "gunnar@bizour.com"
+    },
+    {
         "title": "Ruputer pro",
-        "description": "The first ever smart watch! Haven't you been like 'wow i want a cumputer on my hand!' and then realized your arms were too flimsy and frail to hold a modern day multiple pound cumputer?! Well, that is pretty depressing, friend. You should be more active about your health. Maybe you would be healthier if you had a product like this!",
+        "description": "The first ever smart watch! Haven't you been like 'wow i want a cumputer on my hand!' and then realized your arms were too flimsy and frail to hold a modern day multiple pound cumputer?! Well, that is pretty depressing, friend. You should be more active in caring about your physical health. Maybe you would be healthier if you had a product like this!",
         "category": "Computer",
         "quantity": 69,
         "image": "https://watchlex.com/uploads/watches/6829/376e056c-36de-4aea-be3b-0004977dc3a1.jpg",
@@ -54,43 +63,50 @@
       "listing_author": "gunnar@bizour.com"
     },
     {
-        "title": "Computer",
-        "description": "Boop boop. Beep beep",
+        "title": "light boy",
+        "description": "when you trynna game at night but your nice brother keeps popping his stupid frigen gum in your gameboy",
         "category": "Computer",
         "quantity": 69,
-        "image": "images/brokenComputer.jpeg",
-        "price": 420,
+        "image": "https://i.ibb.co/Ry2Ljd4/gboy-light.jpg",
+        "price": 23,
         "listing_author": "gunnar@bizour.com"
     },
     {
-      "title": "Computer",
-      "description": "Boop boop. Beep beep",
+      "title": "computer with built in printer",
+      "description": "wow - a brand spanking new computer printer printer computer! i cannot believe you can own such a powerhouse of computing technology in [current year]! what a statement piece for anyones setup",
       "category": "Computer",
       "quantity": 69,
-      "image": "images/brokenComputer.jpeg",
+      "image": "https://i.ibb.co/1M3dbv6/puter-printer.jpg",
       "price": 420,
       "listing_author": "gunnar@bizour.com"
     },
     {
-      "title": "Computer",
-      "description": "Boop boop. Beep beep",
+      "title": "mouse ball",
+      "description": "your mouse not work right? stuck? new ball. probably gonna need to buy a few for ,,,,,, testeng.",
       "category": "Computer",
       "quantity": 69,
-      "image": "images/brokenComputer.jpeg",
-      "price": 420,
+      "image": "https://forum.agoraroad.com/index.php?media/llillill-render-png.11950/full",
+      "price": 1,
       "listing_author": "gunnar@bizour.com"
     },
     {
-      "title": "Computer",
-      "description": "Boop boop. Beep beep",
+      "title": "nerv phone",
+      "description": "what is nerv? you are unlearned, fren. i think its the wires in your body. don't play goose with me friend",
       "category": "Computer",
       "quantity": 69,
-      "image": "images/brokenComputer.jpeg",
+      "image": "https://forum.agoraroad.com/index.php?media/sh-06a_nv_01-jpg.11933/full",
+      "price": 40,
+      "listing_author": "gunnar@bizour.com"
+    },
+    {
+      "title": "",
+      "description": "",
+      "category": "Computer",
+      "quantity": 69,
+      "image": "",
       "price": 420,
       "listing_author": "gunnar@bizour.com"
     },
-
-
     {
         "title": "Random",
         "description": "Harambe didn't die for this.",

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { Cart, Listing, Review, User } = require('../models');
 const stripe = require('stripe')(process.env.STRIPE_API_KEY);
+// console.log('stripe', stripe);
 
 const { ApolloError } = require('apollo-server-express');
 const { signToken } = require('../auth');
@@ -8,32 +9,32 @@ const { signToken } = require('../auth');
 const resolvers = {
   Query: {
     async getUser(_, { userID }) {
-      return await User.findOne({ _id: userID })
+      const user = await User.findOne({ _id: userID })
         .populate('listings')
-        .populate('shoppingCart')
-        // .populate('reviews');
+        .populate('shoppingCart');
+      // .populate('reviews');
+      console.log('loggin user');
+      console.log(user);
+      return user;
     },
     async getUserListings(_, { email }) {
-      return await User.findOne({ email: email })
-        .populate('listings')
+      return await User.findOne({ email: email }).populate('listings');
     },
     async getUsers() {
-      return await User.find()
-        .populate('listings')
-        .populate('shoppingCart')
-        // .populate('reviews');
+      return await User.find().populate('listings').populate('shoppingCart');
+      // .populate('reviews');
     },
 
     async getListing(_, { listingId }, context) {
       console.log(context.user);
-      return await Listing.findOne({ _id: listingId })
+      return await Listing.findOne({ _id: listingId });
       // .populate('listing_author');
       // .populate('reviews');
     },
     async getListings() {
-      return await Listing.find()
-        // .populate('listing_author')
-        // .populate('reviews');
+      return await Listing.find();
+      // .populate('listing_author')
+      // .populate('reviews');
     },
   },
   Mutation: {
@@ -117,7 +118,7 @@ const resolvers = {
       console.log('test 2');
       const user = await User.findOne({ _id: userID });
       const cart = user.shoppingCart;
-      console.log('cart ', cart);
+      // console.log('cart ', cart);
       const line_items = cart.map((item) => ({
         price_data: {
           currency: 'usd',
@@ -128,30 +129,32 @@ const resolvers = {
         },
         quantity: item.quantity,
       }));
+      console.log('line_items ', line_items);
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
-        line_items,
+        line_items: line_items,
         mode: 'payment',
         success_url: `${process.env.SERVER_URL}/success.html`,
         cancel_url: `${process.env.SERVER_URL}/cancel.html`,
       });
-      return 'session.url';
+      console.log('test before sessions');
+      console.log('session ', session);
+      return session.url;
     },
-
 
     async addToCart(_, { listingId }, context) {
       console.log(context.user._id);
 
-      const item = await Listing.findOne({_id: listingId});
+      const item = await Listing.findOne({ _id: listingId });
 
-      console.log(item)
+      console.log(item);
 
       if (context.user) {
         return await User.findOneAndUpdate(
           { _id: context.user._id },
           {
             $addToSet: {
-              shoppingCart: item._id
+              shoppingCart: item._id,
             },
           },
           {

@@ -23,6 +23,7 @@ code {
 
 .mainPage {
   width: 100%;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -51,7 +52,16 @@ code {
   margin: 20px;
 }
 
+.store-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+.heading {
+  display: grid;
+}
 
 .title-search {
   display: flex;
@@ -80,11 +90,17 @@ code {
   font-size: calc(.7em + 1vw)
 }
 
+.store-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .listings {
+  min-height: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 50px;
 }
 
@@ -102,14 +118,20 @@ code {
   background-color: aquamarine;
 }
 
+.show-email{
+ display:none;
+}
+
 @media screen and (min-width: 480px) {
 
   .mainPage {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
   }
+  .show-email{
+    display: unset;
+   }
 
 }
   
