@@ -4,16 +4,16 @@
         "description": "This spicy boi does not mess around. Card is in pristine condition and will be the crown jewel of any collection!",
         "category": "Pokemon Card",
         "quantity": 1,
-        "image": "images/charizardCard.jpeg",
+        "image": "/images/charizardCard.jpeg",
         "price": 400,
         "listing_author": "justyn@bizour.com"
     },
     {
-        "title": "Bastoise (Base Set)",
+        "title": "Blastoise (Base Set)",
         "description": "This one gets wet, real wet. This card is in top notch condition and ready for a new home!",
         "category": "Pokemon Card",
         "quantity": 15,
-        "image": "images/blastoiseCard.jpeg",
+        "image": "/images/blastoiseCard.jpeg",
         "price": 200,
         "listing_author": "justyn@bizour.com"
     },
@@ -22,7 +22,7 @@
         "description": "Look at that egg. Chansey needs a new owner and I think it should be you. This card is bossin'!",
         "category": "Pokemon Card",
         "quantity": 5,
-        "image": "images/chanseyCard.jpeg",
+        "image": "/images/chanseyCard.jpeg",
         "price": 300,
         "listing_author": "justyn@bizour.com"
     },
@@ -31,7 +31,7 @@
         "description": "You need this card.",
         "category": "Pokemon Card",
         "quantity": 500,
-        "image": "images/metapodCard.jpeg",
+        "image": "/images/metapodCard.jpeg",
         "price": 5,
         "listing_author": "justyn@bizour.com"
     },
@@ -40,7 +40,7 @@
         "description": "Boop boop. Beep beep",
         "category": "Computer",
         "quantity": 69,
-        "image": "images/brokenComputer.jpeg",
+        "image": "/images/brokenComputer.jpeg",
         "price": 420,
         "listing_author": "gunnar@bizour.com"
     },
@@ -49,7 +49,7 @@
         "description": "Harambe didn't die for this.",
         "category": "Random",
         "quantity": 69,
-        "image": "images/angelHarambe.jpeg",
+        "image": "/images/angelHarambe.jpeg",
         "price": 420,
         "listing_author": "logan@bizour.com"
     }
