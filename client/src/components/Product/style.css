@@ -2,9 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20%;
+    margin-top: 10%;
+    padding-left: 13%;
+    padding-bottom: 5%;
 }
 
 @media screen and (min-width: 480px) {
-
+  .product {
+    margin-top: 0%;
+    padding-left: 0%;
+    padding-bottom: 0%;
+}
   }

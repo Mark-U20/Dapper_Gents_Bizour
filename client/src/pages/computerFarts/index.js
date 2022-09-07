@@ -10,7 +10,7 @@ export default function ComputerFarts() {
       animate={{opacity: 1}}
       exit={{opacity: 0, transition: {duration: .5}}}
     >
-      <h1>Yes this is text</h1>
+      <h1>Yes this is computer things</h1>
       <ShowComputerListings />
     </motion.div>
   );

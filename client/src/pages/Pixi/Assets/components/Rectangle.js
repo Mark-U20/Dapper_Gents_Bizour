@@ -1,5 +1,5 @@
 // import { CustomPIXIComponent } from 'react-pixi-fiber';
-// // import * as PIXI from 'pixi.js';
+// import * as PIXI from 'pixi.js';
 
 // const TYPE = 'Rectangle';
 // export const behavior = {

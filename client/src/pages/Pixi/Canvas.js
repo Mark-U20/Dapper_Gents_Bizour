@@ -1,8 +1,8 @@
-// // import { useCallback, useEffect, useRef, useState } from 'react';
-// // import * as PIXI from 'pixi.js';
-// // import { Stage, Text, Container } from 'react-pixi-fiber';
-// // import AnimatedSprite from './Assets/components/AnimatedSprite';
-// // import RotatingBunny from './Assets/components/RotatingBunny';
+// import { useCallback, useEffect, useRef, useState } from 'react';
+// import * as PIXI from 'pixi.js';
+// import { Stage, Text, Container } from 'react-pixi-fiber';
+// import AnimatedSprite from './Assets/components/AnimatedSprite';
+// import RotatingBunny from './Assets/components/RotatingBunny';
 
 // const width = 600;
 // const height = 400;
@@ -68,13 +68,21 @@
 //       <Container filters={filters}>
 //         <Text x={100} y={100} text="Click to animate!" />
 //         <RotatingBunny position="50,50" />
+<<<<<<< HEAD
 //         {/* <AnimatedSprite
+=======
+//         <AnimatedSprite
+>>>>>>> gungun-computerParts
 //           ref={animationRef}
 //           position="300,75"
 //           textures={textures}
 //           interactive={true}
 //           pointerdown={toggleAnimation}
+<<<<<<< HEAD
 //         /> */}
+=======
+//         />
+>>>>>>> gungun-computerParts
 //       </Container>
 //     </Stage>
 //   );
