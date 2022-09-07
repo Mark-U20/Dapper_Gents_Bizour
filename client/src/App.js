@@ -26,7 +26,6 @@ function App() {
   const [getUser, { error, loading, data }] = useLazyQuery(GET_USER);
   if (error) throw new ApolloError();
   // console.log(AuthService.getProfile().data._id);
-  // console.log(getUser);
   useEffect(() => {
     // grabbing token from localstorage
     const token = localStorage.getItem('id_token');
@@ -51,10 +50,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log('data was changed');
-    console.log(data);
     if (data && loading === false) {
-      console.log('settings context');
       console.log(data);
       setUserContextValue(data);
     }

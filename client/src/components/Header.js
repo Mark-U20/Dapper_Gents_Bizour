@@ -60,7 +60,6 @@ export default function Header({ userTokenData }) {
     },
   ];
 
-  console.log('header did header');
   return (
     <>
       <header className="title-search">
