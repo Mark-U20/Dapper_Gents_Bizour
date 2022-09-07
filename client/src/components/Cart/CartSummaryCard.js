@@ -10,6 +10,8 @@ import {
   Container,
   Sticky,
   Button,
+  Divider,
+  Header,
 } from 'semantic-ui-react';
 import AuthService from '../../utils/auth';
 
@@ -36,10 +38,16 @@ function CartSummaryCard(props) {
       <Container className="cart-summary-container">
         <Container textAlign="center">
           <h2>Cart Summary</h2>
-          <h3>Subtotal: $0.00</h3>
-          <h3>Shipping: $0.00</h3>
-          <h3>Tax: $0.00</h3>
-          <h3>Total: $0.00</h3>
+          <h3>Subtotal: ${props.subtotal}</h3>
+          <h3>Shipping: ${props.shipping}</h3>
+          <h3>Tax: ${props.tax}</h3>
+          <Divider horizontal>
+            <Header as="h4">
+              <Icon name="dollar sign" />
+              Total amount:
+            </Header>
+          </Divider>
+          <h3>{props.total}</h3>
           <Button
             onClick={(e) => {
               getStripeUrl();

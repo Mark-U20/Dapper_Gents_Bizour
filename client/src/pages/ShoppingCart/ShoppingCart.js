@@ -31,8 +31,8 @@ import {
 const ShoppingCart = () => {
   const { userContextValue, setUserContextValue } = useContext(UserContext);
   const [activeSticky, setActiveSticky] = useState(false);
-  let cartItems = <h1>Cart is empty</h1>;
-  const cart = [];
+  const [cartItems, setCartItems] = useState([]);
+  const [cartTotal, setCartTotal] = useState([]);
   useEffect(() => {
     setActiveSticky(true);
   }, []);
@@ -41,30 +41,39 @@ const ShoppingCart = () => {
     console.log(userContextValue);
     try {
       if (userContextValue.getUser.shoppingCart !== undefined) {
+        let subTotal = 0;
+        let shipping = 3.99;
+        let tax = 0;
         userContextValue.getUser.shoppingCart.forEach((item) => {
-          console.log(`item: ${item}`);
-          console.log(item);
-          cart.push(item);
+          //set cartItems items to all previous cart items and add new cart item
+          setCartItems((cartItems) => [
+            ...cartItems,
+            <CartCard
+              title={item.title}
+              price={item.price}
+              image={item.image}
+            />,
+          ]);
+          subTotal += item.price;
         });
-        console.log('adding cart items');
-        cartItems = cart.map((item) => (
-          <CartCard
-            title={item.title}
-            price={item.price}
-            image={item.image}
-          ></CartCard>
-        ));
-        console.log(`cartItems: ${cartItems}`);
-        console.log(cart);
+        tax = subTotal * 0.065;
+        setCartTotal(
+          <CartSummaryCard
+            stick={activeSticky}
+            subtotal={subTotal}
+            shipping={shipping}
+            tax={tax}
+            total={subTotal + shipping + tax}
+          />
+        );
+        //set cartTotal to the total of all cart items
       }
     } catch (err) {}
   }, [userContextValue]);
-
   // const { error, loading, data } = useQuery(GET_USER, {
   //   variables: { userID: AuthService.getProfile().data._id },
   // });
   console.log(userContextValue.getUser);
-  console.log('data', cart);
 
   return (
     <>
@@ -79,7 +88,8 @@ const ShoppingCart = () => {
           </Grid.Column>
           <Grid.Column>
             <Rail position="right">
-              <CartSummaryCard stick={activeSticky} />
+              {/* <CartSummaryCard stick={activeSticky} /> */}
+              {cartTotal}
             </Rail>
           </Grid.Column>
         </Grid>

@@ -4,7 +4,7 @@ import Random from './Random';
 import ComputerParts from './computerFarts';
 import UserForm from './UserForm';
 import ShoppingCart from './ShoppingCart/ShoppingCart';
-import Canvas from './Pixi/Canvas';
+// import Canvas from './Pixi/Canvas';
 import Wishlist from './Wishlist/Wishlist';
 import Settings from './Settings/Settings';
 
@@ -15,7 +15,6 @@ export {
   ComputerParts,
   UserForm,
   ShoppingCart,
-  Canvas,
   Wishlist,
   Settings,
 };
