@@ -45,12 +45,191 @@
         "listing_author": "gunnar@bizour.com"
     },
     {
-        "title": "Random",
+        "title": "Harambe",
         "description": "Harambe didn't die for this.",
         "category": "Random",
         "quantity": 69,
         "image": "/images/angelHarambe.jpeg",
         "price": 420,
         "listing_author": "logan@bizour.com"
+    },
+    {
+        "title": "Wombat",
+        "description": "Made for marsupials, maaaaan.",
+        "category": "Random",
+        "quantity": 42,
+        "image": "/images/wombat.png",
+        "price": 13,
+        "listing_author": "logan@bizour.com"
+    },
+    {
+        "title": "Shark",
+        "description": "Onward, evolution!",
+        "category": "Random",
+        "quantity": 31,
+        "image": "/images/shark.png",
+        "price": 93,
+        "listing_author": "logan@bizour.com"
+    },
+
+    {
+        "title": "Pit Canary",
+        "description": "Bird doggin' it!",
+        "category": "Random",
+        "quantity": 9,
+        "image": "/images/dog-bird.png",
+        "price": 85,
+        "listing_author": "logan@bizour.com"
+    },
+    {
+        "title": "Felix cluckanicus",
+        "description": "Hot chicks!",
+        "category": "Random",
+        "quantity": 96,
+        "image": "/images/chickat.png",
+        "price": 1300,
+        "listing_author": "logan@bizour.com"
+    },
+    {
+        "title": "Spongebob",
+        "description": "A very accurate representation!",
+        "category": "Random",
+        "quantity": 17,
+        "image": "/images/spongebob.png",
+        "price": 55,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Hungry Toilet",
+        "description": "Don't be afraid...",
+        "category": "Random",
+        "quantity": 98,
+        "image": "/images/toilet.png",
+        "price": 125,
+        "listing_author": "logan@bizour.com"
+    },
+    {
+        "title": "Mosquito Warning",
+        "description": "Signs of the time",
+        "category": "Random",
+        "quantity": 8,
+        "image": "/images/mosquito.png",
+        "price": 67,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Cuppah",
+        "description": "Useful for all occasionas",
+        "category": "Random",
+        "quantity": 88,
+        "image": "/images/utilitarian.png",
+        "price": 21,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Normal Mask",
+        "description": "Keeps you safe from Covid and friends!",
+        "category": "Random",
+        "quantity": 223,
+        "image": "/images/mask.png",
+        "price": 54,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Hamster Scratcher",
+        "description": "Every Guinea Pig loves a good scratch from a hamster",
+        "category": "Random",
+        "quantity": 56,
+        "image": "/images/hamster-scratcher.png",
+        "price": 21,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Decaffeinator",
+        "description": "Wide awake with no caffeine!",
+        "category": "Random",
+        "quantity": 21,
+        "image": "/images/decaffeinator.png",
+        "price": 88,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Egg Grabber",
+        "description": "Pick up any egg without touching the shell!",
+        "category": "Random",
+        "quantity": 5,
+        "image": "/images/egg-grabber.png",
+        "price": 14,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Sea pillow",
+        "description": "As soft as a bed of nails",
+        "category": "Random",
+        "quantity": 2,
+        "image": "/images/pillow.png",
+        "price": 1399,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Horse hat",
+        "description": "Adorn your equine now!",
+        "category": "Random",
+        "quantity": 17,
+        "image": "/images/horse-hat.png",
+        "price": 36,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Banana Glitter",
+        "description": "Never eat a plain banana again!",
+        "category": "Random",
+        "quantity": 14,
+        "image": "/images/banana-glitter.png",
+        "price": 333,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Eyesnail",
+        "description": "Custom eyeball cleaning without all the hassle!",
+        "category": "Random",
+        "quantity": 15,
+        "image": "/images/eyesnail.png",
+        "price": 666,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Handitaur",
+        "description": "Yes! Just yes...",
+        "category": "Random",
+        "quantity": 33,
+        "image": "/images/handotaur.png",
+        "price": 57,
+        "listing_author": "logan@bizour.com"
+    },{
+        "title": "Custom location jar",
+        "description": "Buy now; it's already in there....",
+        "category": "Random",
+        "quantity": 99,
+        "image": "/images/inside-jar.png",
+        "price": 99,
+        "listing_author": "logan@bizour.com"
+    },
+    {
+        "title": "Spoon Shirt",
+        "description": "Culinary perfection",
+        "category": "Random",
+        "quantity": 12,
+        "image": "/images/spoon-shirt.png",
+        "price": 5555,
+        "listing_author": "logan@bizour.com"
+    },
+    {
+        "title": "Biting tomatoes",
+        "description": "They've got a bite!",
+        "category": "Random",
+        "quantity": 99,
+        "image": "/images/tomato-teeth.png",
+        "price": 99,
+        "listing_author": "logan@bizour.com"
+    },
+    {
+        "title": "Fluffy",
+        "description": "Beautiful baby",
+        "category": "Random",
+        "quantity": 99,
+        "image": "/images/fluffy.png",
+        "price": 99,
+        "listing_author": "logan@bizour.com"
     }
+
 ]
