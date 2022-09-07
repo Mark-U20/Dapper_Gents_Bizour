@@ -117,6 +117,10 @@ code {
   background-color: aquamarine;
 }
 
+.show-email{
+ display:none;
+}
+
 @media screen and (min-width: 480px) {
 
   .mainPage {
@@ -125,6 +129,9 @@ code {
     align-items: center;
     min-height: 80vh;
   }
+  .show-email{
+    display: unset;
+   }
 
 }
   

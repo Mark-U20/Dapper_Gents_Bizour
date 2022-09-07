@@ -1,26 +1,17 @@
 import './cart.css';
 
 import React from 'react';
-import { faker } from '@faker-js/faker';
+// import { faker } from '@faker-js/faker';
 import { Card, Icon, Image } from 'semantic-ui-react';
 function CartCard(product) {
   return (
     <Card className="cart-card">
-      <Image src={faker.image.animals()} wrapped ui={false} />
+      <Image src={product.image} wrapped ui={false} />
       <Card.Content>
-        <Card.Header>Matthew</Card.Header>
-        <Card.Meta>
-          <span className="date">Joined in 2015</span>
-        </Card.Meta>
+        <Card.Header>{product.title}</Card.Header>
         <Card.Description>
-          Matthew is a musician living in Nashville.
+          <p>{product.price}</p>
         </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <a>
-          <Icon name="user" />
-          22 Friends
-        </a>
       </Card.Content>
     </Card>
   );

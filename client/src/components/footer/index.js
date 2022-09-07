@@ -15,10 +15,10 @@ export default function Footer() {
       <section className="creators">
         <h3>Checkout the Dapper Gents' other work!</h3>
         <div className="dappers">
-            <a href="https://github.com/jystyn">Justyn Helgeson</a>
-            <a href="https://github.com/fixedOtter">Gunnar Johnson</a>
-            <a href="https://github.com/LSton40">Logan Sutton</a>
-            <a href="https://github.com/Mark-U20">Mark Ustby</a>
+          <a href="https://github.com/jystyn">Justyn Helgeson</a>
+          <a href="https://github.com/fixedOtter">Gunnar Johnson</a>
+          <a href="https://github.com/LSton40">Logan Sutton</a>
+          <a href="https://github.com/Mark-U20">Mark Ustby</a>
         </div>
       </section>
     </footer>
