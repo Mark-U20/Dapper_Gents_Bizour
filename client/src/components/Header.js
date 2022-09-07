@@ -1,6 +1,6 @@
 import { Dropdown, Menu, Image, Label, Icon } from 'semantic-ui-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from './../utils/UserContext';
 
 import { useQuery } from '@apollo/client';
@@ -11,27 +11,26 @@ import NavSearch from './NavSearch';
 import AuthService from '../utils/auth';
 
 export default function Header({ userTokenData }) {
-  let cartCount = 1;
-  let cartCountLabel = <></>;
-
+  const { userContextValue, setUserContextValue } = useContext(UserContext);
   const { data: qData } = useQuery(GET_LISTINGS);
+  const [cartItemLabel, setCartItemLabel] = useState(['']);
 
   useEffect(() => {
     try {
-      cartCount = UserContext.getContextValue.getUser.shoppingCart.length;
-      if (cartCount > 0) {
-        cartCountLabel = (
+      if (userContextValue.getUser.shoppingCart.length > 0) {
+        console.log('greater than 0');
+        setCartItemLabel((previousValue) => (
           <Label color="red" attached="bottom left" circular size="mini">
-            cartCount
+            {userContextValue.getUser.shoppingCart.length}
           </Label>
-        );
+        ));
       } else {
-        cartCountLabel = <></>;
+        setCartItemLabel(() => <></>);
       }
     } catch (e) {
       console.log('there is nothing in the cart or nothing loaded');
     }
-  }, [UserContext]);
+  }, [userContextValue.getUser]);
 
   const options = [
     { key: 'user', text: 'Account', icon: 'user', as: Link, to: '/profile' },
@@ -123,7 +122,7 @@ export default function Header({ userTokenData }) {
           >
             <Icon name="shopping cart" />
 
-            {cartCountLabel}
+            {cartItemLabel}
           </Menu.Item>
         </Menu.Menu>
       </Menu>

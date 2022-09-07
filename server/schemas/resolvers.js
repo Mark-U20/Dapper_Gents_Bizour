@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { Cart, Listing, Review, User } = require('../models');
 const stripe = require('stripe')(process.env.STRIPE_API_KEY);
+// console.log('stripe', stripe);
 
 const { ApolloError } = require('apollo-server-express');
 const { signToken } = require('../auth');
@@ -128,14 +129,17 @@ const resolvers = {
         },
         quantity: item.quantity,
       }));
+      console.log('line_items ', line_items);
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
-        line_items,
+        line_items: line_items,
         mode: 'payment',
         success_url: `${process.env.SERVER_URL}/success.html`,
         cancel_url: `${process.env.SERVER_URL}/cancel.html`,
       });
-      return 'session.url';
+      console.log('test before sessions');
+      console.log('session ', session);
+      return session.url;
     },
 
     async addToCart(_, { listingId }, context) {
