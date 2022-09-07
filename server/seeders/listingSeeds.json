@@ -4,16 +4,16 @@
         "description": "This spicy boi does not mess around. Card is in pristine condition and will be the crown jewel of any collection!",
         "category": "Pokemon Card",
         "quantity": 1,
-        "image": "/images/charizardCard.jpeg",
+        "image": "images/charizardCard.jpeg",
         "price": 400,
         "listing_author": "justyn@bizour.com"
     },
     {
-        "title": "Blastoise (Base Set)",
+        "title": "Bastoise (Base Set)",
         "description": "This one gets wet, real wet. This card is in top notch condition and ready for a new home!",
         "category": "Pokemon Card",
         "quantity": 15,
-        "image": "/images/blastoiseCard.jpeg",
+        "image": "images/blastoiseCard.jpeg",
         "price": 200,
         "listing_author": "justyn@bizour.com"
     },
@@ -22,7 +22,7 @@
         "description": "Look at that egg. Chansey needs a new owner and I think it should be you. This card is bossin'!",
         "category": "Pokemon Card",
         "quantity": 5,
-        "image": "/images/chanseyCard.jpeg",
+        "image": "images/chanseyCard.jpeg",
         "price": 300,
         "listing_author": "justyn@bizour.com"
     },
@@ -31,25 +31,72 @@
         "description": "You need this card.",
         "category": "Pokemon Card",
         "quantity": 500,
-        "image": "/images/metapodCard.jpeg",
+        "image": "images/metapodCard.jpeg",
         "price": 5,
         "listing_author": "justyn@bizour.com"
+    },
+    {
+        "title": "Ruputer pro",
+        "description": "The first ever smart watch! Haven't you been like 'wow i want a cumputer on my hand!' and then realized your arms were too flimsy and frail to hold a modern day multiple pound cumputer?! Well, that is pretty depressing, friend. You should be more active about your health. Maybe you would be healthier if you had a product like this!",
+        "category": "Computer",
+        "quantity": 69,
+        "image": "https://watchlex.com/uploads/watches/6829/376e056c-36de-4aea-be3b-0004977dc3a1.jpg",
+        "price": 6,
+        "listing_author": "gunnar@bizour.com"
+    },
+    {
+      "title": "battle toads",
+      "description": "awe heck yis boi! battle toads! I have been wanting battle toads since I was my life before this one boiii",
+      "category": "Computer",
+      "quantity": 69,
+      "image": "https://i.ibb.co/D8GHdC1/toads.jpg",
+      "price": 9,
+      "listing_author": "gunnar@bizour.com"
     },
     {
         "title": "Computer",
         "description": "Boop boop. Beep beep",
         "category": "Computer",
         "quantity": 69,
-        "image": "/images/brokenComputer.jpeg",
+        "image": "images/brokenComputer.jpeg",
         "price": 420,
         "listing_author": "gunnar@bizour.com"
     },
+    {
+      "title": "Computer",
+      "description": "Boop boop. Beep beep",
+      "category": "Computer",
+      "quantity": 69,
+      "image": "images/brokenComputer.jpeg",
+      "price": 420,
+      "listing_author": "gunnar@bizour.com"
+    },
+    {
+      "title": "Computer",
+      "description": "Boop boop. Beep beep",
+      "category": "Computer",
+      "quantity": 69,
+      "image": "images/brokenComputer.jpeg",
+      "price": 420,
+      "listing_author": "gunnar@bizour.com"
+    },
+    {
+      "title": "Computer",
+      "description": "Boop boop. Beep beep",
+      "category": "Computer",
+      "quantity": 69,
+      "image": "images/brokenComputer.jpeg",
+      "price": 420,
+      "listing_author": "gunnar@bizour.com"
+    },
+
+
     {
         "title": "Random",
         "description": "Harambe didn't die for this.",
         "category": "Random",
         "quantity": 69,
-        "image": "/images/angelHarambe.jpeg",
+        "image": "images/angelHarambe.jpeg",
         "price": 420,
         "listing_author": "logan@bizour.com"
     }
